@@ -12,6 +12,15 @@
 		3A2357B72816FB0900CDC496 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2357B62816FB0900CDC496 /* ViewController.swift */; };
 		3A2357BC2816FB0B00CDC496 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2357BB2816FB0B00CDC496 /* Assets.xcassets */; };
 		3A2357BF2816FB0B00CDC496 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A2357BD2816FB0B00CDC496 /* LaunchScreen.storyboard */; };
+		3A2357DC281739BC00CDC496 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2357DB281739BC00CDC496 /* Coordinator.swift */; };
+		3A2357DE28173A3300CDC496 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2357DD28173A3300CDC496 /* AppCoordinator.swift */; };
+		3A2357E12817418C00CDC496 /* RatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2357E02817418C00CDC496 /* RatesViewController.swift */; };
+		3A2357E3281741AB00CDC496 /* ConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2357E2281741AB00CDC496 /* ConverterViewController.swift */; };
+		3A2357E5281741B900CDC496 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2357E4281741B900CDC496 /* AccountsViewController.swift */; };
+		3A2357E7281745E500CDC496 /* RatesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2357E6281745E500CDC496 /* RatesCoordinator.swift */; };
+		3A2357E92817460200CDC496 /* AccountsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2357E82817460200CDC496 /* AccountsCoordinator.swift */; };
+		3A2357EB2817479400CDC496 /* ConverterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2357EA2817479400CDC496 /* ConverterCoordinator.swift */; };
+		3A2357ED28174BA300CDC496 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2357EC28174BA300CDC496 /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +31,15 @@
 		3A2357BB2816FB0B00CDC496 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A2357BE2816FB0B00CDC496 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A2357C02816FB0B00CDC496 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A2357DB281739BC00CDC496 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		3A2357DD28173A3300CDC496 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		3A2357E02817418C00CDC496 /* RatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesViewController.swift; sourceTree = "<group>"; };
+		3A2357E2281741AB00CDC496 /* ConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewController.swift; sourceTree = "<group>"; };
+		3A2357E4281741B900CDC496 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
+		3A2357E6281745E500CDC496 /* RatesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesCoordinator.swift; sourceTree = "<group>"; };
+		3A2357E82817460200CDC496 /* AccountsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsCoordinator.swift; sourceTree = "<group>"; };
+		3A2357EA2817479400CDC496 /* ConverterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterCoordinator.swift; sourceTree = "<group>"; };
+		3A2357EC28174BA300CDC496 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +72,9 @@
 		3A2357B12816FB0900CDC496 /* converterapp */ = {
 			isa = PBXGroup;
 			children = (
+				3A2357DF2817415D00CDC496 /* Controller */,
+				3A2357DA281739AE00CDC496 /* Protocols */,
+				3A2357D92817399B00CDC496 /* Coordinator */,
 				3A2357B22816FB0900CDC496 /* AppDelegate.swift */,
 				3A2357B42816FB0900CDC496 /* SceneDelegate.swift */,
 				3A2357B62816FB0900CDC496 /* ViewController.swift */,
@@ -62,6 +83,36 @@
 				3A2357C02816FB0B00CDC496 /* Info.plist */,
 			);
 			path = converterapp;
+			sourceTree = "<group>";
+		};
+		3A2357D92817399B00CDC496 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				3A2357DD28173A3300CDC496 /* AppCoordinator.swift */,
+				3A2357E6281745E500CDC496 /* RatesCoordinator.swift */,
+				3A2357E82817460200CDC496 /* AccountsCoordinator.swift */,
+				3A2357EA2817479400CDC496 /* ConverterCoordinator.swift */,
+				3A2357EC28174BA300CDC496 /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		3A2357DA281739AE00CDC496 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3A2357DB281739BC00CDC496 /* Coordinator.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		3A2357DF2817415D00CDC496 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3A2357E02817418C00CDC496 /* RatesViewController.swift */,
+				3A2357E2281741AB00CDC496 /* ConverterViewController.swift */,
+				3A2357E4281741B900CDC496 /* AccountsViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,8 +185,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A2357DC281739BC00CDC496 /* Coordinator.swift in Sources */,
+				3A2357ED28174BA300CDC496 /* MainCoordinator.swift in Sources */,
 				3A2357B72816FB0900CDC496 /* ViewController.swift in Sources */,
+				3A2357DE28173A3300CDC496 /* AppCoordinator.swift in Sources */,
 				3A2357B32816FB0900CDC496 /* AppDelegate.swift in Sources */,
+				3A2357E7281745E500CDC496 /* RatesCoordinator.swift in Sources */,
+				3A2357E12817418C00CDC496 /* RatesViewController.swift in Sources */,
+				3A2357E3281741AB00CDC496 /* ConverterViewController.swift in Sources */,
+				3A2357EB2817479400CDC496 /* ConverterCoordinator.swift in Sources */,
+				3A2357E5281741B900CDC496 /* AccountsViewController.swift in Sources */,
+				3A2357E92817460200CDC496 /* AccountsCoordinator.swift in Sources */,
 				3A2357B52816FB0900CDC496 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

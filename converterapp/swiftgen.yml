@@ -1,0 +1,18 @@
+# In case your config entries all use a common input/output parent directory, you can specify those here.
+#   Every input/output paths in the rest of the config will then be expressed relative to these.
+#   Those two top-level keys are optional and default to "." (the directory of the config file).
+
+
+
+# Generate constants for your localized strings.
+#   Be sure that SwiftGen only parses ONE locale (typically Base.lproj, or en.lproj, or whichever your development region is); otherwise it will generate the same keys multiple times.
+#   SwiftGen will parse all `.strings` files found in that folder.
+strings:
+  inputs:
+    - Localization/en.lproj
+
+  outputs:
+    - templateName: structured-swift5
+      params:
+        enumName: Strings
+      output: Localization/Generated/Strings.swift

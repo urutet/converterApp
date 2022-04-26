@@ -10,13 +10,10 @@ import UIKit
 final class MainCoordinator: Coordinator {
   
   private enum Constants {
-    static let ratesTitle = "Rates"
     static let ratesImage = UIImage(systemName: "dollarsign.circle")
     static let ratesSelectedImage = UIImage(systemName: "dollarsign.circle.fill")
-    static let converterTitle = "Converter"
     static let converterImage = UIImage(systemName: "repeat.circle")
     static let converterSelectedImage = UIImage(systemName: "repeat.circle.fill")
-    static let accountsTitle = "Accounts"
     static let accountsImage = UIImage(systemName: "person.crop.circle")
     static let accountsSelectedImage = UIImage(systemName: "person.crop.circle.fill")
   }
@@ -34,21 +31,21 @@ final class MainCoordinator: Coordinator {
   func start() {
     let ratesCoordinator = RatesCoordinator()
     ratesCoordinator.ratesViewController.tabBarItem = UITabBarItem(
-      title: Constants.ratesTitle,
+      title: Strings.Main.rates,
       image: Constants.ratesImage,
       selectedImage: Constants.ratesSelectedImage
     )
     
     let converterCoordinator = ConverterCoordinator()
     converterCoordinator.converterViewController.tabBarItem = UITabBarItem(
-      title: Constants.converterTitle,
+      title: Strings.Main.converter,
       image: Constants.converterImage,
       selectedImage: Constants.converterSelectedImage
     )
     
     let accountsCoordinator = AccountsCoordinator()
     accountsCoordinator.accountsViewController.tabBarItem = UITabBarItem(
-      title: Constants.accountsTitle,
+      title: Strings.Main.accounts,
       image: Constants.accountsImage,
       selectedImage: Constants.accountsSelectedImage
     )

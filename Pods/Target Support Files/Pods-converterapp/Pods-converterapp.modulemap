@@ -1,0 +1,6 @@
+framework module Pods_converterapp {
+  umbrella header "Pods-converterapp-umbrella.h"
+
+  export *
+  module * { export * }
+}

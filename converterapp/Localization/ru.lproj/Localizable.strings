@@ -1,0 +1,10 @@
+/*
+  Localizable.strings
+  converterapp
+
+  Created by Yushkevich Ilya on 26.04.22.
+  
+*/
+"Main.rates" = "Курсы";
+"Main.converter" = "Конвертер";
+"Main.accounts" = "Счета";

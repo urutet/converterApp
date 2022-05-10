@@ -9,3 +9,7 @@
 "Main.converter" = "Конвертер";
 "Main.accounts" = "Счета";
 "Accounts.addAccount" = "Добавьте первый аккаунт";
+"Accounts.contextMenuTitle" = "Аккаунт";
+"Accounts.showAccount" = "Открыть";
+"Accounts.editAccount" = "Изменить";
+"Accounts.removeAccount" = "Удалить";

@@ -14,6 +14,14 @@ internal enum Strings {
   internal enum Accounts {
     /// Add first account
     internal static let addAccount = Strings.tr("Localizable", "Accounts.addAccount")
+    /// Account
+    internal static let contextMenuTitle = Strings.tr("Localizable", "Accounts.contextMenuTitle")
+    /// Edit
+    internal static let editAccount = Strings.tr("Localizable", "Accounts.editAccount")
+    /// Remove
+    internal static let removeAccount = Strings.tr("Localizable", "Accounts.removeAccount")
+    /// Show
+    internal static let showAccount = Strings.tr("Localizable", "Accounts.showAccount")
   }
 
   internal enum Main {

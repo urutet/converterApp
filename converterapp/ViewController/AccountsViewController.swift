@@ -18,6 +18,7 @@ final class AccountsViewController: UIViewController {
     static let accountCellIdentifier = "AccountCell"
     static let addAccountButtonColor: UIColor = .systemBlue
     static let addAccountButtonFontSize: CGFloat = 15
+    static let removeAccount = UIImage(systemName: "trash")
   }
   
   private var coordinator: AccountsCoordinator!
@@ -116,6 +117,12 @@ final class AccountsViewController: UIViewController {
     
     return UICollectionViewCompositionalLayout(section: section)
   }
+  
+  // MARK: - Helpers
+  @objc
+  private func addAccount() {
+    
+  }
 }
 
 extension AccountsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -135,9 +142,35 @@ extension AccountsViewController: UICollectionViewDelegate, UICollectionViewData
     
   }
   
-  // MARK: - Helpers
-  @objc
-  private func addAccount() {
-
+  func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+      let showAccountAction = UIAction(
+        title: Strings.Accounts.showAccount,
+        state: .off) { _ in
+          
+        }
+      
+      let editAccountAction = UIAction(
+        title: Strings.Accounts.editAccount,
+        state: .off) { _ in
+          
+        }
+      
+      let removeAccountAction = UIAction(
+        title: Strings.Accounts.removeAccount,
+        image: Constants.removeAccount,
+        attributes: .destructive,
+        state: .off) { _ in
+          
+        }
+      
+      return UIMenu(
+        title: Strings.Accounts.contextMenuTitle,
+        options: .displayInline,
+        children: [showAccountAction, editAccountAction, removeAccountAction]
+      )
+    }
+    
+    return configuration
   }
 }

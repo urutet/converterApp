@@ -9,3 +9,7 @@
 "Main.converter" = "Converter";
 "Main.accounts" = "Accounts";
 "Accounts.addAccount" = "Add first account";
+"Accounts.contextMenuTitle" = "Account";
+"Accounts.showAccount" = "Show";
+"Accounts.editAccount" = "Edit";
+"Accounts.removeAccount" = "Remove";

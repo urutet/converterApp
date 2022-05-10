@@ -9,7 +9,7 @@ import UIKit
 
 final class AccountsCoordinator: Coordinator {
   
-  private let rootViewController: UINavigationController = {
+  let rootViewController: UINavigationController = {
     let navigationController = UINavigationController()
     
     navigationController.navigationBar.prefersLargeTitles = true

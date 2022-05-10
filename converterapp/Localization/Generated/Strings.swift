@@ -11,6 +11,11 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum Strings {
 
+  internal enum Accounts {
+    /// Add first account
+    internal static let addAccount = Strings.tr("Localizable", "Accounts.addAccount")
+  }
+
   internal enum Main {
     /// Accounts
     internal static let accounts = Strings.tr("Localizable", "Main.accounts")

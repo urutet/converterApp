@@ -9,7 +9,7 @@ import UIKit
 
 final class ConverterCoordinator: Coordinator {
   
-  private let rootViewController: UINavigationController = {
+  let rootViewController: UINavigationController = {
     let navigationController = UINavigationController()
     
     navigationController.navigationBar.prefersLargeTitles = true

@@ -8,3 +8,4 @@
 "Main.rates" = "Курсы";
 "Main.converter" = "Конвертер";
 "Main.accounts" = "Счета";
+"Accounts.addAccount" = "Добавьте первый аккаунт";

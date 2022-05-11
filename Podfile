@@ -7,4 +7,5 @@ target 'converterapp' do
 
   # Pods for converterapp
 pod 'SwiftGen', '~> 6.0'
+pod 'Alamofire'
 end

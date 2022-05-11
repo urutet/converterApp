@@ -35,6 +35,15 @@ final class AccountsCoordinator: Coordinator {
     return addAccountViewModel
   }
   
+  func goToAccountDetailsViewController(index: Int) -> AccountDetailsViewModel {
+    let accountDetailsViewController = AccountDetailsViewController()
+    let accountDetailsViewModel = AccountDetailsViewModel()
+    accountDetailsViewModel.account = viewModel.accounts[index]
+    accountDetailsViewController.viewModel = accountDetailsViewModel
+    rootViewController.pushViewController(accountDetailsViewController, animated: true)
+    return accountDetailsViewModel
+  }
+  
   func pop() {
     rootViewController.popViewController(animated: true)
   }

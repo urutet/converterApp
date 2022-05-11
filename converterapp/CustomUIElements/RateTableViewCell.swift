@@ -19,6 +19,7 @@ final class RateTableViewCell: UITableViewCell {
     static let contentViewCornerRadius: CGFloat = 10
     static let contentViewBackgroundColor: UIColor = .systemBackground
     static let contentViewShadowColor: CGColor = UIColor.black.cgColor
+    static let currencyCode = "BYN"
   }
   
   private let numberFormatter: NumberFormatter = {
@@ -44,7 +45,7 @@ final class RateTableViewCell: UITableViewCell {
     let label = UILabel()
     
     label.font = FontsManager.regular(ofSize: 50)
-    label.textAlignment = .center
+    label.textAlignment = .left
     
     return label
   }()
@@ -86,7 +87,7 @@ final class RateTableViewCell: UITableViewCell {
   func setRate(currency: Currency) {
     currencyFlagLabel.text = currency.abbreviation?.flagFromCurrency()
     currencyNameLabel.text = currency.abbreviation
-    numberFormatter.currencyCode = currency.abbreviation
+    numberFormatter.currencyCode = Constants.currencyCode
     currencyRateLabel.text = numberFormatter.string(from: NSDecimalNumber(decimal: currency.rate ?? 0.0))
   }
   // MARK: - Setups

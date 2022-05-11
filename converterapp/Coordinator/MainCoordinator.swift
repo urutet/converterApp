@@ -30,6 +30,8 @@ final class MainCoordinator: Coordinator {
   
   func start() {
     let ratesCoordinator = RatesCoordinator()
+    let ratesViewModel = RatesViewModel()
+    ratesCoordinator.viewModel = ratesViewModel
     ratesCoordinator.start()
     ratesCoordinator.rootViewController.tabBarItem = UITabBarItem(
       title: Strings.Main.rates,

@@ -9,16 +9,16 @@ import Foundation
 
 struct Currency: Codable {
   let id: Int?
+  let date: String
   let abbreviation: String?
-  let date: Date
   let scale: Int?
   let name: String?
   let rate: Decimal?
   
   enum CodingKeys: String, CodingKey {
     case id = "Cur_ID"
-    case abbreviation = "Cur_Abbreviation"
     case date = "Date"
+    case abbreviation = "Cur_Abbreviation"
     case scale = "Cur_Scale"
     case name = "Cur_Name"
     case rate = "Cur_OfficialRate"

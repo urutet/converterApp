@@ -9,6 +9,7 @@ import UIKit
 
 final class RatesCoordinator: Coordinator {
   
+  var viewModel: RatesViewModel!
   let rootViewController: UINavigationController = {
     let navigationController = UINavigationController()
     
@@ -17,13 +18,10 @@ final class RatesCoordinator: Coordinator {
     return navigationController
   }()
   
-  lazy var ratesViewController: RatesViewController = {
-    let ratesViewController = RatesViewController()
-    
-    return ratesViewController
-  }()
+  lazy var ratesViewController = RatesViewController()
   
   func start() {
+    ratesViewController.viewModel = viewModel
     rootViewController.setViewControllers([ratesViewController], animated: false)
   }
   

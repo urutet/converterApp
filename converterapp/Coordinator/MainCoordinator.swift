@@ -30,21 +30,26 @@ final class MainCoordinator: Coordinator {
   
   func start() {
     let ratesCoordinator = RatesCoordinator()
-    ratesCoordinator.ratesViewController.tabBarItem = UITabBarItem(
+    ratesCoordinator.start()
+    ratesCoordinator.rootViewController.tabBarItem = UITabBarItem(
       title: Strings.Main.rates,
       image: Constants.ratesImage,
       selectedImage: Constants.ratesSelectedImage
     )
     
     let converterCoordinator = ConverterCoordinator()
-    converterCoordinator.converterViewController.tabBarItem = UITabBarItem(
+    converterCoordinator.start()
+    converterCoordinator.rootViewController.tabBarItem = UITabBarItem(
       title: Strings.Main.converter,
       image: Constants.converterImage,
       selectedImage: Constants.converterSelectedImage
     )
     
     let accountsCoordinator = AccountsCoordinator()
-    accountsCoordinator.accountsViewController.tabBarItem = UITabBarItem(
+    let accountsViewModel = AccountsViewModel()
+    accountsCoordinator.viewModel = accountsViewModel
+    accountsCoordinator.start()
+    accountsCoordinator.rootViewController.tabBarItem = UITabBarItem(
       title: Strings.Main.accounts,
       image: Constants.accountsImage,
       selectedImage: Constants.accountsSelectedImage
@@ -53,9 +58,9 @@ final class MainCoordinator: Coordinator {
     childCoordinators = [ratesCoordinator, converterCoordinator, accountsCoordinator]
     
     rootViewController.viewControllers = [
-      ratesCoordinator.ratesViewController,
-      converterCoordinator.converterViewController,
-      accountsCoordinator.accountsViewController
+      ratesCoordinator.rootViewController,
+      converterCoordinator.rootViewController,
+      accountsCoordinator.rootViewController
     ]
   }
 }

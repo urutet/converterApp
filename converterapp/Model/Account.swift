@@ -10,6 +10,6 @@ import Foundation
 struct Account {
   let name: String
   let currency: String
-  let balance: Decimal
-  let transactions: [Transaction]
+  let balance: Decimal?
+  let transactions: [Transaction]?
 }

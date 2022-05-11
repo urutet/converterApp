@@ -21,7 +21,6 @@ final class AccountsViewController: UIViewController {
     static let removeAccount = UIImage(systemName: "trash")
   }
   
-  private var coordinator: AccountsCoordinator!
   private var subscriptions = Set<AnyCancellable>()
   private var accounts = [Account]()
   
@@ -46,7 +45,7 @@ final class AccountsViewController: UIViewController {
     
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setTitle(Strings.Accounts.addAccount, for: .normal)
-    button.titleLabel?.font = FontsManager.regular(ofSize: Constants.addAccountButtonFontSize)
+    button.titleLabel?.font = FontsManager.medium(ofSize: Constants.addAccountButtonFontSize)
     button.setTitleColor(Constants.addAccountButtonColor, for: .normal)
     
     button.addTarget(self, action: #selector(addAccount), for: .touchUpInside)
@@ -121,7 +120,11 @@ final class AccountsViewController: UIViewController {
   // MARK: - Helpers
   @objc
   private func addAccount() {
-    
+    viewModel.addAccount()
+  }
+  
+  private func showAccountDetails(index: Int) {
+    viewModel.showAccountDetails(index: index)
   }
 }
 
@@ -172,5 +175,9 @@ extension AccountsViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     return configuration
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    showAccountDetails(index: indexPath.row)
   }
 }

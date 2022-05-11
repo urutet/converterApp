@@ -21,6 +21,14 @@ class AccountCollectionViewCell: UICollectionViewCell {
     static let currencyEmojiSize: CGFloat = 50
   }
   
+  private let numberFormatter: NumberFormatter = {
+    let formatter = NumberFormatter()
+    
+    formatter.numberStyle = .currency
+    
+    return formatter
+  }()
+  
   private let stackView: UIStackView = {
     let stackView = UIStackView()
     
@@ -70,7 +78,8 @@ class AccountCollectionViewCell: UICollectionViewCell {
   func setAccount(_ account: Account) {
     nameLabel.text = account.name
     currencyLabel.text = account.currency.flagFromCurrency()
-    balanceLabel.text = "\(account.balance)"
+    numberFormatter.currencyCode = account.currency
+    balanceLabel.text = numberFormatter.string(from: account.balance as NSDecimalNumber? ?? 0.0)
   }
   
   // MARK: - Setups

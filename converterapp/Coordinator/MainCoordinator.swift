@@ -47,7 +47,7 @@ final class MainCoordinator: Coordinator {
     
     let accountsCoordinator = AccountsCoordinator()
     let accountsViewModel = AccountsViewModel()
-    accountsCoordinator.accountsViewController.viewModel = accountsViewModel
+    accountsCoordinator.viewModel = accountsViewModel
     accountsCoordinator.start()
     accountsCoordinator.rootViewController.tabBarItem = UITabBarItem(
       title: Strings.Main.accounts,

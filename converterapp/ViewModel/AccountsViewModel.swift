@@ -23,4 +23,8 @@ final class AccountsViewModel: ObservableObject {
     }
     .store(in: &subscriptions)
   }
+  
+  func showAccountDetails(index: Int) {
+    let accountDetailsViewModel = coordinator.goToAccountDetailsViewController(index: index)
+  }
 }

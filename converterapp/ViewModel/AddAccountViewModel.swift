@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 final class AddAccountViewModel {
   var accountName: String? = nil
@@ -18,7 +19,7 @@ final class AddAccountViewModel {
       let name = accountName,
       let currency = accountCurrency
     else { return }
-    let account = Account(name: name, currency: currency, balance: nil, transactions: nil)
+    let account = Account(name: name, currency: currency, balance: nil, transactions: [Transaction(name: "qwe", date: Date(), amount: 100)])
     saveAction.send(account)
   }
 }

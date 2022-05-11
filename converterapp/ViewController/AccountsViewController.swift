@@ -122,6 +122,10 @@ final class AccountsViewController: UIViewController {
   private func addAccount() {
     viewModel.addAccount()
   }
+  
+  private func showAccountDetails(index: Int) {
+    viewModel.showAccountDetails(index: index)
+  }
 }
 
 extension AccountsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -171,5 +175,9 @@ extension AccountsViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     return configuration
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    showAccountDetails(index: indexPath.row)
   }
 }

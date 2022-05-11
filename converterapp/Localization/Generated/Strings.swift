@@ -24,6 +24,17 @@ internal enum Strings {
     internal static let showAccount = Strings.tr("Localizable", "Accounts.showAccount")
   }
 
+  internal enum AddAccounts {
+    /// Currency
+    internal static let accountCurrency = Strings.tr("Localizable", "AddAccounts.AccountCurrency")
+    /// Account Name
+    internal static let accountName = Strings.tr("Localizable", "AddAccounts.AccountName")
+    /// Done
+    internal static let done = Strings.tr("Localizable", "AddAccounts.Done")
+    /// Save
+    internal static let save = Strings.tr("Localizable", "AddAccounts.Save")
+  }
+
   internal enum Main {
     /// Accounts
     internal static let accounts = Strings.tr("Localizable", "Main.accounts")

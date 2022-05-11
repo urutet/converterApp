@@ -13,3 +13,7 @@
 "Accounts.showAccount" = "Show";
 "Accounts.editAccount" = "Edit";
 "Accounts.removeAccount" = "Remove";
+"AddAccounts.AccountName" = "Account Name";
+"AddAccounts.AccountCurrency" = "Currency";
+"AddAccounts.Save" = "Save";
+"AddAccounts.Done" = "Done";

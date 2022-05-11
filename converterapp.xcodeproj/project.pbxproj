@@ -31,6 +31,9 @@
 		3A23581F2819357E00CDC496 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23581E2819357E00CDC496 /* AccountCollectionViewCell.swift */; };
 		3A6281972829784D00D22BC4 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281962829784D00D22BC4 /* String+Extensions.swift */; };
 		3A62819A28297A3D00D22BC4 /* FontsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62819928297A3D00D22BC4 /* FontsManager.swift */; };
+		3A62819E282AFDBE00D22BC4 /* AddAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62819D282AFDBE00D22BC4 /* AddAccountViewModel.swift */; };
+		3A6281A0282AFDE000D22BC4 /* AddAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62819F282AFDE000D22BC4 /* AddAccountViewController.swift */; };
+		3A6281A2282B00A200D22BC4 /* TitledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281A1282B00A200D22BC4 /* TitledTextField.swift */; };
 		76D471016032F9CAABB63294 /* Pods_converterapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDF46F04C667626469BF1E0 /* Pods_converterapp.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +66,9 @@
 		3A23581E2819357E00CDC496 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A6281962829784D00D22BC4 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		3A62819928297A3D00D22BC4 /* FontsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsManager.swift; sourceTree = "<group>"; };
+		3A62819D282AFDBE00D22BC4 /* AddAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewModel.swift; sourceTree = "<group>"; };
+		3A62819F282AFDE000D22BC4 /* AddAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewController.swift; sourceTree = "<group>"; };
+		3A6281A1282B00A200D22BC4 /* TitledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledTextField.swift; sourceTree = "<group>"; };
 		4EDF46F04C667626469BF1E0 /* Pods_converterapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_converterapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A3105A7A286630367D110B5 /* Pods-converterapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.release.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.release.xcconfig"; sourceTree = "<group>"; };
 		F6A2651B897CCB017A76C79B /* Pods-converterapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.debug.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +153,7 @@
 				3A2357E02817418C00CDC496 /* RatesViewController.swift */,
 				3A2357E2281741AB00CDC496 /* ConverterViewController.swift */,
 				3A2357E4281741B900CDC496 /* AccountsViewController.swift */,
+				3A62819F282AFDE000D22BC4 /* AddAccountViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -182,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				3A23581B2819208700CDC496 /* AccountsViewModel.swift */,
+				3A62819D282AFDBE00D22BC4 /* AddAccountViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -190,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				3A23581E2819357E00CDC496 /* AccountCollectionViewCell.swift */,
+				3A6281A1282B00A200D22BC4 /* TitledTextField.swift */,
 			);
 			path = CustomUIElements;
 			sourceTree = "<group>";
@@ -352,12 +361,15 @@
 				3A2357B72816FB0900CDC496 /* ViewController.swift in Sources */,
 				3A2357DE28173A3300CDC496 /* AppCoordinator.swift in Sources */,
 				3A2357B32816FB0900CDC496 /* AppDelegate.swift in Sources */,
+				3A6281A2282B00A200D22BC4 /* TitledTextField.swift in Sources */,
 				3A2358152819167D00CDC496 /* Account.swift in Sources */,
 				3A2357E7281745E500CDC496 /* RatesCoordinator.swift in Sources */,
 				3A2357E12817418C00CDC496 /* RatesViewController.swift in Sources */,
+				3A62819E282AFDBE00D22BC4 /* AddAccountViewModel.swift in Sources */,
 				3A2357FF2817D54600CDC496 /* Strings.swift in Sources */,
 				3A2357E3281741AB00CDC496 /* ConverterViewController.swift in Sources */,
 				3A6281972829784D00D22BC4 /* String+Extensions.swift in Sources */,
+				3A6281A0282AFDE000D22BC4 /* AddAccountViewController.swift in Sources */,
 				3A2357EB2817479400CDC496 /* ConverterCoordinator.swift in Sources */,
 				3A23581928191E9300CDC496 /* Currency.swift in Sources */,
 				3A2357E5281741B900CDC496 /* AccountsViewController.swift in Sources */,

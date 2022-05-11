@@ -17,15 +17,26 @@ final class AccountsCoordinator: Coordinator {
     return navigationController
   }()
   
-  lazy var accountsViewController: AccountsViewController = {
-    let accountsViewController = AccountsViewController()
-    
-    return accountsViewController
-  }()
-  
+  lazy var accountsViewController: AccountsViewController = AccountsViewController()
+  weak var viewModel: AccountsViewModel!
+
   func start() {
+    accountsViewController.viewModel = viewModel
+    accountsViewController.viewModel.coordinator = self
     rootViewController.setViewControllers([accountsViewController], animated: false)
 
+  }
+  
+  func goToAddAccountViewController() -> AddAccountViewModel {
+    let addAccountViewController = AddAccountViewController()
+    let addAccountViewModel = AddAccountViewModel()
+    addAccountViewController.viewModel = addAccountViewModel
+    rootViewController.pushViewController(addAccountViewController, animated: true)
+    return addAccountViewModel
+  }
+  
+  func pop() {
+    rootViewController.popViewController(animated: true)
   }
   
 }

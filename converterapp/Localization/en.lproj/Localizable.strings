@@ -17,3 +17,4 @@
 "AddAccounts.AccountCurrency" = "Currency";
 "AddAccounts.Save" = "Save";
 "AddAccounts.Done" = "Done";
+"Rates.Title" = "Currency rates";

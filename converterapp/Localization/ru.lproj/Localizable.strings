@@ -17,3 +17,4 @@
 "AddAccounts.AccountCurrency" = "Валюта";
 "AddAccounts.Save" = "Сохранить";
 "AddAccounts.Done" = "Готово";
+"Rates.Title" = "Курс валют";

@@ -18,7 +18,7 @@ final class RatesViewController: UIViewController {
     static let rateCellIdentifier = "RateTableViewCell"
   }
   
-  private let subscriptions = Set<AnyCancellable>()
+  private var subscriptions = Set<AnyCancellable>()
   
   private let tableView: UITableView = {
     let tableView = UITableView()
@@ -32,9 +32,11 @@ final class RatesViewController: UIViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    title = Strings.Rates.title
     addSubviews()
     addConstraints()
     setupSubscriptions()
+    viewModel.getRates()
     
     tableView.delegate = self
     tableView.dataSource = self
@@ -42,9 +44,12 @@ final class RatesViewController: UIViewController {
   // MARK: - API
   // MARK: - Setups
   private func setupSubscriptions() {
-    viewModel.$currencyRates.sink { [weak self] _ in
+    viewModel.$currencyRates
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] _ in
       self?.tableView.reloadData()
     }
+    .store(in: &subscriptions)
   }
   
   private func addSubviews() {

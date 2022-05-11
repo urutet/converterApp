@@ -11,6 +11,30 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum Strings {
 
+  internal enum Accounts {
+    /// Add first account
+    internal static let addAccount = Strings.tr("Localizable", "Accounts.addAccount")
+    /// Account
+    internal static let contextMenuTitle = Strings.tr("Localizable", "Accounts.contextMenuTitle")
+    /// Edit
+    internal static let editAccount = Strings.tr("Localizable", "Accounts.editAccount")
+    /// Remove
+    internal static let removeAccount = Strings.tr("Localizable", "Accounts.removeAccount")
+    /// Show
+    internal static let showAccount = Strings.tr("Localizable", "Accounts.showAccount")
+  }
+
+  internal enum AddAccounts {
+    /// Currency
+    internal static let accountCurrency = Strings.tr("Localizable", "AddAccounts.AccountCurrency")
+    /// Account Name
+    internal static let accountName = Strings.tr("Localizable", "AddAccounts.AccountName")
+    /// Done
+    internal static let done = Strings.tr("Localizable", "AddAccounts.Done")
+    /// Save
+    internal static let save = Strings.tr("Localizable", "AddAccounts.Save")
+  }
+
   internal enum Main {
     /// Accounts
     internal static let accounts = Strings.tr("Localizable", "Main.accounts")

@@ -16,6 +16,5 @@ final class RatesViewModel {
     ratesRepository.getRates(periodicity: 0) { [weak self] rates in
       self?.currencyRates = rates
     }
-//    currencyRates = [Currency(id: 1, abbreviation: "USD", date: Date(), scale: 1, name: "USD", rate: 3.32)]
   }
 }

@@ -40,6 +40,8 @@ final class MainCoordinator: Coordinator {
     )
     
     let converterCoordinator = ConverterCoordinator()
+    let converterViewModel = ConverterViewModel()
+    converterCoordinator.viewModel = converterViewModel
     converterCoordinator.start()
     converterCoordinator.rootViewController.tabBarItem = UITabBarItem(
       title: Strings.Main.converter,

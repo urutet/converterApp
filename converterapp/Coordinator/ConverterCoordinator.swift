@@ -17,13 +17,11 @@ final class ConverterCoordinator: Coordinator {
     return navigationController
   }()
   
-  lazy var converterViewController: ConverterViewController = {
-    let converterViewController = ConverterViewController()
-    
-    return converterViewController
-  }()
+  lazy var converterViewController: ConverterViewController = ConverterViewController()
+  weak var viewModel: ConverterViewModel!
   
   func start() {
+    converterViewController.viewModel = viewModel
     rootViewController.setViewControllers([converterViewController], animated: false)
 
   }

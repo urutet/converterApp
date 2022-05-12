@@ -7,8 +7,8 @@
 
 import UIKit
 
-final class RateTableViewCell: UITableViewCell {
-
+final class ConverterTableViewCell: UITableViewCell {
+  
   // MARK: - Properties
   // MARK: Public
   // MARK: Private
@@ -19,7 +19,6 @@ final class RateTableViewCell: UITableViewCell {
     static let contentViewCornerRadius: CGFloat = 10
     static let contentViewBackgroundColor: UIColor = .systemBackground
     static let contentViewShadowColor: CGColor = UIColor.black.cgColor
-    static let currencyCode = "BYN"
   }
   
   private let numberFormatter: NumberFormatter = {
@@ -53,10 +52,30 @@ final class RateTableViewCell: UITableViewCell {
   private let currencyNameLabel: UILabel = {
     let label = UILabel()
     
-    label.font = FontsManager.medium(ofSize: 20)
+    label.font = FontsManager.bold(ofSize: 20)
     label.textAlignment = .left
     
     return label
+  }()
+  
+  let currencyAmountTextField: UITextField = {
+    let textField = UITextField()
+    
+    textField.font = FontsManager.medium(ofSize: 20)
+    textField.textAlignment = .right
+    textField.keyboardType = .decimalPad
+    let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
+    let doneButton = UIBarButtonItem(
+      title: Strings.AddAccounts.done,
+      style: .plain,
+      target: self,
+      action: #selector(doneTapped)
+    )
+    let spacing = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    toolbar.setItems([spacing, doneButton], animated: true)
+    textField.inputAccessoryView = toolbar
+    
+    return textField
   }()
   
   private let currencyRateLabel: UILabel = {
@@ -87,9 +106,13 @@ final class RateTableViewCell: UITableViewCell {
   func setRate(currency: Currency) {
     currencyFlagLabel.text = currency.abbreviation?.flagFromCurrency()
     currencyNameLabel.text = currency.abbreviation
-    numberFormatter.currencyCode = Constants.currencyCode
-    currencyRateLabel.text = numberFormatter.string(from: NSDecimalNumber(decimal: currency.rate ?? 0.0))
+    numberFormatter.currencyCode = currency.abbreviation
+    if let rate = currency.rate {
+      currencyAmountTextField.text = "\(rate)"
+    }
+    currencyRateLabel.text = numberFormatter.currencySymbol
   }
+  
   // MARK: - Setups
   private func setupUI() {
     contentView.backgroundColor = Constants.contentViewBackgroundColor
@@ -104,6 +127,7 @@ final class RateTableViewCell: UITableViewCell {
     contentView.addSubview(stackView)
     stackView.addArrangedSubview(currencyFlagLabel)
     stackView.addArrangedSubview(currencyNameLabel)
+    stackView.addArrangedSubview(currencyAmountTextField)
     stackView.addArrangedSubview(currencyRateLabel)
   }
   
@@ -115,5 +139,10 @@ final class RateTableViewCell: UITableViewCell {
       stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
     ])
   }
+  
   // MARK: - Helpers
+  @objc
+  private func doneTapped() {
+    currencyAmountTextField.resignFirstResponder()
+  }
 }

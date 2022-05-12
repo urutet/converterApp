@@ -41,6 +41,8 @@
 		3A6281B0282C5FEC00D22BC4 /* RateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281AF282C5FEC00D22BC4 /* RateTableViewCell.swift */; };
 		3A6281B3282C680300D22BC4 /* RatesRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281B2282C680300D22BC4 /* RatesRepositoryProtocol.swift */; };
 		3A6281B5282C683200D22BC4 /* RatesNetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281B4282C683200D22BC4 /* RatesNetworkRepository.swift */; };
+		3A6281B7282C72DD00D22BC4 /* ConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281B6282C72DD00D22BC4 /* ConverterViewModel.swift */; };
+		3A6281B9282C741000D22BC4 /* ConverterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281B8282C741000D22BC4 /* ConverterTableViewCell.swift */; };
 		76D471016032F9CAABB63294 /* Pods_converterapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDF46F04C667626469BF1E0 /* Pods_converterapp.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +85,8 @@
 		3A6281AF282C5FEC00D22BC4 /* RateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTableViewCell.swift; sourceTree = "<group>"; };
 		3A6281B2282C680300D22BC4 /* RatesRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesRepositoryProtocol.swift; sourceTree = "<group>"; };
 		3A6281B4282C683200D22BC4 /* RatesNetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesNetworkRepository.swift; sourceTree = "<group>"; };
+		3A6281B6282C72DD00D22BC4 /* ConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewModel.swift; sourceTree = "<group>"; };
+		3A6281B8282C741000D22BC4 /* ConverterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTableViewCell.swift; sourceTree = "<group>"; };
 		4EDF46F04C667626469BF1E0 /* Pods_converterapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_converterapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A3105A7A286630367D110B5 /* Pods-converterapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.release.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.release.xcconfig"; sourceTree = "<group>"; };
 		F6A2651B897CCB017A76C79B /* Pods-converterapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.debug.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -208,6 +212,7 @@
 				3A62819D282AFDBE00D22BC4 /* AddAccountViewModel.swift */,
 				3A6281A7282C2A9300D22BC4 /* AccountDetailsViewModel.swift */,
 				3A6281AD282C5F0A00D22BC4 /* RatesViewModel.swift */,
+				3A6281B6282C72DD00D22BC4 /* ConverterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 				3A6281A1282B00A200D22BC4 /* TitledTextField.swift */,
 				3A6281AB282C2C7A00D22BC4 /* TransactionTableViewCell.swift */,
 				3A6281AF282C5FEC00D22BC4 /* RateTableViewCell.swift */,
+				3A6281B8282C741000D22BC4 /* ConverterTableViewCell.swift */,
 			);
 			path = CustomUIElements;
 			sourceTree = "<group>";
@@ -410,12 +416,14 @@
 				3A6281B3282C680300D22BC4 /* RatesRepositoryProtocol.swift in Sources */,
 				3A6281B5282C683200D22BC4 /* RatesNetworkRepository.swift in Sources */,
 				3A2357B72816FB0900CDC496 /* ViewController.swift in Sources */,
+				3A6281B7282C72DD00D22BC4 /* ConverterViewModel.swift in Sources */,
 				3A6281AE282C5F0A00D22BC4 /* RatesViewModel.swift in Sources */,
 				3A2357DE28173A3300CDC496 /* AppCoordinator.swift in Sources */,
 				3A2357B32816FB0900CDC496 /* AppDelegate.swift in Sources */,
 				3A6281A2282B00A200D22BC4 /* TitledTextField.swift in Sources */,
 				3A2358152819167D00CDC496 /* Account.swift in Sources */,
 				3A2357E7281745E500CDC496 /* RatesCoordinator.swift in Sources */,
+				3A6281B9282C741000D22BC4 /* ConverterTableViewCell.swift in Sources */,
 				3A2357E12817418C00CDC496 /* RatesViewController.swift in Sources */,
 				3A62819E282AFDBE00D22BC4 /* AddAccountViewModel.swift in Sources */,
 				3A2357FF2817D54600CDC496 /* Strings.swift in Sources */,

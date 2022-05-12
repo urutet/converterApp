@@ -9,7 +9,7 @@ import UIKit
 
 final class RatesCoordinator: Coordinator {
   
-  var viewModel: RatesViewModel!
+  weak var viewModel: RatesViewModel!
   let rootViewController: UINavigationController = {
     let navigationController = UINavigationController()
     

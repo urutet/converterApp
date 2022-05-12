@@ -43,6 +43,13 @@
 		3A6281B5282C683200D22BC4 /* RatesNetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281B4282C683200D22BC4 /* RatesNetworkRepository.swift */; };
 		3A6281B7282C72DD00D22BC4 /* ConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281B6282C72DD00D22BC4 /* ConverterViewModel.swift */; };
 		3A6281B9282C741000D22BC4 /* ConverterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281B8282C741000D22BC4 /* ConverterTableViewCell.swift */; };
+		3A6281BC282CE5AB00D22BC4 /* AccountsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281BB282CE5AB00D22BC4 /* AccountsRepositoryProtocol.swift */; };
+		3A6281BE282CE5EA00D22BC4 /* AccountsCoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281BD282CE5EA00D22BC4 /* AccountsCoreDataRepository.swift */; };
+		3A6281C1282CE65D00D22BC4 /* Account.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281BF282CE65D00D22BC4 /* Account.xcdatamodeld */; };
+		3A6281DE282CEB8D00D22BC4 /* TransactionMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281DA282CEB8D00D22BC4 /* TransactionMO+CoreDataClass.swift */; };
+		3A6281DF282CEB8D00D22BC4 /* TransactionMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281DB282CEB8D00D22BC4 /* TransactionMO+CoreDataProperties.swift */; };
+		3A6281E0282CEB8D00D22BC4 /* AccountMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281DC282CEB8D00D22BC4 /* AccountMO+CoreDataClass.swift */; };
+		3A6281E1282CEB8D00D22BC4 /* AccountMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281DD282CEB8D00D22BC4 /* AccountMO+CoreDataProperties.swift */; };
 		76D471016032F9CAABB63294 /* Pods_converterapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDF46F04C667626469BF1E0 /* Pods_converterapp.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +94,13 @@
 		3A6281B4282C683200D22BC4 /* RatesNetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesNetworkRepository.swift; sourceTree = "<group>"; };
 		3A6281B6282C72DD00D22BC4 /* ConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewModel.swift; sourceTree = "<group>"; };
 		3A6281B8282C741000D22BC4 /* ConverterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTableViewCell.swift; sourceTree = "<group>"; };
+		3A6281BB282CE5AB00D22BC4 /* AccountsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsRepositoryProtocol.swift; sourceTree = "<group>"; };
+		3A6281BD282CE5EA00D22BC4 /* AccountsCoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsCoreDataRepository.swift; sourceTree = "<group>"; };
+		3A6281C0282CE65D00D22BC4 /* Account.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Account.xcdatamodel; sourceTree = "<group>"; };
+		3A6281DA282CEB8D00D22BC4 /* TransactionMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3A6281DB282CEB8D00D22BC4 /* TransactionMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3A6281DC282CEB8D00D22BC4 /* AccountMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3A6281DD282CEB8D00D22BC4 /* AccountMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4EDF46F04C667626469BF1E0 /* Pods_converterapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_converterapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A3105A7A286630367D110B5 /* Pods-converterapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.release.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.release.xcconfig"; sourceTree = "<group>"; };
 		F6A2651B897CCB017A76C79B /* Pods-converterapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.debug.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +139,7 @@
 		3A2357B12816FB0900CDC496 /* converterapp */ = {
 			isa = PBXGroup;
 			children = (
+				3A6281BA282CE59200D22BC4 /* CoreData */,
 				3A6281B1282C67E000D22BC4 /* Networking */,
 				3A62819828297A2E00D22BC4 /* Fonts */,
 				3A628195282977D400D22BC4 /* Extensions */,
@@ -198,9 +213,14 @@
 		3A2358132819166A00CDC496 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3A6281DA282CEB8D00D22BC4 /* TransactionMO+CoreDataClass.swift */,
+				3A6281DB282CEB8D00D22BC4 /* TransactionMO+CoreDataProperties.swift */,
+				3A6281DC282CEB8D00D22BC4 /* AccountMO+CoreDataClass.swift */,
+				3A6281DD282CEB8D00D22BC4 /* AccountMO+CoreDataProperties.swift */,
 				3A2358142819167D00CDC496 /* Account.swift */,
 				3A2358162819178700CDC496 /* Transaction.swift */,
 				3A23581828191E9300CDC496 /* Currency.swift */,
+				3A6281BF282CE65D00D22BC4 /* Account.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -252,6 +272,15 @@
 				3A6281B4282C683200D22BC4 /* RatesNetworkRepository.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		3A6281BA282CE59200D22BC4 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				3A6281BB282CE5AB00D22BC4 /* AccountsRepositoryProtocol.swift */,
+				3A6281BD282CE5EA00D22BC4 /* AccountsCoreDataRepository.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		45AAFF322CDB33DFE6923F37 /* Frameworks */ = {
@@ -407,6 +436,8 @@
 			files = (
 				3A2357DC281739BC00CDC496 /* Coordinator.swift in Sources */,
 				3A2357ED28174BA300CDC496 /* MainCoordinator.swift in Sources */,
+				3A6281E1282CEB8D00D22BC4 /* AccountMO+CoreDataProperties.swift in Sources */,
+				3A6281BE282CE5EA00D22BC4 /* AccountsCoreDataRepository.swift in Sources */,
 				3A62819A28297A3D00D22BC4 /* FontsManager.swift in Sources */,
 				3A6281AA282C2AC000D22BC4 /* AccountDetailsViewController.swift in Sources */,
 				3A23581F2819357E00CDC496 /* AccountCollectionViewCell.swift in Sources */,
@@ -417,14 +448,19 @@
 				3A6281B5282C683200D22BC4 /* RatesNetworkRepository.swift in Sources */,
 				3A2357B72816FB0900CDC496 /* ViewController.swift in Sources */,
 				3A6281B7282C72DD00D22BC4 /* ConverterViewModel.swift in Sources */,
+				3A6281DF282CEB8D00D22BC4 /* TransactionMO+CoreDataProperties.swift in Sources */,
+				3A6281BC282CE5AB00D22BC4 /* AccountsRepositoryProtocol.swift in Sources */,
+				3A6281DE282CEB8D00D22BC4 /* TransactionMO+CoreDataClass.swift in Sources */,
 				3A6281AE282C5F0A00D22BC4 /* RatesViewModel.swift in Sources */,
 				3A2357DE28173A3300CDC496 /* AppCoordinator.swift in Sources */,
+				3A6281C1282CE65D00D22BC4 /* Account.xcdatamodeld in Sources */,
 				3A2357B32816FB0900CDC496 /* AppDelegate.swift in Sources */,
 				3A6281A2282B00A200D22BC4 /* TitledTextField.swift in Sources */,
 				3A2358152819167D00CDC496 /* Account.swift in Sources */,
 				3A2357E7281745E500CDC496 /* RatesCoordinator.swift in Sources */,
 				3A6281B9282C741000D22BC4 /* ConverterTableViewCell.swift in Sources */,
 				3A2357E12817418C00CDC496 /* RatesViewController.swift in Sources */,
+				3A6281E0282CEB8D00D22BC4 /* AccountMO+CoreDataClass.swift in Sources */,
 				3A62819E282AFDBE00D22BC4 /* AddAccountViewModel.swift in Sources */,
 				3A2357FF2817D54600CDC496 /* Strings.swift in Sources */,
 				3A6281A8282C2A9300D22BC4 /* AccountDetailsViewModel.swift in Sources */,
@@ -664,6 +700,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3A6281BF282CE65D00D22BC4 /* Account.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3A6281C0282CE65D00D22BC4 /* Account.xcdatamodel */,
+			);
+			currentVersion = 3A6281C0282CE65D00D22BC4 /* Account.xcdatamodel */;
+			path = Account.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3A2357A72816FB0900CDC496 /* Project object */;
 }

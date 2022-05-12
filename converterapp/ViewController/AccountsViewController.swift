@@ -70,6 +70,7 @@ final class AccountsViewController: UIViewController {
     addSubviews()
     addConstraints()
     
+    viewModel.getAccounts()
   }
   
   // MARK: - API
@@ -149,8 +150,8 @@ extension AccountsViewController: UICollectionViewDelegate, UICollectionViewData
     let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
       let showAccountAction = UIAction(
         title: Strings.Accounts.showAccount,
-        state: .off) { _ in
-          
+        state: .off) { [weak self] _ in
+          self?.showAccountDetails(index: contextMenuConfigurationForItemAt.row)
         }
       
       let editAccountAction = UIAction(
@@ -163,8 +164,8 @@ extension AccountsViewController: UICollectionViewDelegate, UICollectionViewData
         title: Strings.Accounts.removeAccount,
         image: Constants.removeAccount,
         attributes: .destructive,
-        state: .off) { _ in
-          
+        state: .off) { [weak self] _ in
+          self?.viewModel.deleteAccount(index: contextMenuConfigurationForItemAt.row)
         }
       
       return UIMenu(

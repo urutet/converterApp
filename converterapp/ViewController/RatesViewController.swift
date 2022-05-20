@@ -29,6 +29,13 @@ final class RatesViewController: UIViewController {
     
     return tableView
   }()
+  
+  private let refreshControl: UIRefreshControl = {
+    let refreshControl = UIRefreshControl()
+    
+    return refreshControl
+  }()
+  
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -36,8 +43,9 @@ final class RatesViewController: UIViewController {
     addSubviews()
     addConstraints()
     setupSubscriptions()
+    addTargets()
     viewModel.getRates()
-    
+
     tableView.delegate = self
     tableView.dataSource = self
   }
@@ -54,6 +62,7 @@ final class RatesViewController: UIViewController {
   
   private func addSubviews() {
     view.addSubview(tableView)
+    tableView.refreshControl = refreshControl
   }
   
   private func addConstraints() {
@@ -64,7 +73,16 @@ final class RatesViewController: UIViewController {
       tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
     ])
   }
+  
+  private func addTargets() {
+    refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+  }
   // MARK: - Helpers
+  @objc
+  private func refresh(sender: UIRefreshControl) {
+    viewModel.getRates()
+    sender.endRefreshing()
+  }
 }
 
 extension RatesViewController: UITableViewDelegate, UITableViewDataSource {

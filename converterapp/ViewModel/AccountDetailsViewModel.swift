@@ -6,5 +6,6 @@
 //
 
 final class AccountDetailsViewModel {
+  var coonrdinator: AccountDetailsCoordinator!
   var account: Account!
 }

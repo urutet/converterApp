@@ -50,6 +50,8 @@
 		3A6281DF282CEB8D00D22BC4 /* TransactionMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281DB282CEB8D00D22BC4 /* TransactionMO+CoreDataProperties.swift */; };
 		3A6281E0282CEB8D00D22BC4 /* AccountMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281DC282CEB8D00D22BC4 /* AccountMO+CoreDataClass.swift */; };
 		3A6281E1282CEB8D00D22BC4 /* AccountMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281DD282CEB8D00D22BC4 /* AccountMO+CoreDataProperties.swift */; };
+		3A6DE20828378ECE00C4F259 /* AccountDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6DE20728378ECE00C4F259 /* AccountDetailsCoordinator.swift */; };
+		3A6DE20A2837925D00C4F259 /* AddAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6DE2092837925D00C4F259 /* AddAccountCoordinator.swift */; };
 		76D471016032F9CAABB63294 /* Pods_converterapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDF46F04C667626469BF1E0 /* Pods_converterapp.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +103,8 @@
 		3A6281DB282CEB8D00D22BC4 /* TransactionMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3A6281DC282CEB8D00D22BC4 /* AccountMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountMO+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3A6281DD282CEB8D00D22BC4 /* AccountMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3A6DE20728378ECE00C4F259 /* AccountDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsCoordinator.swift; sourceTree = "<group>"; };
+		3A6DE2092837925D00C4F259 /* AddAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountCoordinator.swift; sourceTree = "<group>"; };
 		4EDF46F04C667626469BF1E0 /* Pods_converterapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_converterapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A3105A7A286630367D110B5 /* Pods-converterapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.release.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.release.xcconfig"; sourceTree = "<group>"; };
 		F6A2651B897CCB017A76C79B /* Pods-converterapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.debug.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 				3A2357E82817460200CDC496 /* AccountsCoordinator.swift */,
 				3A2357EA2817479400CDC496 /* ConverterCoordinator.swift */,
 				3A2357EC28174BA300CDC496 /* MainCoordinator.swift */,
+				3A6DE20728378ECE00C4F259 /* AccountDetailsCoordinator.swift */,
+				3A6DE2092837925D00C4F259 /* AddAccountCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -435,7 +441,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A2357DC281739BC00CDC496 /* Coordinator.swift in Sources */,
+				3A6DE20828378ECE00C4F259 /* AccountDetailsCoordinator.swift in Sources */,
 				3A2357ED28174BA300CDC496 /* MainCoordinator.swift in Sources */,
+				3A6DE20A2837925D00C4F259 /* AddAccountCoordinator.swift in Sources */,
 				3A6281E1282CEB8D00D22BC4 /* AccountMO+CoreDataProperties.swift in Sources */,
 				3A6281BE282CE5EA00D22BC4 /* AccountsCoreDataRepository.swift in Sources */,
 				3A62819A28297A3D00D22BC4 /* FontsManager.swift in Sources */,

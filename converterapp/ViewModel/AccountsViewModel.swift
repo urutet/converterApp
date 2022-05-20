@@ -38,6 +38,6 @@ final class AccountsViewModel: ObservableObject {
   }
   
   func showAccountDetails(index: Int) {
-    let accountDetailsViewModel = coordinator.goToAccountDetailsViewController(index: index)
+    coordinator.goToAccountDetailsViewController(index: index)
   }
 }

@@ -9,6 +9,7 @@ import Combine
 import Foundation
 
 final class AddAccountViewModel {
+  var coordinator: AddAccountCoordinator!
   var accountName: String? = nil
   var accountCurrency: String? = nil
   let currencies = ["EUR", "USD", "BYN", "RUB"]

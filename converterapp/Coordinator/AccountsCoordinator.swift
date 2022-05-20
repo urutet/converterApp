@@ -30,18 +30,27 @@ final class AccountsCoordinator: Coordinator {
   func goToAddAccountViewController() -> AddAccountViewModel {
     let addAccountViewController = AddAccountViewController()
     let addAccountViewModel = AddAccountViewModel()
-    addAccountViewController.viewModel = addAccountViewModel
+    let addAccountCoordinator = AddAccountCoordinator()
+    
+    addAccountCoordinator.viewModel = addAccountViewModel
+    addAccountCoordinator.addAccountViewController = addAccountViewController
+    addAccountCoordinator.start()
     rootViewController.pushViewController(addAccountViewController, animated: true)
+    
     return addAccountViewModel
   }
   
-  func goToAccountDetailsViewController(index: Int) -> AccountDetailsViewModel {
+  func goToAccountDetailsViewController(index: Int) {
     let accountDetailsViewController = AccountDetailsViewController()
     let accountDetailsViewModel = AccountDetailsViewModel()
+    let accountDetailsCoordinator = AccountDetailsCoordinator()
+    
+    accountDetailsCoordinator.accountDetailsViewController = accountDetailsViewController
     accountDetailsViewModel.account = viewModel.accounts[index]
-    accountDetailsViewController.viewModel = accountDetailsViewModel
+    accountDetailsCoordinator.viewModel = accountDetailsViewModel
+    accountDetailsCoordinator.start()
+    
     rootViewController.pushViewController(accountDetailsViewController, animated: true)
-    return accountDetailsViewModel
   }
   
   func pop() {

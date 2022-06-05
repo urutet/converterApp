@@ -18,3 +18,9 @@
 "AddAccounts.Save" = "Сохранить";
 "AddAccounts.Done" = "Готово";
 "Rates.Title" = "Курс валют";
+"AddTransaction.Name" = "Имя";
+"AddTransaction.Date" = "Дата";
+"AddTransaction.Amount" = "Сумма";
+"AddTransaction.InvalidName" = "Введите корректное имя.";
+"AddTransaction.InvalidAmount" = "Введите корректную сумму.";
+"AddTransaction.Dismiss" = "Закрыть";

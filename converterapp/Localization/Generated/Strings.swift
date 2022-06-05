@@ -35,6 +35,21 @@ internal enum Strings {
     internal static let save = Strings.tr("Localizable", "AddAccounts.Save")
   }
 
+  internal enum AddTransaction {
+    /// Amount
+    internal static let amount = Strings.tr("Localizable", "AddTransaction.Amount")
+    /// Date
+    internal static let date = Strings.tr("Localizable", "AddTransaction.Date")
+    /// Dismiss
+    internal static let dismiss = Strings.tr("Localizable", "AddTransaction.Dismiss")
+    /// Enter valid amount.
+    internal static let invalidAmount = Strings.tr("Localizable", "AddTransaction.InvalidAmount")
+    /// Enter valid name.
+    internal static let invalidName = Strings.tr("Localizable", "AddTransaction.InvalidName")
+    /// Name
+    internal static let name = Strings.tr("Localizable", "AddTransaction.Name")
+  }
+
   internal enum Main {
     /// Accounts
     internal static let accounts = Strings.tr("Localizable", "Main.accounts")

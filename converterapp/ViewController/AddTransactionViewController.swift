@@ -21,9 +21,8 @@ class AddTransactionViewController: UIViewController {
   }
   
   private enum DataType: String {
-    case name = "Enter valid name."
-    case date = "Enter valid date."
-    case amount = "Enter valid amount."
+    case name
+    case amount
   }
   
   private let dateFormatter: DateFormatter = {
@@ -62,7 +61,7 @@ class AddTransactionViewController: UIViewController {
     let textField = TitledTextField()
     
     textField.translatesAutoresizingMaskIntoConstraints = false
-    textField.setTitle("Name")
+    textField.setTitle(Strings.AddTransaction.name)
     textField.layer.borderWidth = 1
     textField.layer.borderColor = UIColor.systemGray4.cgColor
     textField.layer.cornerRadius = 5
@@ -93,7 +92,7 @@ class AddTransactionViewController: UIViewController {
     let textField = TitledTextField()
     
     textField.translatesAutoresizingMaskIntoConstraints = false
-    textField.setTitle("Date")
+    textField.setTitle(Strings.AddTransaction.date)
     
     textField.layer.borderWidth = 1
     textField.layer.borderColor = UIColor.systemGray4.cgColor
@@ -107,7 +106,7 @@ class AddTransactionViewController: UIViewController {
     let textField = TitledTextField()
     
     textField.translatesAutoresizingMaskIntoConstraints = false
-    textField.setTitle("Amount")
+    textField.setTitle(Strings.AddTransaction.amount)
     
     textField.layer.borderWidth = 1
     textField.layer.borderColor = UIColor.systemGray4.cgColor
@@ -210,8 +209,14 @@ class AddTransactionViewController: UIViewController {
   }
   
   private func showInvalidDataAlert(dataType: DataType) {
-    let alert = UIAlertController(title: dataType.rawValue, message: nil, preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+    switch dataType {
+    case .name:
+      alert.title = Strings.AddTransaction.invalidName
+    case .amount:
+      alert.title = Strings.AddTransaction.invalidAmount
+    }
+    alert.addAction(UIAlertAction(title: Strings.AddTransaction.dismiss, style: .default, handler: nil))
     present(alert, animated: true, completion: nil)
   }
 }

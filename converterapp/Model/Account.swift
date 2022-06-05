@@ -8,8 +8,25 @@
 import Foundation
 
 struct Account {
+  let id: UUID
   let name: String
   let currency: String
   let balance: Decimal?
-  let transactions: [Transaction]?
+  var transactions = [Transaction]()
+  
+  init(name: String, currency: String, balance: Decimal?, transactions: [Transaction]) {
+    self.id = UUID()
+    self.name = name
+    self.currency = currency
+    self.balance = balance
+    self.transactions = transactions
+  }
+  
+  init(id: UUID, name: String, currency: String, balance: Decimal?, transactions: [Transaction]) {
+    self.id = id
+    self.name = name
+    self.currency = currency
+    self.balance = balance
+    self.transactions = transactions
+  }
 }

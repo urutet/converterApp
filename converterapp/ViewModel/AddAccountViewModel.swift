@@ -20,7 +20,7 @@ final class AddAccountViewModel {
       let name = accountName,
       let currency = accountCurrency
     else { return }
-    let account = Account(name: name, currency: currency, balance: nil, transactions: [Transaction(name: "qwe", date: Date(), amount: 100)])
+    let account = Account(name: name, currency: currency, balance: nil, transactions: [Transaction]())
     saveAction.send(account)
   }
 }

@@ -104,11 +104,15 @@ final class TransactionTableViewCell: UITableViewCell {
   
   // MARK: - API
   func setTransaction(account: Account, index: Int) {
-    guard let transactions = account.transactions else { return }
-    nameLabel.text = transactions[index].name
-    dateLabel.text = dateFormatter.string(from: transactions[index].date)
+    nameLabel.text = account.transactions[index].name
+    dateLabel.text = dateFormatter.string(from: account.transactions[index].date)
     numberFormatter.currencyCode = account.currency
-    amountLabel.text = numberFormatter.string(from: NSDecimalNumber(decimal: transactions[index].amount))
+    amountLabel.text = numberFormatter.string(from: NSDecimalNumber(decimal: account.transactions[index].amount))
+    if account.transactions[index].amount < 0 {
+      amountLabel.textColor = .red
+    } else {
+      amountLabel.textColor = .green
+    }
   }
   // MARK: - Setups
   private func setupUI() {

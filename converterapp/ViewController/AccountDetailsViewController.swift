@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 final class AccountDetailsViewController: UIViewController {
 
@@ -13,6 +14,7 @@ final class AccountDetailsViewController: UIViewController {
   // MARK: Public
   var viewModel: AccountDetailsViewModel!
   // MARK: Private
+  private var subscriptions = Set<AnyCancellable>()
   private enum Constants {
     static let cellHeight: CGFloat = 100
     static let TransactionCellReuseIdentifier = "TransactionCell"
@@ -31,8 +33,15 @@ final class AccountDetailsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     title = viewModel.account.name
+    navigationItem.rightBarButtonItem = UIBarButtonItem(
+      barButtonSystemItem: .add,
+      target: self,
+      action: #selector(addTransaction)
+    )
+    setupSubscriptions()
     addSubviews()
     addConstraints()
+    viewModel.getTransactions()
     
     tableView.delegate = self
     tableView.dataSource = self
@@ -40,6 +49,15 @@ final class AccountDetailsViewController: UIViewController {
   
   // MARK: - API
   // MARK: - Setups
+  private func setupSubscriptions() {
+    viewModel.$account
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] _ in
+        self?.tableView.reloadData()
+      }
+      .store(in: &subscriptions)
+  }
+  
   private func addSubviews() {
     view.addSubview(tableView)
   }
@@ -53,11 +71,15 @@ final class AccountDetailsViewController: UIViewController {
     ])
   }
   // MARK: - Helpers
+  @objc
+  private func addTransaction() {
+    viewModel.addTransaciton()
+  }
 }
 
 extension AccountDetailsViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    viewModel.account.transactions?.count ?? 0
+    viewModel.account.transactions.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

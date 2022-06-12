@@ -12,6 +12,7 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
   private enum Constants {
     static let idPredicate = "id == %@"
     static let containerName = "Account"
+    static let accountMOEntityName = "AccountMO"
   }
   
   static let shared = AccountsCoreDataRepository()
@@ -112,14 +113,13 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
   func deleteAccount(id: UUID) {
     let managedContext = persistentContainer.viewContext
     
-    let fetchRequest = AccountMO.fetchRequest()
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.accountMOEntityName)
     fetchRequest.predicate = NSPredicate(format: Constants.idPredicate, id.uuidString)
     
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    
     do {
-      let objects = try managedContext.fetch(fetchRequest)
-      for object in objects {
-        managedContext.delete(object)
-      }
+      try managedContext.execute(deleteRequest)
       try managedContext.save()
     } catch let error as NSError {
       print("Error - \(error)")

@@ -31,7 +31,7 @@ final class AccountsViewModel: ObservableObject {
   }
   
   func deleteAccount(index: Int) {
-    accountsRepository.deleteAccount(accounts[index])
+    accountsRepository.deleteAccount(id: accounts[index].id)
     accounts.remove(at: index)
   }
   

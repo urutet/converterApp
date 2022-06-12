@@ -109,11 +109,11 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     return [Account]()
   }
   
-  func deleteAccount(_ account: Account) {
+  func deleteAccount(id: UUID) {
     let managedContext = persistentContainer.viewContext
     
     let fetchRequest = AccountMO.fetchRequest()
-    fetchRequest.predicate = NSPredicate(format: Constants.idPredicate, account.id as CVarArg)
+    fetchRequest.predicate = NSPredicate(format: Constants.idPredicate, id.uuidString)
     
     do {
       let objects = try managedContext.fetch(fetchRequest)
@@ -126,11 +126,11 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     }
   }
   
-  func addTransaction(_ transaction: Transaction, account: Account) {
+  func addTransaction(_ transaction: Transaction, accountID: UUID) {
     let managedContext = persistentContainer.viewContext
     
     let accountFetchRequest = AccountMO.fetchRequest()
-    accountFetchRequest.predicate = NSPredicate(format: Constants.idPredicate, account.id as CVarArg)
+    accountFetchRequest.predicate = NSPredicate(format: Constants.idPredicate, accountID.uuidString)
     
     let transactionMO = convertToTransacitonMO(transaction: transaction, context: managedContext)
     
@@ -143,11 +143,11 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     }
   }
   
-  func getAccountTransactions(account: Account) -> [Transaction] {
+  func getAccountTransactions(accountID: UUID) -> [Transaction] {
     let managedContext = persistentContainer.viewContext
     
     let accountFetchRequest = AccountMO.fetchRequest()
-    accountFetchRequest.predicate = NSPredicate(format: Constants.idPredicate, account.id as CVarArg)
+    accountFetchRequest.predicate = NSPredicate(format: Constants.idPredicate, accountID.uuidString)
     
     do {
       let accountsMO = try managedContext.fetch(accountFetchRequest)

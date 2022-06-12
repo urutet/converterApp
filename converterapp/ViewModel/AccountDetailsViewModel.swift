@@ -17,13 +17,13 @@ final class AccountDetailsViewModel {
     addTransactionViewModel.saveAction.sink { [weak self] transaction in
       guard let strongSelf = self else { return }
       strongSelf.account.transactions.append(transaction)
-      strongSelf.accountsRepository.addTransaction(transaction, account: strongSelf.account)
+      strongSelf.accountsRepository.addTransaction(transaction, accountID: strongSelf.account.id)
       addTransactionViewModel.coordinator.pop()
     }
     .store(in: &subscriptions)
   }
   
   func getTransactions() {
-    account.transactions = accountsRepository.getAccountTransactions(account: account)
+    account.transactions = accountsRepository.getAccountTransactions(accountID: account.id)
   }
 }

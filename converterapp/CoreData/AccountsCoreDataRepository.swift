@@ -28,6 +28,7 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
   
   private init() { }
   
+  @discardableResult
   private func convertToAccountMO(account: Account, context: NSManagedObjectContext) -> AccountMO {
     let accountMO = AccountMO(context: context)
     
@@ -58,6 +59,7 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     )
   }
   
+  @discardableResult
   private func convertToTransacitonMO(transaction: Transaction, context: NSManagedObjectContext) -> TransactionMO {
     let transactionMO = TransactionMO(context: context)
     
@@ -83,7 +85,7 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
   func saveAccount(_ account: Account) {
     let managedContext = persistentContainer.viewContext
     
-    let managedAccount = convertToAccountMO(account: account, context: managedContext)
+    convertToAccountMO(account: account, context: managedContext)
     
     do {
       try managedContext.save()

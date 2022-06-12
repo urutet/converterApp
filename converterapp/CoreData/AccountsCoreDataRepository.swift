@@ -77,10 +77,16 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
   func saveAccount(_ account: Account) {
     let managedContext = persistentContainer.viewContext
     
-    convertToAccountMO(account: account, context: managedContext)
+    let fetchRequest = AccountMO.fetchRequest()
     
     do {
-      try managedContext.save()
+      let accountsMO = try managedContext.fetch(fetchRequest)
+      if !accountsMO.contains(where: { $0.id == account.id }) {
+        convertToAccountMO(account: account, context: managedContext)
+        try managedContext.save()
+      } else {
+        assertionFailure("UUID duplicate")
+      }
     } catch let error as NSError {
       print("Error - \(error)")
     }
@@ -122,13 +128,18 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     
     let accountFetchRequest = AccountMO.fetchRequest()
     accountFetchRequest.predicate = NSPredicate(format: Constants.idPredicate, accountID.uuidString)
-    
-    let transactionMO = convertToTransacitonMO(transaction: transaction, context: managedContext)
-    
+        
     do {
       let accountsMO = try managedContext.fetch(accountFetchRequest)
-      accountsMO.first?.addToTransactions(transactionMO)
-      try managedContext.save()
+      guard let transactions = accountsMO.first?.transactions?.allObjects as? [TransactionMO] else { return }
+      
+      if !transactions.contains(where: { $0.id == transaction.id }) {
+        let transactionMO = convertToTransacitonMO(transaction: transaction, context: managedContext)
+        accountsMO.first?.addToTransactions(transactionMO)
+        try managedContext.save()
+      } else {
+        assertionFailure("UUID duplicate")
+      }
     } catch let error as NSError {
       print(error)
     }

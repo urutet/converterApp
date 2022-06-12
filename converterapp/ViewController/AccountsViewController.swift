@@ -56,7 +56,7 @@ final class AccountsViewController: UIViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    setupUI()
     setupSubscriptions()
     
     accountsCollectionView.delegate = self
@@ -75,6 +75,10 @@ final class AccountsViewController: UIViewController {
   
   // MARK: - API
   // MARK: - Setups
+  private func setupUI() {
+    view.backgroundColor = .systemBackground
+  }
+  
   private func addSubviews() {
     view.addSubview(accountsCollectionView)
   }

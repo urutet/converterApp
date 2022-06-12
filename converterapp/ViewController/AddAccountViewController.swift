@@ -99,6 +99,7 @@ class AddAccountViewController: UIViewController {
   // MARK: - API
   // MARK: - Setups
   private func setupUI() {
+    view.backgroundColor = .systemBackground
     currencyTextField.inputView = currencyPickerView
     let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
     let doneButton = UIBarButtonItem(

@@ -143,6 +143,7 @@ class AddTransactionViewController: UIViewController {
   
   // MARK: - Setups
   private func setupUI() {
+    view.backgroundColor = .systemBackground
     dateTextField.inputView = datePicker
     let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
     let doneButton = UIBarButtonItem(

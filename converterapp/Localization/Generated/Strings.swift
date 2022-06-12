@@ -50,6 +50,11 @@ internal enum Strings {
     internal static let name = Strings.tr("Localizable", "AddTransaction.Name")
   }
 
+  internal enum Converter {
+    /// Converter
+    internal static let title = Strings.tr("Localizable", "Converter.Title")
+  }
+
   internal enum Main {
     /// Accounts
     internal static let accounts = Strings.tr("Localizable", "Main.accounts")

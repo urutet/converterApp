@@ -32,7 +32,7 @@ final class AccountDetailsViewController: UIViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = viewModel.account.name
+    setupUI()
     navigationItem.rightBarButtonItem = UIBarButtonItem(
       barButtonSystemItem: .add,
       target: self,
@@ -47,8 +47,12 @@ final class AccountDetailsViewController: UIViewController {
     tableView.dataSource = self
   }
   
-  // MARK: - API
   // MARK: - Setups
+  private func setupUI() {
+    title = viewModel.account.name
+    view.backgroundColor = .systemBackground
+  }
+  
   private func setupSubscriptions() {
     viewModel.$account
       .receive(on: DispatchQueue.main)

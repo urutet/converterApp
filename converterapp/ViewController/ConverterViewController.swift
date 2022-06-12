@@ -33,7 +33,7 @@ final class ConverterViewController: UIViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = Strings.Rates.title
+    setupUI()
     addSubviews()
     addConstraints()
     setupSubscriptions()
@@ -45,6 +45,11 @@ final class ConverterViewController: UIViewController {
   
   // MARK: - API
   // MARK: - Setups
+  private func setupUI() {
+    title = Strings.Converter.title
+    view.backgroundColor = .systemBackground
+  }
+  
   private func setupSubscriptions() {
     viewModel.$currencies
       .receive(on: DispatchQueue.main)
@@ -76,7 +81,7 @@ extension ConverterViewController: UITableViewDelegate, UITableViewDataSource, U
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard
       let cell = tableView
-            .dequeueReusableCell(withIdentifier: Constants.ConverterTableViewCellIdentifier) as? ConverterTableViewCell
+        .dequeueReusableCell(withIdentifier: Constants.ConverterTableViewCellIdentifier) as? ConverterTableViewCell
     else { return UITableViewCell() }
     
     cell.setRate(currency: viewModel.currencies[indexPath.row])

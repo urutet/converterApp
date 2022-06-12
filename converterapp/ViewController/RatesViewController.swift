@@ -39,7 +39,7 @@ final class RatesViewController: UIViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = Strings.Rates.title
+    setupUI()
     addSubviews()
     addConstraints()
     setupSubscriptions()
@@ -51,6 +51,11 @@ final class RatesViewController: UIViewController {
   }
   // MARK: - API
   // MARK: - Setups
+  private func setupUI() {
+    title = Strings.Rates.title
+    view.backgroundColor = .systemBackground
+  }
+  
   private func setupSubscriptions() {
     viewModel.$currencyRates
       .receive(on: DispatchQueue.main)

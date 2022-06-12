@@ -40,7 +40,7 @@ final class AccountsCoordinator: Coordinator {
     return addAccountViewModel
   }
   
-  func goToAccountDetailsViewController(index: Int) {
+  func goToAccountDetailsViewController(index: Int) -> AccountDetailsViewModel {
     let accountDetailsViewController = AccountDetailsViewController()
     let accountDetailsViewModel = AccountDetailsViewModel()
     let accountDetailsCoordinator = AccountDetailsCoordinator()
@@ -48,9 +48,12 @@ final class AccountsCoordinator: Coordinator {
     accountDetailsCoordinator.accountDetailsViewController = accountDetailsViewController
     accountDetailsViewModel.account = viewModel.accounts[index]
     accountDetailsCoordinator.viewModel = accountDetailsViewModel
+    accountDetailsCoordinator.rootCoordinator = self
     accountDetailsCoordinator.start()
     
     rootViewController.pushViewController(accountDetailsViewController, animated: true)
+    
+    return accountDetailsViewModel
   }
   
   func pop() {

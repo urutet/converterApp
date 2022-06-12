@@ -18,3 +18,9 @@
 "AddAccounts.Save" = "Save";
 "AddAccounts.Done" = "Done";
 "Rates.Title" = "Currency rates";
+"AddTransaction.Name" = "Name";
+"AddTransaction.Date" = "Date";
+"AddTransaction.Amount" = "Amount";
+"AddTransaction.InvalidName" = "Enter valid name.";
+"AddTransaction.InvalidAmount" = "Enter valid amount.";
+"AddTransaction.Dismiss" = "Dismiss";

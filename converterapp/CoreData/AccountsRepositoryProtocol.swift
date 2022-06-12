@@ -7,9 +7,9 @@
 
 protocol AccountsRepositoryProtocol {
   func saveAccount(_ account: Account)
-  func getAccounts() -> [Account]?
+  func getAccounts() -> [Account]
   func deleteAccount(_ account: Account)
   
   func addTransaction(_ transaction: Transaction, account: Account)
-  func getAccountTransactions(account: Account) -> [Transaction]?
+  func getAccountTransactions(account: Account) -> [Transaction]
 }

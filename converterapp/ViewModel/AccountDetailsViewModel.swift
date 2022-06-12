@@ -24,8 +24,6 @@ final class AccountDetailsViewModel {
   }
   
   func getTransactions() {
-    if let transactions = accountsRepository.getAccountTransactions(account: account) {
-      account.transactions = transactions
-    }
+    account.transactions = accountsRepository.getAccountTransactions(account: account)
   }
 }

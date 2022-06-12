@@ -94,19 +94,19 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     }
   }
   
-  func getAccounts() -> [Account]? {
+  func getAccounts() -> [Account] {
     let managedContext = persistentContainer.viewContext
     
     let fetchRequest = AccountMO.fetchRequest()
     
     do {
-      let accountMO = try managedContext.fetch(fetchRequest)
-      let accounts = accountMO.compactMap{ convertToAccount(accountMO: $0) }
+      let accountsMO = try managedContext.fetch(fetchRequest)
+      let accounts = accountsMO.compactMap{ convertToAccount(accountMO: $0) }
       return accounts
     } catch let error as NSError {
       print("Error - \(error)")
     }
-    return nil
+    return [Account]()
   }
   
   func deleteAccount(_ account: Account) {
@@ -143,7 +143,7 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     }
   }
   
-  func getAccountTransactions(account: Account) -> [Transaction]? {
+  func getAccountTransactions(account: Account) -> [Transaction] {
     let managedContext = persistentContainer.viewContext
     
     let accountFetchRequest = AccountMO.fetchRequest()
@@ -151,13 +151,14 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     
     do {
       let accountsMO = try managedContext.fetch(accountFetchRequest)
-      guard let transactionsMO = accountsMO.first?.transactions else { return nil }
+      guard let transactionsMO = accountsMO.first?.transactions else { return [Transaction]() }
       let transactions = transactionsMO.compactMap { convertToTransaction(transactionMO: $0 as! TransactionMO) }
       
       return transactions
     } catch let error as NSError {
       print("Error - \(error)")
     }
-    return nil
+    
+    return [Transaction]()
   }
 }

@@ -33,11 +33,16 @@ final class AccountsViewModel: ObservableObject {
   }
   
   func deleteAccount(index: Int) {
-    accountsRepository.deleteAccount(name: accounts[index].name)
+    accountsRepository.deleteAccount(accounts[index])
     accounts.remove(at: index)
   }
   
   func showAccountDetails(index: Int) {
-    let accountDetailsViewModel = coordinator.goToAccountDetailsViewController(index: index)
+    let viewModel = coordinator.goToAccountDetailsViewController(index: index)
+    viewModel.$account.sink { [weak self] account in
+      guard let account = account else { return }
+      self?.accounts[index] = account
+    }
+    .store(in: &subscriptions)
   }
 }

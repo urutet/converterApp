@@ -11,21 +11,12 @@ import CoreData
 final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
   private enum Constants {
     static let idPredicate = "id == %@"
-    static let containerName = "Account"
     static let accountMOEntityName = "AccountMO"
   }
   
   static let shared = AccountsCoreDataRepository()
   
-  lazy var persistentContainer: NSPersistentContainer = {
-    let container = NSPersistentContainer(name: Constants.containerName)
-    container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-      if let error = error as NSError? {
-        fatalError("Unresolved error \(error), \(error.userInfo)")
-      }
-    })
-    return container
-  }()
+  let persistentContainer = AccountsPersistentContainer.shared.persistentContainer
   
   private init() { }
   

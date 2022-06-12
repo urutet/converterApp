@@ -29,6 +29,7 @@
 		3A23581928191E9300CDC496 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23581828191E9300CDC496 /* Currency.swift */; };
 		3A23581C2819208700CDC496 /* AccountsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23581B2819208700CDC496 /* AccountsViewModel.swift */; };
 		3A23581F2819357E00CDC496 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23581E2819357E00CDC496 /* AccountCollectionViewCell.swift */; };
+		3A50B7B9285669BB00C40EC1 /* AccountsPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7B8285669BB00C40EC1 /* AccountsPersistentContainer.swift */; };
 		3A6281972829784D00D22BC4 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281962829784D00D22BC4 /* String+Extensions.swift */; };
 		3A62819A28297A3D00D22BC4 /* FontsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62819928297A3D00D22BC4 /* FontsManager.swift */; };
 		3A62819E282AFDBE00D22BC4 /* AddAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62819D282AFDBE00D22BC4 /* AddAccountViewModel.swift */; };
@@ -85,6 +86,7 @@
 		3A23581828191E9300CDC496 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		3A23581B2819208700CDC496 /* AccountsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewModel.swift; sourceTree = "<group>"; };
 		3A23581E2819357E00CDC496 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
+		3A50B7B8285669BB00C40EC1 /* AccountsPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsPersistentContainer.swift; sourceTree = "<group>"; };
 		3A6281962829784D00D22BC4 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		3A62819928297A3D00D22BC4 /* FontsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsManager.swift; sourceTree = "<group>"; };
 		3A62819D282AFDBE00D22BC4 /* AddAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewModel.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 			children = (
 				3A6281BB282CE5AB00D22BC4 /* AccountsRepositoryProtocol.swift */,
 				3A6281BD282CE5EA00D22BC4 /* AccountsCoreDataRepository.swift */,
+				3A50B7B8285669BB00C40EC1 /* AccountsPersistentContainer.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				3A6281E0282CEB8D00D22BC4 /* AccountMO+CoreDataClass.swift in Sources */,
 				3A62819E282AFDBE00D22BC4 /* AddAccountViewModel.swift in Sources */,
 				3A2357FF2817D54600CDC496 /* Strings.swift in Sources */,
+				3A50B7B9285669BB00C40EC1 /* AccountsPersistentContainer.swift in Sources */,
 				3A6281A8282C2A9300D22BC4 /* AccountDetailsViewModel.swift in Sources */,
 				3A2357E3281741AB00CDC496 /* ConverterViewController.swift in Sources */,
 				3A6DE20C2837949300C4F259 /* AddTransactionViewController.swift in Sources */,

@@ -137,9 +137,10 @@ class AddTransactionViewController: UIViewController {
     setupSubscriptions()
     
     nameTextField.delegate = self
+    dateTextField.delegate = self
+    datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
   }
   
-  // MARK: - API
   // MARK: - Setups
   private func setupUI() {
     dateTextField.inputView = datePicker
@@ -153,6 +154,8 @@ class AddTransactionViewController: UIViewController {
     let spacing = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     toolbar.setItems([spacing, doneButton], animated: true)
     dateTextField.inputAccessoryView = toolbar
+    
+    dateTextField.text = dateFormatter.string(from: viewModel.transactionDate ?? Date())
   }
   
   private func addSubviews() {
@@ -201,7 +204,13 @@ class AddTransactionViewController: UIViewController {
     dateTextField.resignFirstResponder()
   }
   
-  @objc func saveTransaction() {
+  @objc
+  private func dateChanged() {
+    dateTextField.text = dateFormatter.string(from: datePicker.date)
+  }
+  
+  @objc
+  private func saveTransaction() {
     viewModel.transactionName.send(nameTextField.text)
     viewModel.transactionDate = dateFormatter.date(from: dateTextField.text ?? "")
     viewModel.transactionAmount.send(Decimal(string: amountTextField.text ?? ""))
@@ -221,12 +230,8 @@ class AddTransactionViewController: UIViewController {
   }
 }
 
-extension AddTransactionViewController: UITextFieldDelegate {
+extension AddTransactionViewController: UITextFieldDelegate, UIPickerViewDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.resignFirstResponder()
-  }
-  
-  func textFieldDidEndEditing(_ textField: UITextField) {
-    dateTextField.text = dateFormatter.string(from: datePicker.date)
   }
 }

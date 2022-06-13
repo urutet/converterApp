@@ -78,6 +78,7 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     let managedContext = persistentContainer.viewContext
     
     let fetchRequest = AccountMO.fetchRequest()
+    fetchRequest.predicate = NSPredicate(format: Constants.idPredicate, account.id.uuidString)
     
     do {
       let accountsMO = try managedContext.fetch(fetchRequest)

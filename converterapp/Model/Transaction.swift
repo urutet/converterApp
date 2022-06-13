@@ -13,14 +13,7 @@ struct Transaction {
   let date: Date
   let amount: Decimal
   
-  init(name: String, date: Date, amount: Decimal) {
-    self.id = UUID()
-    self.name = name
-    self.date = date
-    self.amount = amount
-  }
-  
-  init(id: UUID, name: String, date: Date, amount: Decimal) {
+  init(id: UUID = UUID(), name: String, date: Date, amount: Decimal) {
     self.id = id
     self.name = name
     self.date = date

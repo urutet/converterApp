@@ -11,23 +11,16 @@ import CoreData
 final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
   private enum Constants {
     static let idPredicate = "id == %@"
-    static let containerName = "Account"
+    static let accountMOEntityName = "AccountMO"
   }
   
   static let shared = AccountsCoreDataRepository()
   
-  lazy var persistentContainer: NSPersistentContainer = {
-    let container = NSPersistentContainer(name: Constants.containerName)
-    container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-      if let error = error as NSError? {
-        fatalError("Unresolved error \(error), \(error.userInfo)")
-      }
-    })
-    return container
-  }()
+  let persistentContainer = AccountsPersistentContainer.shared.persistentContainer
   
   private init() { }
   
+  @discardableResult
   private func convertToAccountMO(account: Account, context: NSManagedObjectContext) -> AccountMO {
     let accountMO = AccountMO(context: context)
     
@@ -58,6 +51,7 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     )
   }
   
+  @discardableResult
   private func convertToTransacitonMO(transaction: Transaction, context: NSManagedObjectContext) -> TransactionMO {
     let transactionMO = TransactionMO(context: context)
     
@@ -83,79 +77,91 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
   func saveAccount(_ account: Account) {
     let managedContext = persistentContainer.viewContext
     
-    let managedAccount = convertToAccountMO(account: account, context: managedContext)
+    let fetchRequest = AccountMO.fetchRequest()
+    fetchRequest.predicate = NSPredicate(format: Constants.idPredicate, account.id.uuidString)
     
     do {
-      try managedContext.save()
+      let accountsMO = try managedContext.fetch(fetchRequest)
+      if !accountsMO.contains(where: { $0.id == account.id }) {
+        convertToAccountMO(account: account, context: managedContext)
+        try managedContext.save()
+      } else {
+        assertionFailure("UUID duplicate")
+      }
     } catch let error as NSError {
       print("Error - \(error)")
     }
   }
   
-  func getAccounts() -> [Account]? {
+  func getAccounts() -> [Account] {
     let managedContext = persistentContainer.viewContext
     
     let fetchRequest = AccountMO.fetchRequest()
     
     do {
-      let accountMO = try managedContext.fetch(fetchRequest)
-      let accounts = accountMO.compactMap{ convertToAccount(accountMO: $0) }
+      let accountsMO = try managedContext.fetch(fetchRequest)
+      let accounts = accountsMO.compactMap{ convertToAccount(accountMO: $0) }
       return accounts
     } catch let error as NSError {
       print("Error - \(error)")
     }
-    return nil
+    return [Account]()
   }
   
-  func deleteAccount(_ account: Account) {
+  func deleteAccount(id: UUID) {
     let managedContext = persistentContainer.viewContext
     
-    let fetchRequest = AccountMO.fetchRequest()
-    fetchRequest.predicate = NSPredicate(format: Constants.idPredicate, account.id as CVarArg)
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.accountMOEntityName)
+    fetchRequest.predicate = NSPredicate(format: Constants.idPredicate, id.uuidString)
+    
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
     
     do {
-      let objects = try managedContext.fetch(fetchRequest)
-      for object in objects {
-        managedContext.delete(object)
-      }
+      try managedContext.execute(deleteRequest)
       try managedContext.save()
     } catch let error as NSError {
       print("Error - \(error)")
     }
   }
   
-  func addTransaction(_ transaction: Transaction, account: Account) {
+  func addTransaction(_ transaction: Transaction, accountID: UUID) {
     let managedContext = persistentContainer.viewContext
     
     let accountFetchRequest = AccountMO.fetchRequest()
-    accountFetchRequest.predicate = NSPredicate(format: Constants.idPredicate, account.id as CVarArg)
-    
-    let transactionMO = convertToTransacitonMO(transaction: transaction, context: managedContext)
-    
+    accountFetchRequest.predicate = NSPredicate(format: Constants.idPredicate, accountID.uuidString)
+        
     do {
       let accountsMO = try managedContext.fetch(accountFetchRequest)
-      accountsMO.first?.addToTransactions(transactionMO)
-      try managedContext.save()
+      guard let transactions = accountsMO.first?.transactions?.allObjects as? [TransactionMO] else { return }
+      
+      if !transactions.contains(where: { $0.id == transaction.id }) {
+        let transactionMO = convertToTransacitonMO(transaction: transaction, context: managedContext)
+        accountsMO.first?.addToTransactions(transactionMO)
+        try managedContext.save()
+      } else {
+        assertionFailure("UUID duplicate")
+      }
     } catch let error as NSError {
       print(error)
     }
   }
   
-  func getAccountTransactions(account: Account) -> [Transaction]? {
+  func getAccountTransactions(accountID: UUID) -> [Transaction] {
     let managedContext = persistentContainer.viewContext
     
     let accountFetchRequest = AccountMO.fetchRequest()
-    accountFetchRequest.predicate = NSPredicate(format: Constants.idPredicate, account.id as CVarArg)
+    accountFetchRequest.predicate = NSPredicate(format: Constants.idPredicate, accountID.uuidString)
     
     do {
       let accountsMO = try managedContext.fetch(accountFetchRequest)
-      guard let transactionsMO = accountsMO.first?.transactions else { return nil }
+      guard let transactionsMO = accountsMO.first?.transactions else { return [Transaction]() }
       let transactions = transactionsMO.compactMap { convertToTransaction(transactionMO: $0 as! TransactionMO) }
       
       return transactions
     } catch let error as NSError {
       print("Error - \(error)")
     }
-    return nil
+    
+    return [Transaction]()
   }
 }

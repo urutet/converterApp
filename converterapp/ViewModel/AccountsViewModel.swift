@@ -27,13 +27,11 @@ final class AccountsViewModel: ObservableObject {
   }
   
   func getAccounts() {
-    if let accounts = accountsRepository.getAccounts() {
-      self.accounts = accounts
-    }
+    self.accounts = accountsRepository.getAccounts()
   }
   
   func deleteAccount(index: Int) {
-    accountsRepository.deleteAccount(accounts[index])
+    accountsRepository.deleteAccount(id: accounts[index].id)
     accounts.remove(at: index)
   }
   

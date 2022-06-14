@@ -8,4 +8,5 @@ target 'converterapp' do
   # Pods for converterapp
 pod 'SwiftGen', '~> 6.0'
 pod 'Alamofire'
+pod 'Charts', '~> 4.0'
 end

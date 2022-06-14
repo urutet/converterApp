@@ -30,6 +30,9 @@
 		3A23581C2819208700CDC496 /* AccountsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23581B2819208700CDC496 /* AccountsViewModel.swift */; };
 		3A23581F2819357E00CDC496 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23581E2819357E00CDC496 /* AccountCollectionViewCell.swift */; };
 		3A50B7B9285669BB00C40EC1 /* AccountsPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7B8285669BB00C40EC1 /* AccountsPersistentContainer.swift */; };
+		3A50B7BB2857D64D00C40EC1 /* CurrencyDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7BA2857D64D00C40EC1 /* CurrencyDetailsCoordinator.swift */; };
+		3A50B7BD2857D6A800C40EC1 /* CurrencyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7BC2857D6A800C40EC1 /* CurrencyDetailsViewController.swift */; };
+		3A50B7BF2857D6D800C40EC1 /* CurrencyDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7BE2857D6D800C40EC1 /* CurrencyDetailsViewModel.swift */; };
 		3A6281972829784D00D22BC4 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281962829784D00D22BC4 /* String+Extensions.swift */; };
 		3A62819A28297A3D00D22BC4 /* FontsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62819928297A3D00D22BC4 /* FontsManager.swift */; };
 		3A62819E282AFDBE00D22BC4 /* AddAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62819D282AFDBE00D22BC4 /* AddAccountViewModel.swift */; };
@@ -87,6 +90,9 @@
 		3A23581B2819208700CDC496 /* AccountsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewModel.swift; sourceTree = "<group>"; };
 		3A23581E2819357E00CDC496 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A50B7B8285669BB00C40EC1 /* AccountsPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsPersistentContainer.swift; sourceTree = "<group>"; };
+		3A50B7BA2857D64D00C40EC1 /* CurrencyDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsCoordinator.swift; sourceTree = "<group>"; };
+		3A50B7BC2857D6A800C40EC1 /* CurrencyDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsViewController.swift; sourceTree = "<group>"; };
+		3A50B7BE2857D6D800C40EC1 /* CurrencyDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsViewModel.swift; sourceTree = "<group>"; };
 		3A6281962829784D00D22BC4 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		3A62819928297A3D00D22BC4 /* FontsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsManager.swift; sourceTree = "<group>"; };
 		3A62819D282AFDBE00D22BC4 /* AddAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewModel.swift; sourceTree = "<group>"; };
@@ -184,6 +190,7 @@
 				3A6DE20728378ECE00C4F259 /* AccountDetailsCoordinator.swift */,
 				3A6DE2092837925D00C4F259 /* AddAccountCoordinator.swift */,
 				3A6DE20F2837988E00C4F259 /* AddTransactionCoordinator.swift */,
+				3A50B7BA2857D64D00C40EC1 /* CurrencyDetailsCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -205,6 +212,7 @@
 				3A62819F282AFDE000D22BC4 /* AddAccountViewController.swift */,
 				3A6281A9282C2AC000D22BC4 /* AccountDetailsViewController.swift */,
 				3A6DE20B2837949300C4F259 /* AddTransactionViewController.swift */,
+				3A50B7BC2857D6A800C40EC1 /* CurrencyDetailsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -250,6 +258,7 @@
 				3A6281AD282C5F0A00D22BC4 /* RatesViewModel.swift */,
 				3A6281B6282C72DD00D22BC4 /* ConverterViewModel.swift */,
 				3A6DE20D283796D800C4F259 /* AddTransactionViewModel.swift */,
+				3A50B7BE2857D6D800C40EC1 /* CurrencyDetailsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -454,6 +463,7 @@
 			files = (
 				3A2357DC281739BC00CDC496 /* Coordinator.swift in Sources */,
 				3A6DE20828378ECE00C4F259 /* AccountDetailsCoordinator.swift in Sources */,
+				3A50B7BB2857D64D00C40EC1 /* CurrencyDetailsCoordinator.swift in Sources */,
 				3A2357ED28174BA300CDC496 /* MainCoordinator.swift in Sources */,
 				3A6DE20A2837925D00C4F259 /* AddAccountCoordinator.swift in Sources */,
 				3A6281E1282CEB8D00D22BC4 /* AccountMO+CoreDataProperties.swift in Sources */,
@@ -473,6 +483,7 @@
 				3A6281DF282CEB8D00D22BC4 /* TransactionMO+CoreDataProperties.swift in Sources */,
 				3A6281BC282CE5AB00D22BC4 /* AccountsRepositoryProtocol.swift in Sources */,
 				3A6281DE282CEB8D00D22BC4 /* TransactionMO+CoreDataClass.swift in Sources */,
+				3A50B7BD2857D6A800C40EC1 /* CurrencyDetailsViewController.swift in Sources */,
 				3A6281AE282C5F0A00D22BC4 /* RatesViewModel.swift in Sources */,
 				3A2357DE28173A3300CDC496 /* AppCoordinator.swift in Sources */,
 				3A6281C1282CE65D00D22BC4 /* Account.xcdatamodeld in Sources */,
@@ -488,6 +499,7 @@
 				3A50B7B9285669BB00C40EC1 /* AccountsPersistentContainer.swift in Sources */,
 				3A6281A8282C2A9300D22BC4 /* AccountDetailsViewModel.swift in Sources */,
 				3A2357E3281741AB00CDC496 /* ConverterViewController.swift in Sources */,
+				3A50B7BF2857D6D800C40EC1 /* CurrencyDetailsViewModel.swift in Sources */,
 				3A6DE20C2837949300C4F259 /* AddTransactionViewController.swift in Sources */,
 				3A6281972829784D00D22BC4 /* String+Extensions.swift in Sources */,
 				3A6281A0282AFDE000D22BC4 /* AddAccountViewController.swift in Sources */,

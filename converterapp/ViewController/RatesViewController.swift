@@ -106,5 +106,8 @@ extension RatesViewController: UITableViewDelegate, UITableViewDataSource {
     return cell
   }
   
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    viewModel.showCurrencyDetails(index: indexPath.row)
+  }
   
 }

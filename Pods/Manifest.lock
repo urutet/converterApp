@@ -1,20 +1,30 @@
 PODS:
   - Alamofire (5.5.0)
+  - Charts (4.0.3):
+    - Charts/Core (= 4.0.3)
+  - Charts/Core (4.0.3):
+    - SwiftAlgorithms (~> 1.0)
+  - SwiftAlgorithms (1.0.0)
   - SwiftGen (6.5.1)
 
 DEPENDENCIES:
   - Alamofire
+  - Charts (~> 4.0)
   - SwiftGen (~> 6.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Charts
+    - SwiftAlgorithms
     - SwiftGen
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  Charts: d959d6723c8eedfdd0735dfc28cb0a71762ac4d9
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
 
-PODFILE CHECKSUM: 87298e95297f63336bf2bbe898417795cb820691
+PODFILE CHECKSUM: d2a87578b16f5fae9326ac44830a941737079b14
 
 COCOAPODS: 1.11.2

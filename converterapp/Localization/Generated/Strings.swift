@@ -55,6 +55,17 @@ internal enum Strings {
     internal static let title = Strings.tr("Localizable", "Converter.Title")
   }
 
+  internal enum CurrencyDetails {
+    /// 1 Month
+    internal static let _1Month = Strings.tr("Localizable", "CurrencyDetails.1Month")
+    /// 6 Months
+    internal static let _6Months = Strings.tr("Localizable", "CurrencyDetails.6Months")
+    /// 7 Days
+    internal static let _7Days = Strings.tr("Localizable", "CurrencyDetails.7Days")
+    /// 1 Year
+    internal static let year = Strings.tr("Localizable", "CurrencyDetails.Year")
+  }
+
   internal enum Main {
     /// Accounts
     internal static let accounts = Strings.tr("Localizable", "Main.accounts")

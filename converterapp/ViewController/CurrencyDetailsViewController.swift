@@ -35,6 +35,20 @@ class CurrencyDetailsViewController: UIViewController {
     return chartView
   }()
   
+  private let dynamicsRangeSegmentedControl: UISegmentedControl = {
+    let segmentedControl = UISegmentedControl(items: [
+      Strings.CurrencyDetails._7Days,
+      Strings.CurrencyDetails._1Month,
+      Strings.CurrencyDetails._6Months,
+      Strings.CurrencyDetails.year
+    ])
+    segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+    segmentedControl.addTarget(self, action: #selector(selectedSegmentIndexChanged), for: .valueChanged)
+    
+    segmentedControl.selectedSegmentIndex = 3
+    return segmentedControl
+  }()
+  
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -43,7 +57,7 @@ class CurrencyDetailsViewController: UIViewController {
     addConstraints()
     addSubscriptions()
     
-    getData()
+    viewModel.getCurrencyDynamics()
   }
   
   // MARK: - Setups
@@ -54,6 +68,7 @@ class CurrencyDetailsViewController: UIViewController {
   
   private func addSubviews() {
     view.addSubview(chartView)
+    view.addSubview(dynamicsRangeSegmentedControl)
   }
   
   private func addConstraints() {
@@ -62,7 +77,11 @@ class CurrencyDetailsViewController: UIViewController {
       chartView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
       chartView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
       chartView.heightAnchor.constraint(equalToConstant: 200),
-      chartView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+      chartView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      
+      dynamicsRangeSegmentedControl.topAnchor.constraint(equalTo: chartView.bottomAnchor, constant: 20),
+      dynamicsRangeSegmentedControl.leadingAnchor.constraint(equalTo: chartView.leadingAnchor),
+      dynamicsRangeSegmentedControl.trailingAnchor.constraint(equalTo: chartView.trailingAnchor)
     ])
   }
   
@@ -76,7 +95,8 @@ class CurrencyDetailsViewController: UIViewController {
   }
   
   // MARK: - Helpers
-  private func getData() {
-    viewModel.getCurrencyDynamics()
+  @objc
+  private func selectedSegmentIndexChanged() {
+    viewModel.currencyDynamicsChanged(selectedIndex: dynamicsRangeSegmentedControl.selectedSegmentIndex)
   }
 }

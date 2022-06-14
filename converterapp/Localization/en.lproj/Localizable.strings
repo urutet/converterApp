@@ -25,3 +25,7 @@
 "AddTransaction.InvalidName" = "Enter valid name.";
 "AddTransaction.InvalidAmount" = "Enter valid amount.";
 "AddTransaction.Dismiss" = "Dismiss";
+"CurrencyDetails.7Days" = "7 Days";
+"CurrencyDetails.1Month" = "1 Month";
+"CurrencyDetails.6Months" = "6 Months";
+"CurrencyDetails.Year" = "1 Year";

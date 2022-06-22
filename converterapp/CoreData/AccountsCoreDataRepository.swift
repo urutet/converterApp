@@ -16,7 +16,7 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
   
   static let shared = AccountsCoreDataRepository()
   
-  let persistentContainer = AccountsPersistentContainer.shared.persistentContainer
+  let persistentContainer = PersistentContainerRepository.shared.persistentContainer
   
   private init() { }
   

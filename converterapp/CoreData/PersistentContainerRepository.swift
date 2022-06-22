@@ -8,12 +8,12 @@
 import Foundation
 import CoreData
 
-final class AccountsPersistentContainer {
+final class PersistentContainerRepository {
   private enum Constants {
     static let containerName = "Account"
   }
   
-  static let shared = AccountsPersistentContainer()
+  static let shared = PersistentContainerRepository()
   
   lazy var persistentContainer: NSPersistentContainer = {
     let container = NSPersistentContainer(name: Constants.containerName)

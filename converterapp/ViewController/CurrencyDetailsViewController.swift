@@ -23,7 +23,8 @@ class CurrencyDetailsViewController: UIViewController {
     chartView.xAxis.labelPosition = .bottom
     chartView.xAxis.labelFont = FontsManager.bold(ofSize: 12)
     chartView.xAxis.drawGridLinesEnabled = false
-    
+    chartView.xAxis.valueFormatter = ChartDateFormatter()
+
     chartView.leftAxis.enabled = false
     
     chartView.rightAxis.labelFont = FontsManager.bold(ofSize: 12)

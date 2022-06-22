@@ -39,13 +39,13 @@ final class CurrencyDetailsViewModel {
       endDate: Date()
     ) { [weak self] currencyDynamics in
       guard let strongSelf = self else { return }
-            
+      
       let rateEntries = currencyDynamics.map { (currency) -> ChartDataEntry in
         guard
           let date = strongSelf.dateFormatter.date(from: currency.date)?.timeIntervalSince1970,
           let rate = currency.rate as NSDecimalNumber?
         else { return ChartDataEntry() }
-
+        
         return ChartDataEntry(x: Double(Int(date)), y: rate.doubleValue)
       }
       

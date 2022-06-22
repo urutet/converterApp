@@ -33,6 +33,7 @@
 		3A50B7BB2857D64D00C40EC1 /* CurrencyDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7BA2857D64D00C40EC1 /* CurrencyDetailsCoordinator.swift */; };
 		3A50B7BD2857D6A800C40EC1 /* CurrencyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7BC2857D6A800C40EC1 /* CurrencyDetailsViewController.swift */; };
 		3A50B7BF2857D6D800C40EC1 /* CurrencyDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7BE2857D6D800C40EC1 /* CurrencyDetailsViewModel.swift */; };
+		3A50B7C628634F9600C40EC1 /* ChartDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7C528634F9600C40EC1 /* ChartDateFormatter.swift */; };
 		3A6281972829784D00D22BC4 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281962829784D00D22BC4 /* String+Extensions.swift */; };
 		3A62819A28297A3D00D22BC4 /* FontsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62819928297A3D00D22BC4 /* FontsManager.swift */; };
 		3A62819E282AFDBE00D22BC4 /* AddAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62819D282AFDBE00D22BC4 /* AddAccountViewModel.swift */; };
@@ -93,6 +94,7 @@
 		3A50B7BA2857D64D00C40EC1 /* CurrencyDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsCoordinator.swift; sourceTree = "<group>"; };
 		3A50B7BC2857D6A800C40EC1 /* CurrencyDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsViewController.swift; sourceTree = "<group>"; };
 		3A50B7BE2857D6D800C40EC1 /* CurrencyDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsViewModel.swift; sourceTree = "<group>"; };
+		3A50B7C528634F9600C40EC1 /* ChartDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDateFormatter.swift; sourceTree = "<group>"; };
 		3A6281962829784D00D22BC4 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		3A62819928297A3D00D22BC4 /* FontsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsManager.swift; sourceTree = "<group>"; };
 		3A62819D282AFDBE00D22BC4 /* AddAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewModel.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		3A2357B12816FB0900CDC496 /* converterapp */ = {
 			isa = PBXGroup;
 			children = (
+				3A50B7C428634F7700C40EC1 /* CustomFormatters */,
 				3A6281BA282CE59200D22BC4 /* CoreData */,
 				3A6281B1282C67E000D22BC4 /* Networking */,
 				3A62819828297A2E00D22BC4 /* Fonts */,
@@ -273,6 +276,14 @@
 				3A6281B8282C741000D22BC4 /* ConverterTableViewCell.swift */,
 			);
 			path = CustomUIElements;
+			sourceTree = "<group>";
+		};
+		3A50B7C428634F7700C40EC1 /* CustomFormatters */ = {
+			isa = PBXGroup;
+			children = (
+				3A50B7C528634F9600C40EC1 /* ChartDateFormatter.swift */,
+			);
+			path = CustomFormatters;
 			sourceTree = "<group>";
 		};
 		3A628195282977D400D22BC4 /* Extensions */ = {
@@ -473,6 +484,7 @@
 				3A6281AA282C2AC000D22BC4 /* AccountDetailsViewController.swift in Sources */,
 				3A23581F2819357E00CDC496 /* AccountCollectionViewCell.swift in Sources */,
 				3A6DE2102837988E00C4F259 /* AddTransactionCoordinator.swift in Sources */,
+				3A50B7C628634F9600C40EC1 /* ChartDateFormatter.swift in Sources */,
 				3A23581C2819208700CDC496 /* AccountsViewModel.swift in Sources */,
 				3A6281AC282C2C7A00D22BC4 /* TransactionTableViewCell.swift in Sources */,
 				3A2358172819178700CDC496 /* Transaction.swift in Sources */,

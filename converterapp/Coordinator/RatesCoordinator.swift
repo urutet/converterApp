@@ -21,8 +21,24 @@ final class RatesCoordinator: Coordinator {
   lazy var ratesViewController = RatesViewController()
   
   func start() {
+    viewModel.coordinator = self
     ratesViewController.viewModel = viewModel
     rootViewController.setViewControllers([ratesViewController], animated: false)
   }
   
+  func goToCurrencyDetailsViewController(currency: Currency) {
+    let currencyDetailsViewController = CurrencyDetailsViewController()
+    
+    let currencyDetailsCoordinator = CurrencyDetailsCoordinator()
+    currencyDetailsCoordinator.rootCoordinator = self
+    
+    let currencyDetailsViewModel = CurrencyDetailsViewModel()
+    currencyDetailsViewModel.currency = currency
+    currencyDetailsViewModel.coordinator = currencyDetailsCoordinator
+    
+    currencyDetailsCoordinator.currencyDetailsViewController = currencyDetailsViewController
+    currencyDetailsCoordinator.viewModel = currencyDetailsViewModel
+    currencyDetailsCoordinator.start()
+    rootViewController.pushViewController(currencyDetailsViewController, animated: true)
+  }
 }

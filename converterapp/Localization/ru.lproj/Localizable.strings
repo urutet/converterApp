@@ -25,3 +25,7 @@
 "AddTransaction.InvalidName" = "Введите корректное имя.";
 "AddTransaction.InvalidAmount" = "Введите корректную сумму.";
 "AddTransaction.Dismiss" = "Закрыть";
+"CurrencyDetails.7Days" = "7 Дней";
+"CurrencyDetails.1Month" = "1 Месяц";
+"CurrencyDetails.6Months" = "6 Месяцев";
+"CurrencyDetails.Year" = "1 Год";

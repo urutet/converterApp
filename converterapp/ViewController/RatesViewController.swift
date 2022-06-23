@@ -54,10 +54,16 @@ final class RatesViewController: UIViewController {
   private func setupUI() {
     title = Strings.Rates.title
     view.backgroundColor = .systemBackground
+    
+    navigationItem.rightBarButtonItem = UIBarButtonItem(
+      barButtonSystemItem: .add,
+      target: self,
+      action: #selector(selectFavourites)
+    )
   }
   
   private func setupSubscriptions() {
-    viewModel.$currencyRates
+    viewModel.$favouriteCurrencies
       .receive(on: DispatchQueue.main)
       .sink { [weak self] _ in
       self?.tableView.reloadData()
@@ -88,11 +94,16 @@ final class RatesViewController: UIViewController {
     viewModel.getRates()
     sender.endRefreshing()
   }
+  
+  @objc
+  private func selectFavourites() {
+    viewModel.goToFavourites()
+  }
 }
 
 extension RatesViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    viewModel.currencyRates.count
+    viewModel.favouriteCurrencies.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -101,7 +112,7 @@ extension RatesViewController: UITableViewDelegate, UITableViewDataSource {
             .dequeueReusableCell(withIdentifier: Constants.rateCellIdentifier) as? RateTableViewCell
     else { return UITableViewCell() }
     
-    cell.setRate(currency: viewModel.currencyRates[indexPath.row])
+    cell.setRate(currency: viewModel.favouriteCurrencies[indexPath.row])
     
     return cell
   }

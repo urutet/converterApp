@@ -15,6 +15,8 @@ struct Currency: Codable {
   let name: String?
   let rate: Decimal?
   
+  var isFavourite = false
+  
   enum CodingKeys: String, CodingKey {
     case id = "Cur_ID"
     case date = "Date"

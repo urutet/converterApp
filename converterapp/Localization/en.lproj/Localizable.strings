@@ -29,3 +29,9 @@
 "CurrencyDetails.1Month" = "1 Month";
 "CurrencyDetails.6Months" = "6 Months";
 "CurrencyDetails.Year" = "1 Year";
+"FavouriteCurrencies.SearchCurrencies" = "Search Currencies";
+"FavouriteCurrencies.AllCurrencies" = "All Currencies";
+"FavouriteCurrencies.FavouriteCurrencies" = "Favourite Currencies";
+"FavouriteCurrencies.Currencies" = "Currencies";
+"FavouriteCurrencies.Done" = "Done";
+

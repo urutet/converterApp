@@ -41,4 +41,23 @@ final class RatesCoordinator: Coordinator {
     currencyDetailsCoordinator.start()
     rootViewController.pushViewController(currencyDetailsViewController, animated: true)
   }
+  
+  func goToFavouriteCurrenciesViewController(currencies: [Currency]) -> FavouriteCurrenciesViewModel {
+    let favouriteCurrenciesViewController = FavouriteCurrenciesTableViewController()
+    
+    let favouriteCurrenciesCoordinator = FavouriteCurrenciesCoordinator()
+    favouriteCurrenciesCoordinator.rootCoordinator = self
+    
+    let favouriteCurrenciesViewModel = FavouriteCurrenciesViewModel()
+    favouriteCurrenciesViewModel.coordinator = favouriteCurrenciesCoordinator
+    favouriteCurrenciesViewModel.currencies = currencies
+    favouriteCurrenciesViewModel.filteredCurrencies = currencies
+    favouriteCurrenciesCoordinator.favouriteCurrenciesViewController = favouriteCurrenciesViewController
+    favouriteCurrenciesCoordinator.viewModel = favouriteCurrenciesViewModel
+    favouriteCurrenciesCoordinator.start()
+    
+    rootViewController.pushViewController(favouriteCurrenciesViewController, animated: true)
+    
+    return favouriteCurrenciesViewModel
+  }
 }

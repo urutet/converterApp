@@ -66,6 +66,19 @@ internal enum Strings {
     internal static let year = Strings.tr("Localizable", "CurrencyDetails.Year")
   }
 
+  internal enum FavouriteCurrencies {
+    /// All Currencies
+    internal static let allCurrencies = Strings.tr("Localizable", "FavouriteCurrencies.AllCurrencies")
+    /// Currencies
+    internal static let currencies = Strings.tr("Localizable", "FavouriteCurrencies.Currencies")
+    /// Done
+    internal static let done = Strings.tr("Localizable", "FavouriteCurrencies.Done")
+    /// Favourite Currencies
+    internal static let favouriteCurrencies = Strings.tr("Localizable", "FavouriteCurrencies.FavouriteCurrencies")
+    /// Search Currencies
+    internal static let searchCurrencies = Strings.tr("Localizable", "FavouriteCurrencies.SearchCurrencies")
+  }
+
   internal enum Main {
     /// Accounts
     internal static let accounts = Strings.tr("Localizable", "Main.accounts")

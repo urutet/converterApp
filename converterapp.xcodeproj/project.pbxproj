@@ -451,7 +451,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n# path variables\nLOCALIZATION_PATH=\"$SRCROOT/converterapp\"\nCONFIG_FILE=\"swiftgen.yml\"\n\n# navigate to the localization folder\ncd $LOCALIZATION_PATH\n\n# check if SwiftGen is installed\nif command -v swiftgen &> /dev/null; then\n    swiftgen config run --config \"$LOCALIZATION_PATH/$CONFIG_FILE\"\nelse\n    echo \"Error: SwiftGen is not installed.\"\n    exit 1\nfi\n";
+			shellScript = "\n# path variables\nLOCALIZATION_PATH=\"$SRCROOT/converterapp\"\nCONFIG_FILE=\"swiftgen.yml\"\n\n# navigate to the localization folder\ncd $LOCALIZATION_PATH\n\nif [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" config run --config \"$LOCALIZATION_PATH/$CONFIG_FILE\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi \n";
 		};
 		BB6E14B859A85B133D7FE320 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -29,3 +29,8 @@
 "CurrencyDetails.1Month" = "1 Месяц";
 "CurrencyDetails.6Months" = "6 Месяцев";
 "CurrencyDetails.Year" = "1 Год";
+"FavouriteCurrencies.SearchCurrencies" = "Поиск валюты";
+"FavouriteCurrencies.AllCurrencies" = "Все валюты";
+"FavouriteCurrencies.FavouriteCurrencies" = "Избранные валюты";
+"FavouriteCurrencies.Currencies" = "Валюты";
+"FavouriteCurrencies.Done" = "Готово";

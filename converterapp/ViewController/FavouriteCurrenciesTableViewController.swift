@@ -19,8 +19,11 @@ class FavouriteCurrenciesTableViewController: UITableViewController {
     let searchController = UISearchController()
     
     searchController.obscuresBackgroundDuringPresentation = false
-    searchController.searchBar.placeholder = "Search Currencies"
-    searchController.searchBar.scopeButtonTitles = ["All Currencies", "Favourite Currencies"]
+    searchController.searchBar.placeholder = Strings.FavouriteCurrencies.searchCurrencies
+    searchController.searchBar.scopeButtonTitles = [
+      Strings.FavouriteCurrencies.allCurrencies,
+      Strings.FavouriteCurrencies.favouriteCurrencies
+    ]
     searchController.searchBar.showsScopeBar = true
     return searchController
   }()
@@ -39,9 +42,9 @@ class FavouriteCurrenciesTableViewController: UITableViewController {
   // MARK: - Setups
   private func setupUI() {
     view.backgroundColor = .white
-    title = "Currencies"
+    title = Strings.FavouriteCurrencies.currencies
     navigationItem.rightBarButtonItem = UIBarButtonItem(
-      title: "Done",
+      title: Strings.FavouriteCurrencies.done,
       style: .done,
       target: self,
       action: #selector(favouritesChosen)

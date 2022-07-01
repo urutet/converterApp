@@ -51,7 +51,7 @@ final class ConverterViewController: UIViewController {
   }
   
   private func setupSubscriptions() {
-    viewModel.$currencies
+    viewModel.$converterCellViewModels
       .receive(on: DispatchQueue.main)
       .sink { [weak self] _ in
         self?.tableView.reloadData()
@@ -73,9 +73,9 @@ final class ConverterViewController: UIViewController {
   }
 }
 
-extension ConverterViewController: UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+extension ConverterViewController: UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    viewModel.currencies.count
+    viewModel.converterCellViewModels.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,9 +84,25 @@ extension ConverterViewController: UITableViewDelegate, UITableViewDataSource, U
         .dequeueReusableCell(withIdentifier: Constants.ConverterTableViewCellIdentifier) as? ConverterTableViewCell
     else { return UITableViewCell() }
     
-    cell.setRate(currency: viewModel.currencies[indexPath.row])
+    cell.viewModel = viewModel.converterCellViewModels[indexPath.row]
     cell.currencyAmountTextField.delegate = self
+    cell.currencyAmountTextField.tag = indexPath.row
     
     return cell
+  }
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    view.endEditing(true)
+  }
+  
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    textField.text = ""
+  }
+  
+  
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    guard let amount = Decimal(string: textField.text ?? "") else { return }
+    viewModel.converterCellViewModels.map { $0.convertCurrency(amount: amount) }
+    tableView.reloadData()
   }
 }

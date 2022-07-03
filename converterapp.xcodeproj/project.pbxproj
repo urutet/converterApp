@@ -38,6 +38,7 @@
 		3A50B7CA2863CCFD00C40EC1 /* FavouriteCurrenciesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7C92863CCFD00C40EC1 /* FavouriteCurrenciesTableViewController.swift */; };
 		3A50B7CC2863CD1500C40EC1 /* FavouriteCurrenciesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7CB2863CD1500C40EC1 /* FavouriteCurrenciesCoordinator.swift */; };
 		3A50B7D428660A0600C40EC1 /* ConverterCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7D328660A0500C40EC1 /* ConverterCellViewModel.swift */; };
+		3A50B7D62872529000C40EC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A50B7D52872529000C40EC1 /* GoogleService-Info.plist */; };
 		3A6281972829784D00D22BC4 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281962829784D00D22BC4 /* String+Extensions.swift */; };
 		3A62819A28297A3D00D22BC4 /* FontsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62819928297A3D00D22BC4 /* FontsManager.swift */; };
 		3A62819E282AFDBE00D22BC4 /* AddAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62819D282AFDBE00D22BC4 /* AddAccountViewModel.swift */; };
@@ -103,6 +104,7 @@
 		3A50B7C92863CCFD00C40EC1 /* FavouriteCurrenciesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCurrenciesTableViewController.swift; sourceTree = "<group>"; };
 		3A50B7CB2863CD1500C40EC1 /* FavouriteCurrenciesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCurrenciesCoordinator.swift; sourceTree = "<group>"; };
 		3A50B7D328660A0500C40EC1 /* ConverterCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterCellViewModel.swift; sourceTree = "<group>"; };
+		3A50B7D52872529000C40EC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A6281962829784D00D22BC4 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		3A62819928297A3D00D22BC4 /* FontsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsManager.swift; sourceTree = "<group>"; };
 		3A62819D282AFDBE00D22BC4 /* AddAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewModel.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				3A2357BB2816FB0B00CDC496 /* Assets.xcassets */,
 				3A2357BD2816FB0B00CDC496 /* LaunchScreen.storyboard */,
 				3A2357C02816FB0B00CDC496 /* Info.plist */,
+				3A50B7D52872529000C40EC1 /* GoogleService-Info.plist */,
 				3A2357EF2817D0A300CDC496 /* swiftgen.yml */,
 			);
 			path = converterapp;
@@ -363,6 +366,7 @@
 				3A2357AC2816FB0900CDC496 /* Frameworks */,
 				3A2357AD2816FB0900CDC496 /* Resources */,
 				27CDFF0DD05CCA838DB32D8D /* [CP] Embed Pods Frameworks */,
+				3A50B7D72872548F00C40EC1 /* Firebase Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -413,6 +417,7 @@
 			files = (
 				3A2357BF2816FB0B00CDC496 /* LaunchScreen.storyboard in Resources */,
 				3A2357F92817D27B00CDC496 /* Localizable.strings in Resources */,
+				3A50B7D62872529000C40EC1 /* GoogleService-Info.plist in Resources */,
 				3A2357BC2816FB0B00CDC496 /* Assets.xcassets in Resources */,
 				3A2357F02817D0A300CDC496 /* swiftgen.yml in Resources */,
 			);
@@ -455,6 +460,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\n# path variables\nLOCALIZATION_PATH=\"$SRCROOT/converterapp\"\nCONFIG_FILE=\"swiftgen.yml\"\n\n# navigate to the localization folder\ncd $LOCALIZATION_PATH\n\nif [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" config run --config \"$LOCALIZATION_PATH/$CONFIG_FILE\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi \n";
+		};
+		3A50B7D72872548F00C40EC1 /* Firebase Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Firebase Crashlytics";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		BB6E14B859A85B133D7FE320 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -691,6 +716,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = M46WL2C5J3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = converterapp/Info.plist;

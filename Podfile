@@ -9,4 +9,6 @@ target 'converterapp' do
 pod 'SwiftGen', '~> 6.0'
 pod 'Alamofire'
 pod 'Charts', '~> 4.0'
+pod 'FirebaseAnalytics'
+pod 'Firebase/Crashlytics'
 end

@@ -33,7 +33,8 @@ final class AddTransactionViewModel {
     guard
       let name = transactionName.value,
       let date = transactionDate,
-      let amount = transactionAmount.value
+      let amount = transactionAmount.value,
+      !name.isEmpty
     else { return }
     let transaction = Transaction(name: name, date: date, amount: amount)
     saveAction.send(transaction)

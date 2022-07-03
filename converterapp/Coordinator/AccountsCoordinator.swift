@@ -30,6 +30,7 @@ final class AccountsCoordinator: Coordinator {
   func goToAddAccountViewController() -> AddAccountViewModel {
     let addAccountViewController = AddAccountViewController()
     let addAccountViewModel = AddAccountViewModel()
+    addAccountViewModel.controllerType = .add
     let addAccountCoordinator = AddAccountCoordinator()
     
     addAccountCoordinator.viewModel = addAccountViewModel
@@ -54,6 +55,21 @@ final class AccountsCoordinator: Coordinator {
     rootViewController.pushViewController(accountDetailsViewController, animated: true)
     
     return accountDetailsViewModel
+  }
+  
+  func goToEditAccountViewController(account: Account) -> AddAccountViewModel {
+    let addAccountViewController = AddAccountViewController()
+    let addAccountViewModel = AddAccountViewModel()
+    addAccountViewModel.controllerType = .edit
+    addAccountViewModel.setAccount(account: account)
+    let addAccountCoordinator = AddAccountCoordinator()
+    
+    addAccountCoordinator.viewModel = addAccountViewModel
+    addAccountCoordinator.addAccountViewController = addAccountViewController
+    addAccountCoordinator.start()
+    rootViewController.pushViewController(addAccountViewController, animated: true)
+    
+    return addAccountViewModel
   }
   
   func pop() {

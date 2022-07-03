@@ -131,6 +131,10 @@ final class AccountsViewController: UIViewController {
   private func showAccountDetails(index: Int) {
     viewModel.showAccountDetails(index: index)
   }
+  
+  private func editAccount(index: Int) {
+    viewModel.editAccount(index: index)
+  }
 }
 
 extension AccountsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -160,8 +164,8 @@ extension AccountsViewController: UICollectionViewDelegate, UICollectionViewData
       
       let editAccountAction = UIAction(
         title: Strings.Accounts.editAccount,
-        state: .off) { _ in
-          
+        state: .off) { [weak self] _ in
+          self?.editAccount(index: contextMenuConfigurationForItemAt.row)
         }
       
       let removeAccountAction = UIAction(

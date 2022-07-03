@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class AddAccountViewController: UIViewController {
   
@@ -13,6 +14,7 @@ class AddAccountViewController: UIViewController {
   // MARK: Public
   var viewModel: AddAccountViewModel!
   // MARK: Private
+  private var subscriptions = Set<AnyCancellable>()
   private let scrollView: UIScrollView = {
     let scrollView = UIScrollView()
     
@@ -89,6 +91,7 @@ class AddAccountViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupUI()
+    setupSubscriptions()
     addSubviews()
     addConstraints()
     
@@ -136,6 +139,22 @@ class AddAccountViewController: UIViewController {
       currencyTextField.heightAnchor.constraint(equalToConstant: 40),
       saveButton.heightAnchor.constraint(equalToConstant: 40)
     ])
+  }
+  
+  private func setupSubscriptions() {
+    viewModel.$accountName
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] name in
+        self?.nameTextField.text = name
+      }
+      .store(in: &subscriptions)
+    
+    viewModel.$accountCurrency
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] currency in
+        self?.currencyTextField.text = currency
+      }
+      .store(in: &subscriptions)
   }
   // MARK: - Helpers
   @objc

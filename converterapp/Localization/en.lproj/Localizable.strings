@@ -18,6 +18,7 @@
 "AddAccounts.Save" = "Save";
 "AddAccounts.Done" = "Done";
 "AccountDetails.Transactions" = "Transactions";
+"AccountDetails.Edit" = "Edit";
 "Rates.Title" = "Currency rates";
 "Converter.Title" = "Converter";
 "AddTransaction.Name" = "Name";

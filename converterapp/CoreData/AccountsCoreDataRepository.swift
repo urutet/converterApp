@@ -71,6 +71,12 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     return transactionMO
   }
   
+  private func editTransactionMO(transactionMO: TransactionMO, transaction: Transaction) {
+    transactionMO.name = transaction.name
+    transactionMO.date = transaction.date
+    transactionMO.amount = NSDecimalNumber(decimal: transaction.amount)
+  }
+  
   private func convertToTransaction(transactionMO: TransactionMO) -> Transaction? {
     guard
       let id = transactionMO.id,
@@ -138,7 +144,7 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     }
   }
   
-  func addTransaction(_ transaction: Transaction, accountID: UUID) {
+  func saveTransaction(_ transaction: Transaction, accountID: UUID) {
     let managedContext = persistentContainer.viewContext
     
     let accountFetchRequest = AccountMO.fetchRequest()
@@ -153,7 +159,9 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
         accountsMO.first?.addToTransactions(transactionMO)
         try managedContext.save()
       } else {
-        assertionFailure("UUID duplicate")
+        guard let transactionMO = transactions.filter({ $0.id == transaction.id }).first else { return }
+        editTransactionMO(transactionMO: transactionMO, transaction: transaction)
+        try managedContext.save()
       }
     } catch let error as NSError {
       print(error)

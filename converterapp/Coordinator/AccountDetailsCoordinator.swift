@@ -23,6 +23,23 @@ final class AccountDetailsCoordinator: Coordinator {
   func goToAddTransactionViewController() -> AddTransactionViewModel {
     let addTransactionViewController = AddTransactionViewController()
     let addTransationViewModel = AddTransactionViewModel()
+    addTransationViewModel.controllerType = .add
+    let addTransactionCoordinator = AddTransactionCoordinator()
+    
+    addTransactionCoordinator.addTransactionViewController = addTransactionViewController
+    addTransactionCoordinator.viewModel = addTransationViewModel
+    addTransactionCoordinator.rootCoordinator = self
+    addTransactionCoordinator.start()
+    rootCoordinator.rootViewController.pushViewController(addTransactionViewController, animated: true)
+    
+    return addTransationViewModel
+  }
+  
+  func goToEditTransactionViewController(transaction: Transaction) -> AddTransactionViewModel {
+    let addTransactionViewController = AddTransactionViewController()
+    let addTransationViewModel = AddTransactionViewModel()
+    addTransationViewModel.controllerType = .edit
+    addTransationViewModel.setTransaction(transaction: transaction)
     let addTransactionCoordinator = AddTransactionCoordinator()
     
     addTransactionCoordinator.addTransactionViewController = addTransactionViewController

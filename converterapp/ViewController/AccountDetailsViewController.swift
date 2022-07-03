@@ -121,11 +121,18 @@ extension AccountDetailsViewController: UITableViewDelegate, UITableViewDataSour
   }
   
   func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-    let editAction = UIContextualAction(style: .normal, title: Strings.AccountDetails.edit) { _,_,_  in
+    let editAction = UIContextualAction(style: .normal, title: Strings.AccountDetails.edit) { _, _, _  in
       tableView.beginUpdates()
       self.viewModel.editTransaction(index: indexPath.row)
       tableView.endUpdates()
     }
-    return UISwipeActionsConfiguration(actions: [editAction])
+    
+    let deleteAction = UIContextualAction(style: .destructive, title: Strings.AccountDetails.delete) { _, _, _ in
+      tableView.beginUpdates()
+      tableView.deleteRows(at: [indexPath], with: .fade)
+      self.viewModel.deleteTransaction(index: indexPath.row)
+      tableView.endUpdates()
+    }
+    return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
   }
 }

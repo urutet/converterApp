@@ -39,6 +39,11 @@ final class AccountDetailsViewModel {
     .store(in: &subscriptions)
   }
   
+  func deleteTransaction(index: Int) {
+    accountsRepository.deleteTransaction(id: account.transactions[index].id)
+    account.transactions.remove(at: index)
+  }
+  
   func getTransactions() {
     account.transactions = accountsRepository.getAccountTransactions(accountID: account.id)
       .sorted { $0.date > $1.date }

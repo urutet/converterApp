@@ -12,6 +12,8 @@ import Foundation
 internal enum Strings {
 
   internal enum AccountDetails {
+    /// Delete
+    internal static let delete = Strings.tr("Localizable", "AccountDetails.Delete")
     /// Edit
     internal static let edit = Strings.tr("Localizable", "AccountDetails.Edit")
     /// Transactions

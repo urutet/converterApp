@@ -19,6 +19,7 @@
 "AddAccounts.Done" = "Готово";
 "AccountDetails.Transactions" = "Транзакций";
 "AccountDetails.Edit" = "Изменить";
+"AccountDetails.Delete" = "Удалить";
 "Rates.Title" = "Курс валют";
 "Converter.Title" = "Конвертер валют";
 "AddTransaction.Name" = "Имя";

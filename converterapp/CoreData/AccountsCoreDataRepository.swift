@@ -12,6 +12,7 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
   private enum Constants {
     static let idPredicate = "id == %@"
     static let accountMOEntityName = "AccountMO"
+    static let transactionMOEntityName = "TransactionMO"
   }
   
   static let shared = AccountsCoreDataRepository()
@@ -185,5 +186,21 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     }
     
     return [Transaction]()
+  }
+  
+  func deleteTransaction(id: UUID) {
+    let managedContext = persistentContainer.viewContext
+    
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.transactionMOEntityName)
+    fetchRequest.predicate = NSPredicate(format: Constants.idPredicate, id.uuidString)
+    
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    
+    do {
+      try managedContext.execute(deleteRequest)
+      try managedContext.save()
+    } catch let error as NSError {
+      print("Error - \(error)")
+    }
   }
 }

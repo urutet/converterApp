@@ -19,6 +19,7 @@
 "AddAccounts.Done" = "Done";
 "AccountDetails.Transactions" = "Transactions";
 "AccountDetails.Edit" = "Edit";
+"AccountDetails.Delete" = "Delete";
 "Rates.Title" = "Currency rates";
 "Converter.Title" = "Converter";
 "AddTransaction.Name" = "Name";

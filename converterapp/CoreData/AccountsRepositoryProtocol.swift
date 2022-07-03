@@ -13,4 +13,5 @@ protocol AccountsRepositoryProtocol {
   
   func saveTransaction(_ transaction: Transaction, accountID: UUID)
   func getAccountTransactions(accountID: UUID) -> [Transaction]
+  func deleteTransaction(id: UUID)
 }

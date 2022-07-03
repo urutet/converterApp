@@ -6,11 +6,18 @@
 //
 
 import UIKit
+import Combine
 
 final class ConverterTableViewCell: UITableViewCell {
   
   // MARK: - Properties
   // MARK: Public
+  var viewModel: ConverterCellViewModel! {
+    didSet {
+      subscriptions = Set<AnyCancellable>()
+      setupSubscriptions()
+    }
+  }
   // MARK: Private
   private enum Constants {
     static let contentViewShadowOpacity: Float = 0.2
@@ -20,6 +27,8 @@ final class ConverterTableViewCell: UITableViewCell {
     static let contentViewBackgroundColor: UIColor = .systemBackground
     static let contentViewShadowColor: CGColor = UIColor.black.cgColor
   }
+  
+  private var subscriptions = Set<AnyCancellable>()
   
   private let numberFormatter: NumberFormatter = {
     let formatter = NumberFormatter()
@@ -93,6 +102,7 @@ final class ConverterTableViewCell: UITableViewCell {
     setupUI()
     addSubviews()
     addConstraints()
+    
   }
   
   required init?(coder: NSCoder) {
@@ -100,6 +110,28 @@ final class ConverterTableViewCell: UITableViewCell {
     setupUI()
     addSubviews()
     addConstraints()
+    
+  }
+  
+  func setupSubscriptions() {
+    viewModel.$currency
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] _ in
+        guard let strongSelf = self else { return }
+        strongSelf.currencyFlagLabel.text = strongSelf.viewModel.currency.abbreviation?.flagFromCurrency()
+        strongSelf.currencyNameLabel.text = strongSelf.viewModel.currency.abbreviation
+        strongSelf.numberFormatter.currencyCode = strongSelf.viewModel.currency.abbreviation
+
+        strongSelf.currencyRateLabel.text = strongSelf.numberFormatter.currencySymbol
+      }
+      .store(in: &subscriptions)
+    
+    viewModel.calculatedValue
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] calculatedValue in
+        self?.currencyAmountTextField.text = "\(calculatedValue)"
+      }
+      .store(in: &subscriptions)
   }
   
   // MARK: - API

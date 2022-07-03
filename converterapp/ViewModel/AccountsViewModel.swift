@@ -43,4 +43,16 @@ final class AccountsViewModel: ObservableObject {
     }
     .store(in: &subscriptions)
   }
+  
+  func editAccount(index: Int) {
+    let addAccountViewModel = coordinator.goToEditAccountViewController(account: accounts[index])
+    addAccountViewModel.saveAction.sink { [weak self] account in
+      guard let strongSelf = self else { return }
+      strongSelf.accounts.remove(at: index)
+      strongSelf.accounts.insert(account, at: index)
+      strongSelf.accountsRepository.saveAccount(account)
+      strongSelf.coordinator.pop()
+    }
+    .store(in: &subscriptions)
+  }
 }

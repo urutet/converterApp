@@ -8,10 +8,17 @@
 import Combine
 import Foundation
 
+enum ControllerInputType {
+  case add
+  case edit
+}
+
 final class AddAccountViewModel {
   var coordinator: AddAccountCoordinator!
-  var accountName: String? = nil
-  var accountCurrency: String? = nil
+  var accountID: UUID!
+  var controllerType: ControllerInputType!
+  @Published var accountName: String? = nil
+  @Published var accountCurrency: String? = nil
   let currencies = ["EUR", "USD", "BYN", "RUB"]
   let saveAction = PassthroughSubject<Account, Never>()
   
@@ -20,7 +27,21 @@ final class AddAccountViewModel {
       let name = accountName,
       let currency = accountCurrency
     else { return }
-    let account = Account(name: name, currency: currency, balance: nil, transactions: [Transaction]())
+    var account: Account
+    switch controllerType {
+    case .add:
+      account = Account(name: name, currency: currency, balance: nil, transactions: [Transaction]())
+    case .edit:
+      account = Account(id: accountID, name: name, currency: currency, balance: nil, transactions: [Transaction]())
+    case .none:
+      return
+    }
     saveAction.send(account)
+  }
+  
+  func setAccount(account: Account) {
+    accountID = account.id
+    accountName = account.name
+    accountCurrency = account.currency
   }
 }

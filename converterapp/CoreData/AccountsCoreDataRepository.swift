@@ -34,6 +34,14 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     return accountMO
   }
   
+  private func editAccountMO(accountMO: AccountMO, account: Account) {
+    accountMO.name = account.name
+    accountMO.currency = account.currency
+    if let balance = account.balance {
+      accountMO.balance = NSDecimalNumber(decimal: balance)
+    }
+  }
+  
   private func convertToAccount(accountMO: AccountMO) -> Account? {
     guard
       let id = accountMO.id,
@@ -82,11 +90,17 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     
     do {
       let accountsMO = try managedContext.fetch(fetchRequest)
+      
+      // Check whether account exists
       if !accountsMO.contains(where: { $0.id == account.id }) {
+        // Save new account
         convertToAccountMO(account: account, context: managedContext)
         try managedContext.save()
       } else {
-        assertionFailure("UUID duplicate")
+        // Save account after editing
+        guard let accountMO = accountsMO.first else { return }
+        editAccountMO(accountMO: accountMO, account: account)
+        try managedContext.save()
       }
     } catch let error as NSError {
       print("Error - \(error)")

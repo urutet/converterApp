@@ -18,6 +18,7 @@ final class AccountDetailsViewModel {
       guard let strongSelf = self else { return }
       strongSelf.account.transactions.append(transaction)
       strongSelf.accountsRepository.addTransaction(transaction, accountID: strongSelf.account.id)
+      strongSelf.account.transactions.sort { $0.date > $1.date }
       addTransactionViewModel.coordinator.pop()
     }
     .store(in: &subscriptions)
@@ -25,5 +26,6 @@ final class AccountDetailsViewModel {
   
   func getTransactions() {
     account.transactions = accountsRepository.getAccountTransactions(accountID: account.id)
+      .sorted { $0.date > $1.date }
   }
 }

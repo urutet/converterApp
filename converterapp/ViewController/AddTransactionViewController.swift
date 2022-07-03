@@ -112,7 +112,7 @@ class AddTransactionViewController: UIViewController {
     textField.layer.borderColor = UIColor.systemGray4.cgColor
     textField.layer.cornerRadius = 5
     textField.font = FontsManager.medium(ofSize: 16)
-    
+    textField.keyboardType = .decimalPad
     return textField
   }()
   

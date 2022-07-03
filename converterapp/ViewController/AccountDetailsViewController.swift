@@ -29,6 +29,17 @@ final class AccountDetailsViewController: UIViewController {
     
     return tableView
   }()
+  
+  private let navigationTitleLabel: UILabel = {
+    let label = UILabel()
+    
+    label.backgroundColor = .clear
+    label.numberOfLines = 2
+    label.font = FontsManager.bold(ofSize: 15)
+    label.textAlignment = .center
+    
+    return label
+  }()
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -47,9 +58,17 @@ final class AccountDetailsViewController: UIViewController {
     tableView.dataSource = self
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationTitleLabel.text = viewModel.account.name
+    + "\n\(viewModel.account.transactions.count) "
+    + Strings.AccountDetails.transactions
+  }
+  
   // MARK: - Setups
   private func setupUI() {
-    title = viewModel.account.name
+    self.navigationItem.titleView = navigationTitleLabel
+    navigationTitleLabel.text = viewModel.account.name
     view.backgroundColor = .systemBackground
   }
   

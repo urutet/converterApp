@@ -58,13 +58,6 @@ final class AccountDetailsViewController: UIViewController {
     tableView.dataSource = self
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    navigationTitleLabel.text = viewModel.account.name
-    + "\n\(viewModel.account.transactions.count) "
-    + Strings.AccountDetails.transactions
-  }
-  
   // MARK: - Setups
   private func setupUI() {
     self.navigationItem.titleView = navigationTitleLabel
@@ -76,7 +69,11 @@ final class AccountDetailsViewController: UIViewController {
     viewModel.$account
       .receive(on: DispatchQueue.main)
       .sink { [weak self] _ in
-        self?.tableView.reloadData()
+        guard let strongSelf = self else { return }
+        strongSelf.navigationTitleLabel.text = strongSelf.viewModel.account.name
+        + "\n\(strongSelf.viewModel.account.transactions.count) "
+        + Strings.AccountDetails.transactions
+        strongSelf.tableView.reloadData()
       }
       .store(in: &subscriptions)
   }

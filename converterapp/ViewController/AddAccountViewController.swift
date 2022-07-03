@@ -114,6 +114,11 @@ class AddAccountViewController: UIViewController {
     let spacing = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     toolbar.setItems([spacing, doneButton], animated: true)
     currencyTextField.inputAccessoryView = toolbar
+    
+    if viewModel.controllerType == .edit {
+      currencyTextField.textColor = .systemGray3
+      currencyTextField.isEnabled = false
+    }
   }
   
   private func addSubviews() {

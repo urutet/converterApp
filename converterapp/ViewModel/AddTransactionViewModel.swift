@@ -10,8 +10,11 @@ import Foundation
 
 final class AddTransactionViewModel {
   var coordinator: AddTransactionCoordinator!
+  var controllerType: ControllerInputType!
+  
+  var transactionID: UUID!
   var transactionName = CurrentValueSubject<String?, Never>(nil)
-  var transactionDate: Date? = nil
+  var transactionDate = CurrentValueSubject<Date?, Never>(nil)
   var transactionAmount = CurrentValueSubject<Decimal?, Never>(nil)
   let saveAction = PassthroughSubject<Transaction, Never>()
   
@@ -28,15 +31,29 @@ final class AddTransactionViewModel {
     .eraseToAnyPublisher()
   }
 
+  func setTransaction(transaction: Transaction) {
+    transactionID = transaction.id
+    transactionName.send(transaction.name)
+    transactionDate.send(transaction.date)
+    transactionAmount.send(transaction.amount)
+  }
   
   func saveTransaction() {
     guard
       let name = transactionName.value,
-      let date = transactionDate,
+      let date = transactionDate.value,
       let amount = transactionAmount.value,
       !name.isEmpty
     else { return }
-    let transaction = Transaction(name: name, date: date, amount: amount)
+    var transaction: Transaction
+    switch(controllerType) {
+    case .add:
+      transaction = Transaction(name: name, date: date, amount: amount)
+    case .edit:
+      transaction = Transaction(id: transactionID, name: name, date: date, amount: amount)
+    case .none:
+      return
+    }
     saveAction.send(transaction)
   }
 }

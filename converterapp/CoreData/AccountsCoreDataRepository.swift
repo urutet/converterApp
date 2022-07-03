@@ -12,6 +12,7 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
   private enum Constants {
     static let idPredicate = "id == %@"
     static let accountMOEntityName = "AccountMO"
+    static let transactionMOEntityName = "TransactionMO"
   }
   
   static let shared = AccountsCoreDataRepository()
@@ -69,6 +70,12 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     transactionMO.amount = NSDecimalNumber(decimal: transaction.amount)
     
     return transactionMO
+  }
+  
+  private func editTransactionMO(transactionMO: TransactionMO, transaction: Transaction) {
+    transactionMO.name = transaction.name
+    transactionMO.date = transaction.date
+    transactionMO.amount = NSDecimalNumber(decimal: transaction.amount)
   }
   
   private func convertToTransaction(transactionMO: TransactionMO) -> Transaction? {
@@ -138,7 +145,7 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     }
   }
   
-  func addTransaction(_ transaction: Transaction, accountID: UUID) {
+  func saveTransaction(_ transaction: Transaction, accountID: UUID) {
     let managedContext = persistentContainer.viewContext
     
     let accountFetchRequest = AccountMO.fetchRequest()
@@ -153,7 +160,9 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
         accountsMO.first?.addToTransactions(transactionMO)
         try managedContext.save()
       } else {
-        assertionFailure("UUID duplicate")
+        guard let transactionMO = transactions.filter({ $0.id == transaction.id }).first else { return }
+        editTransactionMO(transactionMO: transactionMO, transaction: transaction)
+        try managedContext.save()
       }
     } catch let error as NSError {
       print(error)
@@ -177,5 +186,21 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     }
     
     return [Transaction]()
+  }
+  
+  func deleteTransaction(id: UUID) {
+    let managedContext = persistentContainer.viewContext
+    
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.transactionMOEntityName)
+    fetchRequest.predicate = NSPredicate(format: Constants.idPredicate, id.uuidString)
+    
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    
+    do {
+      try managedContext.execute(deleteRequest)
+      try managedContext.save()
+    } catch let error as NSError {
+      print("Error - \(error)")
+    }
   }
 }

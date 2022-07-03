@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 final class AccountDetailsViewController: UIViewController {
-
+  
   // MARK: - Properties
   // MARK: Public
   var viewModel: AccountDetailsViewModel!
@@ -108,7 +108,7 @@ extension AccountDetailsViewController: UITableViewDelegate, UITableViewDataSour
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard
       let cell = tableView
-            .dequeueReusableCell(withIdentifier: Constants.TransactionCellReuseIdentifier) as? TransactionTableViewCell
+        .dequeueReusableCell(withIdentifier: Constants.TransactionCellReuseIdentifier) as? TransactionTableViewCell
     else  { return UITableViewCell() }
     
     cell.setTransaction(account: viewModel.account, index: indexPath.row)
@@ -118,5 +118,21 @@ extension AccountDetailsViewController: UITableViewDelegate, UITableViewDataSour
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     Constants.cellHeight
+  }
+  
+  func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    let editAction = UIContextualAction(style: .normal, title: Strings.AccountDetails.edit) { _, _, _  in
+      tableView.beginUpdates()
+      self.viewModel.editTransaction(index: indexPath.row)
+      tableView.endUpdates()
+    }
+    
+    let deleteAction = UIContextualAction(style: .destructive, title: Strings.AccountDetails.delete) { _, _, _ in
+      tableView.beginUpdates()
+      tableView.deleteRows(at: [indexPath], with: .fade)
+      self.viewModel.deleteTransaction(index: indexPath.row)
+      tableView.endUpdates()
+    }
+    return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
   }
 }

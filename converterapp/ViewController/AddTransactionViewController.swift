@@ -156,7 +156,6 @@ class AddTransactionViewController: UIViewController {
     toolbar.setItems([spacing, doneButton], animated: true)
     dateTextField.inputAccessoryView = toolbar
     
-    dateTextField.text = dateFormatter.string(from: viewModel.transactionDate ?? Date())
   }
   
   private func addSubviews() {
@@ -198,6 +197,23 @@ class AddTransactionViewController: UIViewController {
       self?.showInvalidDataAlert(dataType: .name)
     }
     .store(in: &subscriptions)
+    
+    viewModel.transactionName.sink { [weak self] name in
+      self?.nameTextField.text = name
+    }
+    .store(in: &subscriptions)
+    
+    viewModel.transactionDate.sink { [weak self] date in
+      guard let strongSelf = self else { return }
+      strongSelf.dateTextField.text = strongSelf.dateFormatter.string(from: date ?? Date())
+    }
+    .store(in: &subscriptions)
+    
+    viewModel.transactionAmount.sink { [weak self] amount in
+      guard let amount = amount else  { return }
+      self?.amountTextField.text = String(describing: amount)
+    }
+    .store(in: &subscriptions)
   }
   // MARK: - Helpers
   @objc
@@ -213,7 +229,7 @@ class AddTransactionViewController: UIViewController {
   @objc
   private func saveTransaction() {
     viewModel.transactionName.send(nameTextField.text)
-    viewModel.transactionDate = dateFormatter.date(from: dateTextField.text ?? "")
+    viewModel.transactionDate.send(dateFormatter.date(from: dateTextField.text ?? ""))
     viewModel.transactionAmount.send(Decimal(string: amountTextField.text ?? ""))
     viewModel.saveTransaction()
   }

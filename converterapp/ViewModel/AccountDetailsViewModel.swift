@@ -17,11 +17,31 @@ final class AccountDetailsViewModel {
     addTransactionViewModel.saveAction.sink { [weak self] transaction in
       guard let strongSelf = self else { return }
       strongSelf.account.transactions.append(transaction)
-      strongSelf.accountsRepository.addTransaction(transaction, accountID: strongSelf.account.id)
+      strongSelf.accountsRepository.saveTransaction(transaction, accountID: strongSelf.account.id)
       strongSelf.account.transactions.sort { $0.date > $1.date }
       addTransactionViewModel.coordinator.pop()
     }
     .store(in: &subscriptions)
+  }
+  
+  func editTransaction(index: Int) {
+    let addTransactionViewModel = coordinator.goToEditTransactionViewController(
+      transaction: account.transactions[index]
+    )
+    addTransactionViewModel.saveAction.sink { [weak self] transaction in
+      guard let strongSelf = self else { return }
+      strongSelf.account.transactions.remove(at: index)
+      strongSelf.account.transactions.append(transaction)
+      strongSelf.accountsRepository.saveTransaction(transaction, accountID: strongSelf.account.id)
+      strongSelf.account.transactions.sort { $0.date > $1.date }
+      addTransactionViewModel.coordinator.pop()
+    }
+    .store(in: &subscriptions)
+  }
+  
+  func deleteTransaction(index: Int) {
+    accountsRepository.deleteTransaction(id: account.transactions[index].id)
+    account.transactions.remove(at: index)
   }
   
   func getTransactions() {

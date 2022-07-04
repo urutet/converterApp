@@ -19,6 +19,7 @@ final class AccountsViewController: UIViewController {
     static let addAccountButtonColor: UIColor = .systemBlue
     static let addAccountButtonFontSize: CGFloat = 15
     static let removeAccount = UIImage(systemName: "trash")
+    static let accountDeleteAlertEnabled = "accountDeleteAlertEnabled"
   }
   
   private var subscriptions = Set<AnyCancellable>()
@@ -135,6 +136,32 @@ final class AccountsViewController: UIViewController {
   private func editAccount(index: Int) {
     viewModel.editAccount(index: index)
   }
+  
+  private func showConfirmationAlert(_ show: Bool, index: Int) {
+    guard show else {
+      viewModel.deleteAccount(index: index)
+      return
+    }
+    
+    let alertController = UIAlertController(
+      title: Strings.Accounts.removeAccount,
+      message: Strings.Accounts.deleteText,
+      preferredStyle: .alert
+    )
+    
+    let deleteAction = UIAlertAction(
+      title: Strings.Accounts.removeAccount,
+      style: .destructive
+    ) { [weak self] _ in
+      self?.viewModel.deleteAccount(index: index)
+    }
+    
+    let cancelAction = UIAlertAction(title: Strings.Accounts.cancel, style: .cancel)
+    
+    alertController.addAction(cancelAction)
+    alertController.addAction(deleteAction)
+    present(alertController, animated: true)
+  }
 }
 
 extension AccountsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -173,7 +200,17 @@ extension AccountsViewController: UICollectionViewDelegate, UICollectionViewData
         image: Constants.removeAccount,
         attributes: .destructive,
         state: .off) { [weak self] _ in
-          self?.viewModel.deleteAccount(index: contextMenuConfigurationForItemAt.row)
+          guard
+            let strongSelf = self,
+            let isAccountDeleteAlertEnabled = strongSelf.viewModel
+              .remoteConfig.boolParameters[Constants.accountDeleteAlertEnabled]
+          else { return }
+          
+          print(isAccountDeleteAlertEnabled)
+          strongSelf.showConfirmationAlert(
+            isAccountDeleteAlertEnabled,
+            index: contextMenuConfigurationForItemAt.row
+          )
         }
       
       return UIMenu(

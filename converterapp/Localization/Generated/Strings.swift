@@ -23,8 +23,12 @@ internal enum Strings {
   internal enum Accounts {
     /// Add first account
     internal static let addAccount = Strings.tr("Localizable", "Accounts.addAccount")
+    /// Cancel
+    internal static let cancel = Strings.tr("Localizable", "Accounts.cancel")
     /// Account
     internal static let contextMenuTitle = Strings.tr("Localizable", "Accounts.contextMenuTitle")
+    /// Are you sure you want to delete account?
+    internal static let deleteText = Strings.tr("Localizable", "Accounts.deleteText")
     /// Edit
     internal static let editAccount = Strings.tr("Localizable", "Accounts.editAccount")
     /// Remove

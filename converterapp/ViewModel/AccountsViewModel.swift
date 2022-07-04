@@ -12,6 +12,7 @@ final class AccountsViewModel: ObservableObject {
   var coordinator: AccountsCoordinator!
   var subscriptions = Set<AnyCancellable>()
   let accountsRepository: AccountsRepositoryProtocol = AccountsCoreDataRepository.shared
+  let remoteConfig: RemoteConfigProtocol = FirebaseRemoteConfig.shared
   @Published var accounts = [Account]()
   
   

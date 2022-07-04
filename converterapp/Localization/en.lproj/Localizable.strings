@@ -13,6 +13,8 @@
 "Accounts.showAccount" = "Show";
 "Accounts.editAccount" = "Edit";
 "Accounts.removeAccount" = "Remove";
+"Accounts.deleteText" = "Are you sure you want to delete account?";
+"Accounts.cancel" = "Cancel";
 "AddAccounts.AccountName" = "Account Name";
 "AddAccounts.AccountCurrency" = "Currency";
 "AddAccounts.Save" = "Save";

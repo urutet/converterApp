@@ -18,6 +18,7 @@ final class AccountDetailsViewController: UIViewController {
   private enum Constants {
     static let cellHeight: CGFloat = 100
     static let TransactionCellReuseIdentifier = "TransactionCell"
+    static let accountDeleteAlertEnabled = "accountDeleteAlertEnabled"
   }
   
   private let tableView: UITableView = {

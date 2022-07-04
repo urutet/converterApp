@@ -11,4 +11,5 @@ pod 'Alamofire'
 pod 'Charts', '~> 4.0'
 pod 'FirebaseAnalytics'
 pod 'Firebase/Crashlytics'
+pod 'Firebase/RemoteConfig'
 end

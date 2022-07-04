@@ -13,6 +13,8 @@
 "Accounts.showAccount" = "Открыть";
 "Accounts.editAccount" = "Изменить";
 "Accounts.removeAccount" = "Удалить";
+"Accounts.deleteText" = "Вы точно хотите удалить аккаунт?";
+"Accounts.cancel" = "Отменить";
 "AddAccounts.AccountName" = "Название Аккаунта";
 "AddAccounts.AccountCurrency" = "Валюта";
 "AddAccounts.Save" = "Сохранить";

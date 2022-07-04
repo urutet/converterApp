@@ -39,6 +39,8 @@
 		3A50B7CC2863CD1500C40EC1 /* FavouriteCurrenciesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7CB2863CD1500C40EC1 /* FavouriteCurrenciesCoordinator.swift */; };
 		3A50B7D428660A0600C40EC1 /* ConverterCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7D328660A0500C40EC1 /* ConverterCellViewModel.swift */; };
 		3A50B7D62872529000C40EC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A50B7D52872529000C40EC1 /* GoogleService-Info.plist */; };
+		3A50B7DA28725E4500C40EC1 /* FirebaseRemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7D928725E4500C40EC1 /* FirebaseRemoteConfig.swift */; };
+		3A50B7DC2872658400C40EC1 /* RemoteConfigProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7DB2872658400C40EC1 /* RemoteConfigProtocol.swift */; };
 		3A6281972829784D00D22BC4 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281962829784D00D22BC4 /* String+Extensions.swift */; };
 		3A62819A28297A3D00D22BC4 /* FontsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62819928297A3D00D22BC4 /* FontsManager.swift */; };
 		3A62819E282AFDBE00D22BC4 /* AddAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62819D282AFDBE00D22BC4 /* AddAccountViewModel.swift */; };
@@ -105,6 +107,8 @@
 		3A50B7CB2863CD1500C40EC1 /* FavouriteCurrenciesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCurrenciesCoordinator.swift; sourceTree = "<group>"; };
 		3A50B7D328660A0500C40EC1 /* ConverterCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterCellViewModel.swift; sourceTree = "<group>"; };
 		3A50B7D52872529000C40EC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3A50B7D928725E4500C40EC1 /* FirebaseRemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfig.swift; sourceTree = "<group>"; };
+		3A50B7DB2872658400C40EC1 /* RemoteConfigProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigProtocol.swift; sourceTree = "<group>"; };
 		3A6281962829784D00D22BC4 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		3A62819928297A3D00D22BC4 /* FontsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsManager.swift; sourceTree = "<group>"; };
 		3A62819D282AFDBE00D22BC4 /* AddAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewModel.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 		3A2357B12816FB0900CDC496 /* converterapp */ = {
 			isa = PBXGroup;
 			children = (
+				3A50B7D828725E3000C40EC1 /* Firebase */,
 				3A50B7C428634F7700C40EC1 /* CustomFormatters */,
 				3A6281BA282CE59200D22BC4 /* CoreData */,
 				3A6281B1282C67E000D22BC4 /* Networking */,
@@ -299,6 +304,15 @@
 				3A50B7C528634F9600C40EC1 /* ChartDateFormatter.swift */,
 			);
 			path = CustomFormatters;
+			sourceTree = "<group>";
+		};
+		3A50B7D828725E3000C40EC1 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				3A50B7D928725E4500C40EC1 /* FirebaseRemoteConfig.swift */,
+				3A50B7DB2872658400C40EC1 /* RemoteConfigProtocol.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		3A628195282977D400D22BC4 /* Extensions */ = {
@@ -510,6 +524,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A50B7DA28725E4500C40EC1 /* FirebaseRemoteConfig.swift in Sources */,
 				3A2357DC281739BC00CDC496 /* Coordinator.swift in Sources */,
 				3A6DE20828378ECE00C4F259 /* AccountDetailsCoordinator.swift in Sources */,
 				3A50B7BB2857D64D00C40EC1 /* CurrencyDetailsCoordinator.swift in Sources */,
@@ -541,6 +556,7 @@
 				3A6281C1282CE65D00D22BC4 /* Account.xcdatamodeld in Sources */,
 				3A2357B32816FB0900CDC496 /* AppDelegate.swift in Sources */,
 				3A50B7CA2863CCFD00C40EC1 /* FavouriteCurrenciesTableViewController.swift in Sources */,
+				3A50B7DC2872658400C40EC1 /* RemoteConfigProtocol.swift in Sources */,
 				3A6281A2282B00A200D22BC4 /* TitledTextField.swift in Sources */,
 				3A2358152819167D00CDC496 /* Account.swift in Sources */,
 				3A50B7D428660A0600C40EC1 /* ConverterCellViewModel.swift in Sources */,

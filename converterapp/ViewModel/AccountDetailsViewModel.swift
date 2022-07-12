@@ -19,6 +19,7 @@ final class AccountDetailsViewModel {
       strongSelf.account.transactions.append(transaction)
       strongSelf.account.balance += transaction.amount
       strongSelf.accountsRepository.saveTransaction(transaction, accountID: strongSelf.account.id)
+      strongSelf.accountsRepository.saveAccount(strongSelf.account)
       strongSelf.account.transactions.sort { $0.date > $1.date }
       addTransactionViewModel.coordinator.pop()
     }
@@ -40,6 +41,7 @@ final class AccountDetailsViewModel {
       
       strongSelf.accountsRepository.saveTransaction(transaction, accountID: strongSelf.account.id)
       strongSelf.account.transactions.sort { $0.date > $1.date }
+      strongSelf.accountsRepository.saveAccount(strongSelf.account)
       addTransactionViewModel.coordinator.pop()
     }
     .store(in: &subscriptions)
@@ -48,6 +50,7 @@ final class AccountDetailsViewModel {
   func deleteTransaction(index: Int) {
     account.balance -= account.transactions[index].amount
     accountsRepository.deleteTransaction(id: account.transactions[index].id)
+    accountsRepository.saveAccount(account)
     account.transactions.remove(at: index)
   }
   

@@ -30,9 +30,9 @@ final class AddAccountViewModel {
     var account: Account
     switch controllerType {
     case .add:
-      account = Account(name: name, currency: currency, balance: nil, transactions: [Transaction]())
+      account = Account(name: name, currency: currency, balance: 0, transactions: [Transaction]())
     case .edit:
-      account = Account(id: accountID, name: name, currency: currency, balance: nil, transactions: [Transaction]())
+      account = Account(id: accountID, name: name, currency: currency, balance: 0, transactions: [Transaction]())
     case .none:
       return
     }

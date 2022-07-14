@@ -41,6 +41,7 @@
 		3A50B7D62872529000C40EC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A50B7D52872529000C40EC1 /* GoogleService-Info.plist */; };
 		3A50B7DA28725E4500C40EC1 /* FirebaseRemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7D928725E4500C40EC1 /* FirebaseRemoteConfig.swift */; };
 		3A50B7DC2872658400C40EC1 /* RemoteConfigProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50B7DB2872658400C40EC1 /* RemoteConfigProtocol.swift */; };
+		3A57DC6A28806B440050F849 /* CurrenciesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A57DC6928806B440050F849 /* CurrenciesCache.swift */; };
 		3A6281972829784D00D22BC4 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281962829784D00D22BC4 /* String+Extensions.swift */; };
 		3A62819A28297A3D00D22BC4 /* FontsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62819928297A3D00D22BC4 /* FontsManager.swift */; };
 		3A62819E282AFDBE00D22BC4 /* AddAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62819D282AFDBE00D22BC4 /* AddAccountViewModel.swift */; };
@@ -62,6 +63,7 @@
 		3A6281DF282CEB8D00D22BC4 /* TransactionMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281DB282CEB8D00D22BC4 /* TransactionMO+CoreDataProperties.swift */; };
 		3A6281E0282CEB8D00D22BC4 /* AccountMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281DC282CEB8D00D22BC4 /* AccountMO+CoreDataClass.swift */; };
 		3A6281E1282CEB8D00D22BC4 /* AccountMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281DD282CEB8D00D22BC4 /* AccountMO+CoreDataProperties.swift */; };
+		3A66A3F828808AD100CBD283 /* CurrenciesCacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A66A3F728808AD100CBD283 /* CurrenciesCacheProtocol.swift */; };
 		3A6DE20828378ECE00C4F259 /* AccountDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6DE20728378ECE00C4F259 /* AccountDetailsCoordinator.swift */; };
 		3A6DE20A2837925D00C4F259 /* AddAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6DE2092837925D00C4F259 /* AddAccountCoordinator.swift */; };
 		3A6DE20C2837949300C4F259 /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6DE20B2837949300C4F259 /* AddTransactionViewController.swift */; };
@@ -109,6 +111,7 @@
 		3A50B7D52872529000C40EC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A50B7D928725E4500C40EC1 /* FirebaseRemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfig.swift; sourceTree = "<group>"; };
 		3A50B7DB2872658400C40EC1 /* RemoteConfigProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigProtocol.swift; sourceTree = "<group>"; };
+		3A57DC6928806B440050F849 /* CurrenciesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesCache.swift; sourceTree = "<group>"; };
 		3A6281962829784D00D22BC4 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		3A62819928297A3D00D22BC4 /* FontsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsManager.swift; sourceTree = "<group>"; };
 		3A62819D282AFDBE00D22BC4 /* AddAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewModel.swift; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 		3A6281DB282CEB8D00D22BC4 /* TransactionMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3A6281DC282CEB8D00D22BC4 /* AccountMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountMO+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3A6281DD282CEB8D00D22BC4 /* AccountMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3A66A3F728808AD100CBD283 /* CurrenciesCacheProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesCacheProtocol.swift; sourceTree = "<group>"; };
 		3A6DE20728378ECE00C4F259 /* AccountDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsCoordinator.swift; sourceTree = "<group>"; };
 		3A6DE2092837925D00C4F259 /* AddAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountCoordinator.swift; sourceTree = "<group>"; };
 		3A6DE20B2837949300C4F259 /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 		3A2357B12816FB0900CDC496 /* converterapp */ = {
 			isa = PBXGroup;
 			children = (
+				3A66A3F6288088D000CBD283 /* Cache */,
 				3A50B7D828725E3000C40EC1 /* Firebase */,
 				3A50B7C428634F7700C40EC1 /* CustomFormatters */,
 				3A6281BA282CE59200D22BC4 /* CoreData */,
@@ -348,6 +353,15 @@
 				3A50B7B8285669BB00C40EC1 /* PersistentContainerRepository.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		3A66A3F6288088D000CBD283 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				3A57DC6928806B440050F849 /* CurrenciesCache.swift */,
+				3A66A3F728808AD100CBD283 /* CurrenciesCacheProtocol.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 		45AAFF322CDB33DFE6923F37 /* Frameworks */ = {
@@ -526,6 +540,7 @@
 			files = (
 				3A50B7DA28725E4500C40EC1 /* FirebaseRemoteConfig.swift in Sources */,
 				3A2357DC281739BC00CDC496 /* Coordinator.swift in Sources */,
+				3A57DC6A28806B440050F849 /* CurrenciesCache.swift in Sources */,
 				3A6DE20828378ECE00C4F259 /* AccountDetailsCoordinator.swift in Sources */,
 				3A50B7BB2857D64D00C40EC1 /* CurrencyDetailsCoordinator.swift in Sources */,
 				3A2357ED28174BA300CDC496 /* MainCoordinator.swift in Sources */,
@@ -541,6 +556,7 @@
 				3A6281AC282C2C7A00D22BC4 /* TransactionTableViewCell.swift in Sources */,
 				3A2358172819178700CDC496 /* Transaction.swift in Sources */,
 				3A50B7C82863CCC400C40EC1 /* FavouriteCurrenciesViewModel.swift in Sources */,
+				3A66A3F828808AD100CBD283 /* CurrenciesCacheProtocol.swift in Sources */,
 				3A6DE20E283796D800C4F259 /* AddTransactionViewModel.swift in Sources */,
 				3A6281B3282C680300D22BC4 /* RatesRepositoryProtocol.swift in Sources */,
 				3A6281B5282C683200D22BC4 /* RatesNetworkRepository.swift in Sources */,

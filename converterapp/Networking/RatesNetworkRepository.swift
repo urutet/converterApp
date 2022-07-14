@@ -14,6 +14,8 @@ final class RatesNetworkRepository: RatesRepositoryProtocol {
   
   static let shared = RatesNetworkRepository()
   
+  private let currenciesCache: CurrenciesCacheProtocol = CurrenciesCache.shared
+  
   private let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
     
@@ -39,12 +41,38 @@ final class RatesNetworkRepository: RatesRepositoryProtocol {
   
   func getRates(periodicity: Int = 0, completion: @escaping ([Currency]) -> Void) {
     AF.request(baseURL + Endpoints.rates, parameters: [Parameters.periodicity : periodicity])
-      .responseDecodable(of: [Currency].self) { response in
+      .responseDecodable(of: [Currency].self) { [weak self] response in
+        guard let strongSelf = self else { return }
         switch response.result {
         case .success(let rates):
-          completion(rates)
-        case .failure(let error):
-          print(error)
+          // Mapping favourites to one array
+          if let favouriteCurrencies = strongSelf.currenciesCache.pullFavourites() {
+            let alteredRates = rates.map { currency -> Currency in
+              var currencyVar = currency
+              if !favouriteCurrencies.filter({ $0.abbreviation == currencyVar.abbreviation }).isEmpty {
+                currencyVar.isFavourite = true
+              }
+              return currencyVar
+            }
+            strongSelf.currenciesCache.pushAllCurrencies(rates)
+            completion(alteredRates)
+          }
+          
+        case .failure(_):
+          // Mapping favourites to one array
+          if let cachedCurrencies = strongSelf.currenciesCache.pullAllCurrencies() {
+            if let favouriteCurrencies = strongSelf.currenciesCache.pullFavourites() {
+              let alteredRates = cachedCurrencies.map { currency -> Currency in
+                var currencyVar = currency
+                if !favouriteCurrencies
+                    .filter({ $0.abbreviation == currencyVar.abbreviation }).isEmpty {
+                  currencyVar.isFavourite = true
+                }
+                return currencyVar
+              }
+              completion(alteredRates)
+            }
+          }
         }
         
       }

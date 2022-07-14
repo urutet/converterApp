@@ -9,16 +9,13 @@ import Combine
 import Foundation
 
 final class RatesViewModel {
-  private enum Constants {
-    static let favouritesStateKey = "favourites"
-  }
-  
   var coordinator: RatesCoordinator!
   var currencyRates = [Currency]()
   @Published var favouriteCurrencies = [Currency]()
   private let ratesRepository: RatesRepositoryProtocol = RatesNetworkRepository.shared
   private var subscriptions = Set<AnyCancellable>()
-  
+  private let currenciesCache: CurrenciesCacheProtocol = CurrenciesCache.shared
+
   func getRates() {
     ratesRepository.getRates(periodicity: 0) { [weak self] rates in
       guard let strongSelf = self else { return }
@@ -41,6 +38,7 @@ final class RatesViewModel {
       guard let strongSelf = self else { return }
       strongSelf.currencyRates = updatedCurrencies
       strongSelf.favouriteCurrencies = updatedCurrencies.filter { $0.isFavourite }
+      strongSelf.currenciesCache.pushFavourites(strongSelf.favouriteCurrencies)
     }
     .store(in: &subscriptions)
   }

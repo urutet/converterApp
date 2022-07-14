@@ -13,7 +13,7 @@ struct Currency: Codable {
   let abbreviation: String?
   let scale: Int?
   let name: String?
-  let rate: Decimal?
+  var rate: Decimal?
   
   var isFavourite = false
   

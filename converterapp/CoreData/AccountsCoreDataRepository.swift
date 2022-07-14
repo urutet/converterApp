@@ -28,9 +28,7 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     accountMO.id = account.id
     accountMO.name = account.name
     accountMO.currency = account.currency
-    if let balance = account.balance {
-      accountMO.balance = NSDecimalNumber(decimal: balance)
-    }
+    accountMO.balance = NSDecimalNumber(decimal: account.balance)
 
     return accountMO
   }
@@ -38,9 +36,7 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
   private func editAccountMO(accountMO: AccountMO, account: Account) {
     accountMO.name = account.name
     accountMO.currency = account.currency
-    if let balance = account.balance {
-      accountMO.balance = NSDecimalNumber(decimal: balance)
-    }
+    accountMO.balance = NSDecimalNumber(decimal: account.balance)
   }
   
   private func convertToAccount(accountMO: AccountMO) -> Account? {

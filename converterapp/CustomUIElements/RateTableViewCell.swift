@@ -45,7 +45,7 @@ final class RateTableViewCell: UITableViewCell {
     let label = UILabel()
     
     label.font = FontsManager.regular(ofSize: 50)
-    label.textAlignment = .left
+    label.textAlignment = .center
     
     return label
   }()
@@ -54,7 +54,7 @@ final class RateTableViewCell: UITableViewCell {
     let label = UILabel()
     
     label.font = FontsManager.medium(ofSize: 20)
-    label.textAlignment = .left
+    label.textAlignment = .center
     
     return label
   }()
@@ -63,7 +63,7 @@ final class RateTableViewCell: UITableViewCell {
     let label = UILabel()
     
     label.font = FontsManager.medium(ofSize: 20)
-    label.textAlignment = .right
+    label.textAlignment = .center
     
     return label
   }()
@@ -92,12 +92,12 @@ final class RateTableViewCell: UITableViewCell {
   }
   // MARK: - Setups
   private func setupUI() {
-    contentView.backgroundColor = Constants.contentViewBackgroundColor
-    contentView.layer.shadowOpacity = Constants.contentViewShadowOpacity
-    contentView.layer.shadowColor = Constants.contentViewShadowColor
-    contentView.layer.shadowOffset = Constants.contentViewShadowOffset
-    contentView.layer.shadowRadius = Constants.contentViewShadowRadius
-    contentView.layer.cornerRadius = Constants.contentViewCornerRadius
+    stackView.backgroundColor = Constants.contentViewBackgroundColor
+    stackView.layer.shadowOpacity = Constants.contentViewShadowOpacity
+    stackView.layer.shadowColor = Constants.contentViewShadowColor
+    stackView.layer.shadowOffset = Constants.contentViewShadowOffset
+    stackView.layer.shadowRadius = Constants.contentViewShadowRadius
+    stackView.layer.cornerRadius = Constants.contentViewCornerRadius
   }
   
   private func addSubviews() {
@@ -109,10 +109,11 @@ final class RateTableViewCell: UITableViewCell {
   
   private func addConstraints() {
     NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+      contentView.heightAnchor.constraint(equalToConstant: 100),
+      stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
       stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
       stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-      stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+      stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
     ])
   }
   // MARK: - Helpers

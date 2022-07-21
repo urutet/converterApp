@@ -38,6 +38,14 @@ final class TransactionTableViewCell: UITableViewCell {
     return formatter
   }()
   
+  private let view: UIView = {
+    let view = UIView()
+    
+    view.translatesAutoresizingMaskIntoConstraints = false
+    
+    return view
+  }()
+  
   private let stackView: UIStackView = {
     let stackView = UIStackView()
     
@@ -116,16 +124,17 @@ final class TransactionTableViewCell: UITableViewCell {
   }
   // MARK: - Setups
   private func setupUI() {
-    contentView.backgroundColor = Constants.contentViewBackgroundColor
-    contentView.layer.shadowOpacity = Constants.contentViewShadowOpacity
-    contentView.layer.shadowColor = Constants.contentViewShadowColor
-    contentView.layer.shadowOffset = Constants.contentViewShadowOffset
-    contentView.layer.shadowRadius = Constants.contentViewShadowRadius
-    contentView.layer.cornerRadius = Constants.contentViewCornerRadius
+    view.backgroundColor = Constants.contentViewBackgroundColor
+    view.layer.shadowOpacity = Constants.contentViewShadowOpacity
+    view.layer.shadowColor = Constants.contentViewShadowColor
+    view.layer.shadowOffset = Constants.contentViewShadowOffset
+    view.layer.shadowRadius = Constants.contentViewShadowRadius
+    view.layer.cornerRadius = Constants.contentViewCornerRadius
   }
   
   private func addSubviews() {
-    contentView.addSubview(stackView)
+    contentView.addSubview(view)
+    view.addSubview(stackView)
     stackView.addArrangedSubview(nameDateStackView)
     nameDateStackView.addArrangedSubview(nameLabel)
     nameDateStackView.addArrangedSubview(dateLabel)
@@ -134,10 +143,15 @@ final class TransactionTableViewCell: UITableViewCell {
   
   private func addConstraints() {
     NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-      stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-      stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-      stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+      contentView.heightAnchor.constraint(equalToConstant: 100),
+      view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+      view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+      view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+      view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+      stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+      stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+      stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+      stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10)
     ])
   }
   // MARK: - Helpers

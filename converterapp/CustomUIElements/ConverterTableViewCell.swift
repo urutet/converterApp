@@ -53,7 +53,7 @@ final class ConverterTableViewCell: UITableViewCell {
     let label = UILabel()
     
     label.font = FontsManager.regular(ofSize: 50)
-    label.textAlignment = .left
+    label.textAlignment = .center
     
     return label
   }()
@@ -62,7 +62,7 @@ final class ConverterTableViewCell: UITableViewCell {
     let label = UILabel()
     
     label.font = FontsManager.bold(ofSize: 20)
-    label.textAlignment = .left
+    label.textAlignment = .center
     
     return label
   }()
@@ -71,7 +71,7 @@ final class ConverterTableViewCell: UITableViewCell {
     let textField = UITextField()
     
     textField.font = FontsManager.medium(ofSize: 20)
-    textField.textAlignment = .right
+    textField.textAlignment = .center
     textField.keyboardType = .decimalPad
     let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
     let doneButton = UIBarButtonItem(
@@ -91,7 +91,7 @@ final class ConverterTableViewCell: UITableViewCell {
     let label = UILabel()
     
     label.font = FontsManager.medium(ofSize: 20)
-    label.textAlignment = .right
+    label.textAlignment = .center
     
     return label
   }()
@@ -147,12 +147,12 @@ final class ConverterTableViewCell: UITableViewCell {
   
   // MARK: - Setups
   private func setupUI() {
-    contentView.backgroundColor = Constants.contentViewBackgroundColor
-    contentView.layer.shadowOpacity = Constants.contentViewShadowOpacity
-    contentView.layer.shadowColor = Constants.contentViewShadowColor
-    contentView.layer.shadowOffset = Constants.contentViewShadowOffset
-    contentView.layer.shadowRadius = Constants.contentViewShadowRadius
-    contentView.layer.cornerRadius = Constants.contentViewCornerRadius
+    stackView.backgroundColor = Constants.contentViewBackgroundColor
+    stackView.layer.shadowOpacity = Constants.contentViewShadowOpacity
+    stackView.layer.shadowColor = Constants.contentViewShadowColor
+    stackView.layer.shadowOffset = Constants.contentViewShadowOffset
+    stackView.layer.shadowRadius = Constants.contentViewShadowRadius
+    stackView.layer.cornerRadius = Constants.contentViewCornerRadius
   }
   
   private func addSubviews() {
@@ -165,10 +165,11 @@ final class ConverterTableViewCell: UITableViewCell {
   
   private func addConstraints() {
     NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+      contentView.heightAnchor.constraint(equalToConstant: 100),
+      stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
       stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
       stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-      stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+      stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
     ])
   }
   

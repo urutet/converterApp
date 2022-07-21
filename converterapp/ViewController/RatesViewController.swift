@@ -114,6 +114,8 @@ extension RatesViewController: UITableViewDelegate, UITableViewDataSource {
     
     cell.setRate(currency: viewModel.favouriteCurrencies[indexPath.row])
     
+    cell.selectionStyle = .none
+    
     return cell
   }
   

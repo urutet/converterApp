@@ -111,6 +111,8 @@ extension AccountDetailsViewController: UITableViewDelegate, UITableViewDataSour
     
     cell.setTransaction(account: viewModel.account, index: indexPath.row)
     
+    cell.selectionStyle = .none
+    
     return cell
   }
   

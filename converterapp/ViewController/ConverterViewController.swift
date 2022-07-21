@@ -88,6 +88,8 @@ extension ConverterViewController: UITableViewDelegate, UITableViewDataSource, U
     cell.currencyAmountTextField.delegate = self
     cell.currencyAmountTextField.tag = indexPath.row
     
+    cell.selectionStyle = .none
+
     return cell
   }
   

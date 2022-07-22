@@ -3,12 +3,14 @@ pipeline {
   stages {
     stage('Install Pods') {
       steps {
-        sh 'pod install --deployment --repo-update'
-        echo('Installing pods')
+        sh pod install --deployment --repo-update
+        
       }
     }
     stage('Run Tests') {
-      sh 'fastlane tests'
+      steps {
+       sh fastlane tests
+      }
     }
   }
 }

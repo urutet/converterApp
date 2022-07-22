@@ -9,7 +9,7 @@ pipeline {
     }
     stage('Run Tests') {
       steps {
-       sh 'fastlane tests'
+       sh 'sudo fastlane tests'
       }
     }
   }

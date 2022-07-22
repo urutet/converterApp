@@ -18,14 +18,11 @@ default_platform(:ios)
 platform :ios do
   desc "ConverterApp Tests"
   lane :tests do 
-#    scan(
-#      project: "converterapp.xcworkspace",
-#      scheme: "converterapp",
-#      devices: ['iPhone X (15.2)'],
-#     output_files: "converterapp.junit"
-#    )
-     xctest(
-       destination: "name=iPhone X, OS=15.2"
-     )
+    scan(
+     workspace: "converterapp.xcworkspace",
+     scheme: "converterappTests",
+     devices: ['iPhone 11 (15.2)'],
+     output_files: "converterapp.junit"
+    )
   end
 end

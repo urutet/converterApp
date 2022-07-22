@@ -69,8 +69,19 @@
 		3A6DE20C2837949300C4F259 /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6DE20B2837949300C4F259 /* AddTransactionViewController.swift */; };
 		3A6DE20E283796D800C4F259 /* AddTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6DE20D283796D800C4F259 /* AddTransactionViewModel.swift */; };
 		3A6DE2102837988E00C4F259 /* AddTransactionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6DE20F2837988E00C4F259 /* AddTransactionCoordinator.swift */; };
+		3ADED1B92889996500F58FEC /* converterappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADED1B82889996500F58FEC /* converterappTests.swift */; };
 		76D471016032F9CAABB63294 /* Pods_converterapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDF46F04C667626469BF1E0 /* Pods_converterapp.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3ADED1BA2889996500F58FEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A2357A72816FB0900CDC496 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A2357AE2816FB0900CDC496;
+			remoteInfo = converterapp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3A2357AF2816FB0900CDC496 /* converterapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = converterapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +150,8 @@
 		3A6DE20B2837949300C4F259 /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
 		3A6DE20D283796D800C4F259 /* AddTransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewModel.swift; sourceTree = "<group>"; };
 		3A6DE20F2837988E00C4F259 /* AddTransactionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionCoordinator.swift; sourceTree = "<group>"; };
+		3ADED1B62889996500F58FEC /* converterappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = converterappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ADED1B82889996500F58FEC /* converterappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = converterappTests.swift; sourceTree = "<group>"; };
 		4EDF46F04C667626469BF1E0 /* Pods_converterapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_converterapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A3105A7A286630367D110B5 /* Pods-converterapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.release.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.release.xcconfig"; sourceTree = "<group>"; };
 		F6A2651B897CCB017A76C79B /* Pods-converterapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.debug.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -153,6 +166,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3ADED1B32889996500F58FEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -160,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				3A2357B12816FB0900CDC496 /* converterapp */,
+				3ADED1B72889996500F58FEC /* converterappTests */,
 				3A2357B02816FB0900CDC496 /* Products */,
 				8304C6C14A7A56E1172755E2 /* Pods */,
 				45AAFF322CDB33DFE6923F37 /* Frameworks */,
@@ -170,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				3A2357AF2816FB0900CDC496 /* converterapp.app */,
+				3ADED1B62889996500F58FEC /* converterappTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -364,6 +386,14 @@
 			path = Cache;
 			sourceTree = "<group>";
 		};
+		3ADED1B72889996500F58FEC /* converterappTests */ = {
+			isa = PBXGroup;
+			children = (
+				3ADED1B82889996500F58FEC /* converterappTests.swift */,
+			);
+			path = converterappTests;
+			sourceTree = "<group>";
+		};
 		45AAFF322CDB33DFE6923F37 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +435,24 @@
 			productReference = 3A2357AF2816FB0900CDC496 /* converterapp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3ADED1B52889996500F58FEC /* converterappTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3ADED1BE2889996500F58FEC /* Build configuration list for PBXNativeTarget "converterappTests" */;
+			buildPhases = (
+				3ADED1B22889996500F58FEC /* Sources */,
+				3ADED1B32889996500F58FEC /* Frameworks */,
+				3ADED1B42889996500F58FEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3ADED1BB2889996500F58FEC /* PBXTargetDependency */,
+			);
+			name = converterappTests;
+			productName = converterappTests;
+			productReference = 3ADED1B62889996500F58FEC /* converterappTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -417,6 +465,10 @@
 				TargetAttributes = {
 					3A2357AE2816FB0900CDC496 = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					3ADED1B52889996500F58FEC = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 3A2357AE2816FB0900CDC496;
 					};
 				};
 			};
@@ -434,6 +486,7 @@
 			projectRoot = "";
 			targets = (
 				3A2357AE2816FB0900CDC496 /* converterapp */,
+				3ADED1B52889996500F58FEC /* converterappTests */,
 			);
 		};
 /* End PBXProject section */
@@ -448,6 +501,13 @@
 				3A50B7D62872529000C40EC1 /* GoogleService-Info.plist in Resources */,
 				3A2357BC2816FB0B00CDC496 /* Assets.xcassets in Resources */,
 				3A2357F02817D0A300CDC496 /* swiftgen.yml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3ADED1B42889996500F58FEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,7 +658,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3ADED1B22889996500F58FEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3ADED1B92889996500F58FEC /* converterappTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3ADED1BB2889996500F58FEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A2357AE2816FB0900CDC496 /* converterapp */;
+			targetProxy = 3ADED1BA2889996500F58FEC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3A2357BD2816FB0B00CDC496 /* LaunchScreen.storyboard */ = {
@@ -801,6 +877,42 @@
 			};
 			name = Release;
 		};
+		3ADED1BC2889996500F58FEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M46WL2C5J3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Elijah.converterappTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/converterapp.app/converterapp";
+			};
+			name = Debug;
+		};
+		3ADED1BD2889996500F58FEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M46WL2C5J3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Elijah.converterappTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/converterapp.app/converterapp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -818,6 +930,15 @@
 			buildConfigurations = (
 				3A2357C42816FB0B00CDC496 /* Debug */,
 				3A2357C52816FB0B00CDC496 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3ADED1BE2889996500F58FEC /* Build configuration list for PBXNativeTarget "converterappTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3ADED1BC2889996500F58FEC /* Debug */,
+				3ADED1BD2889996500F58FEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -3,13 +3,13 @@ pipeline {
   stages {
     stage('Install Pods') {
       steps {
-        sh pod install --deployment --repo-update
+        sh 'pod install --deployment --repo-update'
         
       }
     }
     stage('Run Tests') {
       steps {
-       sh fastlane tests
+       sh 'fastlane tests'
       }
     }
   }

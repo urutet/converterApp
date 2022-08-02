@@ -27,6 +27,7 @@ final class ConverterTableViewCell: UITableViewCell {
     static let contentViewBackgroundColor: UIColor = .systemBackground
     static let contentViewShadowColor: CGColor = UIColor.black.cgColor
     static let currencyFormat = "%.3f"
+    static let currencyTextLabelPlaceholder = "0"
   }
   
   private var subscriptions = Set<AnyCancellable>()
@@ -79,8 +80,8 @@ final class ConverterTableViewCell: UITableViewCell {
   let currencyAmountTextField: UITextField = {
     let textField = UITextField()
     
-    textField.font = FontsManager.medium(ofSize: 20)
-    textField.textAlignment = .center
+    textField.font = FontsManager.medium(ofSize: 25)
+    textField.textAlignment = .right
     textField.keyboardType = .decimalPad
     let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
     let doneButton = UIBarButtonItem(
@@ -92,6 +93,8 @@ final class ConverterTableViewCell: UITableViewCell {
     let spacing = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     toolbar.setItems([spacing, doneButton], animated: true)
     textField.inputAccessoryView = toolbar
+    
+    textField.placeholder = Constants.currencyTextLabelPlaceholder
     
     return textField
   }()

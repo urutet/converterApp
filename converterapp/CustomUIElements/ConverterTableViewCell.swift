@@ -26,15 +26,24 @@ final class ConverterTableViewCell: UITableViewCell {
     static let contentViewCornerRadius: CGFloat = 10
     static let contentViewBackgroundColor: UIColor = .systemBackground
     static let contentViewShadowColor: CGColor = UIColor.black.cgColor
+    static let currencyFormat = "%.3f"
   }
   
   private var subscriptions = Set<AnyCancellable>()
   
-  private let numberFormatter: NumberFormatter = {
+  private let currencyFormatter: NumberFormatter = {
     let formatter = NumberFormatter()
     
     formatter.numberStyle = .currency
+    formatter.maximumFractionDigits = 3
+    return formatter
+  }()
+  
+  private let numberFormatter: NumberFormatter = {
+    let formatter = NumberFormatter()
     
+    formatter.numberStyle = .none
+    formatter.maximumFractionDigits = 3
     return formatter
   }()
   
@@ -120,30 +129,20 @@ final class ConverterTableViewCell: UITableViewCell {
         guard let strongSelf = self else { return }
         strongSelf.currencyFlagLabel.text = strongSelf.viewModel.currency.abbreviation?.flagFromCurrency()
         strongSelf.currencyNameLabel.text = strongSelf.viewModel.currency.abbreviation
-        strongSelf.numberFormatter.currencyCode = strongSelf.viewModel.currency.abbreviation
+        strongSelf.currencyFormatter.currencyCode = strongSelf.viewModel.currency.abbreviation
 
-        strongSelf.currencyRateLabel.text = strongSelf.numberFormatter.currencySymbol
+        strongSelf.currencyRateLabel.text = strongSelf.currencyFormatter.currencySymbol
       }
       .store(in: &subscriptions)
     
     viewModel.calculatedValue
       .receive(on: DispatchQueue.main)
       .sink { [weak self] calculatedValue in
-        self?.currencyAmountTextField.text = "\(calculatedValue)"
+        self?.currencyAmountTextField.text = self?.numberFormatter.string(for: calculatedValue)
       }
       .store(in: &subscriptions)
   }
   
-  // MARK: - API
-  func setRate(currency: Currency) {
-    currencyFlagLabel.text = currency.abbreviation?.flagFromCurrency()
-    currencyNameLabel.text = currency.abbreviation
-    numberFormatter.currencyCode = currency.abbreviation
-    if let rate = currency.rate {
-      currencyAmountTextField.text = "\(rate)"
-    }
-    currencyRateLabel.text = numberFormatter.currencySymbol
-  }
   
   // MARK: - Setups
   private func setupUI() {
@@ -153,6 +152,8 @@ final class ConverterTableViewCell: UITableViewCell {
     stackView.layer.shadowOffset = Constants.contentViewShadowOffset
     stackView.layer.shadowRadius = Constants.contentViewShadowRadius
     stackView.layer.cornerRadius = Constants.contentViewCornerRadius
+    
+    currencyAmountTextField.addTarget(self, action: #selector(textFieldIsEditing), for: .editingDidBegin)
   }
   
   private func addSubviews() {
@@ -177,5 +178,11 @@ final class ConverterTableViewCell: UITableViewCell {
   @objc
   private func doneTapped() {
     currencyAmountTextField.resignFirstResponder()
+  }
+  
+  @objc
+  private func textFieldIsEditing() {
+    currencyAmountTextField.text = ""
+    viewModel.isSelected = true
   }
 }

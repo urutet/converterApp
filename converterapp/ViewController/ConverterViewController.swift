@@ -16,6 +16,7 @@ final class ConverterViewController: UIViewController {
   // MARK: Private
   private enum Constants {
     static let ConverterTableViewCellIdentifier = "ConverterTableViewCell"
+    static let allowedCharacters = ".0123456789"
   }
   
   private var subscriptions = Set<AnyCancellable>()
@@ -86,10 +87,9 @@ extension ConverterViewController: UITableViewDelegate, UITableViewDataSource, U
     
     cell.viewModel = viewModel.converterCellViewModels[indexPath.row]
     cell.currencyAmountTextField.delegate = self
-    cell.currencyAmountTextField.tag = indexPath.row
     
     cell.selectionStyle = .none
-
+    
     return cell
   }
   
@@ -97,14 +97,35 @@ extension ConverterViewController: UITableViewDelegate, UITableViewDataSource, U
     view.endEditing(true)
   }
   
-  func textFieldDidBeginEditing(_ textField: UITextField) {
-    textField.text = ""
+  func textFieldDidChangeSelection(_ textField: UITextField) {
+    guard let amount = Decimal(string: textField.text ?? "") else { return }
+    let selectedCurrency = viewModel.converterCellViewModels
+      .filter { $0.isSelected == true }
+      .first?
+      .currency
+    
+    let _ = viewModel.converterCellViewModels
+      .filter { $0.isSelected == false }
+      .map {
+        $0.selectedCurrency = selectedCurrency
+        $0.convertCurrency(amount: amount)
+      }
   }
   
-  
   func textFieldDidEndEditing(_ textField: UITextField) {
-    guard let amount = Decimal(string: textField.text ?? "") else { return }
-    viewModel.converterCellViewModels.map { $0.convertCurrency(amount: amount) }
-    tableView.reloadData()
+    let _ = viewModel.converterCellViewModels.map { $0.isSelected = false }
+  }
+  
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    if
+      let textFieldIsEmpty = textField.text?.isEmpty,
+      textFieldIsEmpty,
+      string == "." || string == "," {
+      return false
+    }
+    
+    let allowedCharacters = CharacterSet(charactersIn: Constants.allowedCharacters)
+    let characterSet = CharacterSet(charactersIn: string)
+    return allowedCharacters.isSuperset(of: characterSet)
   }
 }

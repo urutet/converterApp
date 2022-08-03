@@ -18,6 +18,7 @@ class AddTransactionViewController: UIViewController {
   
   private enum Constants {
     static let dateFormat = "dd.MM.yyyy"
+    static let allowedCharacters = ".,0123456789"
   }
   
   private enum DataType: String {
@@ -138,6 +139,7 @@ class AddTransactionViewController: UIViewController {
     
     nameTextField.delegate = self
     dateTextField.delegate = self
+    amountTextField.delegate = self
     datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
   }
   
@@ -250,5 +252,19 @@ class AddTransactionViewController: UIViewController {
 extension AddTransactionViewController: UITextFieldDelegate, UIPickerViewDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.resignFirstResponder()
+  }
+  
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    guard textField.isEqual(amountTextField) else { return true }
+    if
+      let textFieldIsEmpty = textField.text?.isEmpty,
+      textFieldIsEmpty,
+      string == "." || string == "," {
+      return false
+    }
+    
+    let allowedCharacters = CharacterSet(charactersIn: Constants.allowedCharacters)
+    let characterSet = CharacterSet(charactersIn: string)
+    return allowedCharacters.isSuperset(of: characterSet)
   }
 }

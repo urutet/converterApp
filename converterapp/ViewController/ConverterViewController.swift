@@ -16,7 +16,7 @@ final class ConverterViewController: UIViewController {
   // MARK: Private
   private enum Constants {
     static let ConverterTableViewCellIdentifier = "ConverterTableViewCell"
-    static let allowedCharacters = ".0123456789"
+    static let allowedCharacters = ".,0123456789"
   }
   
   private var subscriptions = Set<AnyCancellable>()

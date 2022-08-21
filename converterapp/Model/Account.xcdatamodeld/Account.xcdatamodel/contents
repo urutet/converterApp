@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AccountMO" representedClassName="AccountMO" syncable="YES">
+        <attribute name="balance" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="currency" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TransactionMO" inverseName="account" inverseEntity="TransactionMO"/>
+    </entity>
+    <entity name="TransactionMO" representedClassName="TransactionMO" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AccountMO" inverseName="transactions" inverseEntity="AccountMO"/>
+    </entity>
+    <elements>
+        <element name="AccountMO" positionX="2341.978332519531" positionY="955.7235870361328" width="128" height="118"/>
+        <element name="TransactionMO" positionX="2090.65869140625" positionY="960.5644989013672" width="128" height="118"/>
+    </elements>
+</model>

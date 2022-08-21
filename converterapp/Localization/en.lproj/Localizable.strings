@@ -1,0 +1,42 @@
+/* 
+  Localizable.strings
+  converterapp
+
+  Created by Yushkevich Ilya on 26.04.22.
+  
+*/
+"Main.rates" = "Rates";
+"Main.converter" = "Converter";
+"Main.accounts" = "Accounts";
+"Accounts.addAccount" = "Add first account";
+"Accounts.contextMenuTitle" = "Account";
+"Accounts.showAccount" = "Show";
+"Accounts.editAccount" = "Edit";
+"Accounts.removeAccount" = "Remove";
+"Accounts.deleteText" = "Are you sure you want to delete account?";
+"Accounts.cancel" = "Cancel";
+"AddAccounts.AccountName" = "Account Name";
+"AddAccounts.AccountCurrency" = "Currency";
+"AddAccounts.Save" = "Save";
+"AddAccounts.Done" = "Done";
+"AccountDetails.Transactions" = "Transactions";
+"AccountDetails.Edit" = "Edit";
+"AccountDetails.Delete" = "Delete";
+"Rates.Title" = "Currency rates";
+"Converter.Title" = "Converter";
+"AddTransaction.Name" = "Name";
+"AddTransaction.Date" = "Date";
+"AddTransaction.Amount" = "Amount";
+"AddTransaction.InvalidName" = "Enter valid name.";
+"AddTransaction.InvalidAmount" = "Enter valid amount.";
+"AddTransaction.Dismiss" = "Dismiss";
+"CurrencyDetails.7Days" = "7 Days";
+"CurrencyDetails.1Month" = "1 Month";
+"CurrencyDetails.6Months" = "6 Months";
+"CurrencyDetails.Year" = "1 Year";
+"FavouriteCurrencies.SearchCurrencies" = "Search Currencies";
+"FavouriteCurrencies.AllCurrencies" = "All Currencies";
+"FavouriteCurrencies.FavouriteCurrencies" = "Favourite Currencies";
+"FavouriteCurrencies.Currencies" = "Currencies";
+"FavouriteCurrencies.Done" = "Done";
+

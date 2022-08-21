@@ -1,0 +1,41 @@
+/*
+  Localizable.strings
+  converterapp
+
+  Created by Yushkevich Ilya on 26.04.22.
+  
+*/
+"Main.rates" = "Курсы";
+"Main.converter" = "Конвертер";
+"Main.accounts" = "Счета";
+"Accounts.addAccount" = "Добавьте первый аккаунт";
+"Accounts.contextMenuTitle" = "Аккаунт";
+"Accounts.showAccount" = "Открыть";
+"Accounts.editAccount" = "Изменить";
+"Accounts.removeAccount" = "Удалить";
+"Accounts.deleteText" = "Вы точно хотите удалить аккаунт?";
+"Accounts.cancel" = "Отменить";
+"AddAccounts.AccountName" = "Название Аккаунта";
+"AddAccounts.AccountCurrency" = "Валюта";
+"AddAccounts.Save" = "Сохранить";
+"AddAccounts.Done" = "Готово";
+"AccountDetails.Transactions" = "Транзакций";
+"AccountDetails.Edit" = "Изменить";
+"AccountDetails.Delete" = "Удалить";
+"Rates.Title" = "Курс валют";
+"Converter.Title" = "Конвертер валют";
+"AddTransaction.Name" = "Имя";
+"AddTransaction.Date" = "Дата";
+"AddTransaction.Amount" = "Сумма";
+"AddTransaction.InvalidName" = "Введите корректное имя.";
+"AddTransaction.InvalidAmount" = "Введите корректную сумму.";
+"AddTransaction.Dismiss" = "Закрыть";
+"CurrencyDetails.7Days" = "7 Дней";
+"CurrencyDetails.1Month" = "1 Месяц";
+"CurrencyDetails.6Months" = "6 Месяцев";
+"CurrencyDetails.Year" = "1 Год";
+"FavouriteCurrencies.SearchCurrencies" = "Поиск валюты";
+"FavouriteCurrencies.AllCurrencies" = "Все валюты";
+"FavouriteCurrencies.FavouriteCurrencies" = "Избранные валюты";
+"FavouriteCurrencies.Currencies" = "Валюты";
+"FavouriteCurrencies.Done" = "Готово";

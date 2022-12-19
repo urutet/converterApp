@@ -8,8 +8,9 @@ target 'converterapp' do
   # Pods for converterapp
 pod 'SwiftGen', '~> 6.0'
 pod 'Alamofire'
-pod 'Charts', '~> 4.0'
+pod 'Charts', '~> 4.1.0'
 pod 'FirebaseAnalytics'
 pod 'Firebase/Crashlytics'
 pod 'Firebase/RemoteConfig'
+pod 'Swinject'
 end

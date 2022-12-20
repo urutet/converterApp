@@ -11,7 +11,7 @@ import Combine
 final class AccountsViewModel: ObservableObject {
   var coordinator: AccountsCoordinator!
   var subscriptions = Set<AnyCancellable>()
-  let accountsRepository: AccountsRepositoryProtocol = AccountsCoreDataRepository.shared
+  var accountsRepository: AccountsRepositoryProtocol?
   let remoteConfig: RemoteConfigProtocol = FirebaseRemoteConfig.shared
   @Published var accounts = [Account]()
   
@@ -21,18 +21,19 @@ final class AccountsViewModel: ObservableObject {
     addAccountViewModel.saveAction.sink { [weak self] account in
       guard let strongSelf = self else { return }
       strongSelf.accounts.append(account)
-      strongSelf.accountsRepository.saveAccount(account)
+      strongSelf.accountsRepository?.saveAccount(account)
       strongSelf.coordinator.pop()
     }
     .store(in: &subscriptions)
   }
   
   func getAccounts() {
+    guard let accountsRepository else { return }
     self.accounts = accountsRepository.getAccounts()
   }
   
   func deleteAccount(index: Int) {
-    accountsRepository.deleteAccount(id: accounts[index].id)
+    accountsRepository?.deleteAccount(id: accounts[index].id)
     accounts.remove(at: index)
   }
   
@@ -51,7 +52,7 @@ final class AccountsViewModel: ObservableObject {
       guard let strongSelf = self else { return }
       strongSelf.accounts.remove(at: index)
       strongSelf.accounts.insert(account, at: index)
-      strongSelf.accountsRepository.saveAccount(account)
+      strongSelf.accountsRepository?.saveAccount(account)
       strongSelf.coordinator.pop()
     }
     .store(in: &subscriptions)

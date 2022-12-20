@@ -70,6 +70,9 @@
 		3A6DE20E283796D800C4F259 /* AddTransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6DE20D283796D800C4F259 /* AddTransactionViewModel.swift */; };
 		3A6DE2102837988E00C4F259 /* AddTransactionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6DE20F2837988E00C4F259 /* AddTransactionCoordinator.swift */; };
 		76D471016032F9CAABB63294 /* Pods_converterapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EDF46F04C667626469BF1E0 /* Pods_converterapp.framework */; };
+		CE752635295205CA001BF213 /* RepositoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE752634295205CA001BF213 /* RepositoryAssembly.swift */; };
+		CE752637295206AA001BF213 /* ViewModelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE752636295206AA001BF213 /* ViewModelAssembly.swift */; };
+		CE75263A2952073D001BF213 /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7526392952073D001BF213 /* DependencyProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,6 +144,9 @@
 		3A6DE20F2837988E00C4F259 /* AddTransactionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionCoordinator.swift; sourceTree = "<group>"; };
 		4EDF46F04C667626469BF1E0 /* Pods_converterapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_converterapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A3105A7A286630367D110B5 /* Pods-converterapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.release.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.release.xcconfig"; sourceTree = "<group>"; };
+		CE752634295205CA001BF213 /* RepositoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryAssembly.swift; sourceTree = "<group>"; };
+		CE752636295206AA001BF213 /* ViewModelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelAssembly.swift; sourceTree = "<group>"; };
+		CE7526392952073D001BF213 /* DependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
 		F6A2651B897CCB017A76C79B /* Pods-converterapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.debug.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +183,7 @@
 		3A2357B12816FB0900CDC496 /* converterapp */ = {
 			isa = PBXGroup;
 			children = (
+				CE75263329520594001BF213 /* Injection */,
 				3A66A3F6288088D000CBD283 /* Cache */,
 				3A50B7D828725E3000C40EC1 /* Firebase */,
 				3A50B7C428634F7700C40EC1 /* CustomFormatters */,
@@ -381,6 +388,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CE75263329520594001BF213 /* Injection */ = {
+			isa = PBXGroup;
+			children = (
+				CE75263829520721001BF213 /* Assemblies */,
+				CE7526392952073D001BF213 /* DependencyProvider.swift */,
+			);
+			path = Injection;
+			sourceTree = "<group>";
+		};
+		CE75263829520721001BF213 /* Assemblies */ = {
+			isa = PBXGroup;
+			children = (
+				CE752634295205CA001BF213 /* RepositoryAssembly.swift */,
+				CE752636295206AA001BF213 /* ViewModelAssembly.swift */,
+			);
+			path = Assemblies;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -574,13 +599,16 @@
 				3A50B7CA2863CCFD00C40EC1 /* FavouriteCurrenciesTableViewController.swift in Sources */,
 				3A50B7DC2872658400C40EC1 /* RemoteConfigProtocol.swift in Sources */,
 				3A6281A2282B00A200D22BC4 /* TitledTextField.swift in Sources */,
+				CE752637295206AA001BF213 /* ViewModelAssembly.swift in Sources */,
 				3A2358152819167D00CDC496 /* Account.swift in Sources */,
+				CE752635295205CA001BF213 /* RepositoryAssembly.swift in Sources */,
 				3A50B7D428660A0600C40EC1 /* ConverterCellViewModel.swift in Sources */,
 				3A2357E7281745E500CDC496 /* RatesCoordinator.swift in Sources */,
 				3A6281B9282C741000D22BC4 /* ConverterTableViewCell.swift in Sources */,
 				3A2357E12817418C00CDC496 /* RatesViewController.swift in Sources */,
 				3A6281E0282CEB8D00D22BC4 /* AccountMO+CoreDataClass.swift in Sources */,
 				3A62819E282AFDBE00D22BC4 /* AddAccountViewModel.swift in Sources */,
+				CE75263A2952073D001BF213 /* DependencyProvider.swift in Sources */,
 				3A2357FF2817D54600CDC496 /* Strings.swift in Sources */,
 				3A50B7B9285669BB00C40EC1 /* PersistentContainerRepository.swift in Sources */,
 				3A6281A8282C2A9300D22BC4 /* AccountDetailsViewModel.swift in Sources */,

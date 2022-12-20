@@ -1,8 +1,8 @@
 PODS:
   - Alamofire (5.5.0)
-  - Charts (4.0.3):
-    - Charts/Core (= 4.0.3)
-  - Charts/Core (4.0.3):
+  - Charts (4.1.0):
+    - Charts/Core (= 4.1.0)
+  - Charts/Core (4.1.0):
     - SwiftAlgorithms (~> 1.0)
   - Firebase/CoreOnly (9.2.0):
     - FirebaseCore (= 9.2.0)
@@ -113,14 +113,16 @@ PODS:
   - PromisesObjC (2.1.1)
   - SwiftAlgorithms (1.0.0)
   - SwiftGen (6.5.1)
+  - Swinject (2.8.2)
 
 DEPENDENCIES:
   - Alamofire
-  - Charts (~> 4.0)
+  - Charts (~> 4.1.0)
   - Firebase/Crashlytics
   - Firebase/RemoteConfig
   - FirebaseAnalytics
   - SwiftGen (~> 6.0)
+  - Swinject
 
 SPEC REPOS:
   trunk:
@@ -142,10 +144,11 @@ SPEC REPOS:
     - PromisesObjC
     - SwiftAlgorithms
     - SwiftGen
+    - Swinject
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
-  Charts: d959d6723c8eedfdd0735dfc28cb0a71762ac4d9
+  Charts: 354f86803d11d9c35de280587fef50d1af063978
   Firebase: 4ba896cb8e5105d4b9e247e1c1b6222b548df55a
   FirebaseABTesting: cd1ec762a0078b46a7ce91dfe5b7b8991c2dff8f
   FirebaseAnalytics: af5a03a8dff7648c7b8486f6a78b1368e0268dd3
@@ -162,7 +165,8 @@ SPEC CHECKSUMS:
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
+  Swinject: b4a11b31992e8668308dc594ba1cb9b3164a37ab
 
-PODFILE CHECKSUM: 7c0daaf9c24db181a5ed6a4d0e920d707fa74c71
+PODFILE CHECKSUM: 8ad9335f22d0f860d607371de7b959028b9fff4a
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

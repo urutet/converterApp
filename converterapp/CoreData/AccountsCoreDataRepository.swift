@@ -14,13 +14,9 @@ final class AccountsCoreDataRepository: AccountsRepositoryProtocol {
     static let accountMOEntityName = "AccountMO"
     static let transactionMOEntityName = "TransactionMO"
   }
-  
-  static let shared = AccountsCoreDataRepository()
-  
+    
   let persistentContainer = PersistentContainerRepository.shared.persistentContainer
-  
-  private init() { }
-  
+    
   @discardableResult
   private func convertToAccountMO(account: Account, context: NSManagedObjectContext) -> AccountMO {
     let accountMO = AccountMO(context: context)

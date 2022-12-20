@@ -8,12 +8,13 @@
 import UIKit
 import FirebaseCore
 import FirebaseInstallations
+import Swinject
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+  
+  let dependencyProvider = DependencyProvider()
+  
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     FirebaseApp.configure()
     

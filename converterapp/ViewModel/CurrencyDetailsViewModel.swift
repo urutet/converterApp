@@ -24,13 +24,13 @@ final class CurrencyDetailsViewModel {
   var currency: Currency!
   var defaultEntries = [ChartDataEntry]()
   var currencyDynamicsData = PassthroughSubject<ChartData, Never>()
-  
-  private let ratesRepository: RatesRepositoryProtocol = RatesNetworkRepository.shared
+  var ratesRepository: RatesRepositoryProtocol?
   
   func getCurrencyDynamics() {
     guard
       let id = currency.id,
-      let startDate = Calendar.current.date(byAdding: .year, value: -1, to: Date())
+      let startDate = Calendar.current.date(byAdding: .year, value: -1, to: Date()),
+      let ratesRepository
     else { return }
     
     ratesRepository.getCurrencyDynamics(

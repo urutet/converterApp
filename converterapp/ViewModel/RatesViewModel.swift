@@ -8,16 +8,16 @@
 import Combine
 import Foundation
 
-final class RatesViewModel {
+final class RatesViewModel: AppDependencyProvider {
   var coordinator: RatesCoordinator!
   var currencyRates = [Currency]()
   @Published var favouriteCurrencies = [Currency]()
-  private let ratesRepository: RatesRepositoryProtocol = RatesNetworkRepository.shared
+  var ratesRepository: RatesRepositoryProtocol? = container.resolve(RatesRepositoryProtocol.self)
   private var subscriptions = Set<AnyCancellable>()
-  private let currenciesCache: CurrenciesCacheProtocol = CurrenciesCache.shared
-
+  var currenciesCache: CurrenciesCacheProtocol? = container.resolve(CurrenciesCacheProtocol.self)
+  
   func getRates() {
-    ratesRepository.getRates(periodicity: 0) { [weak self] rates in
+    ratesRepository?.getRates(periodicity: 0) { [weak self] rates in
       guard let strongSelf = self else { return }
       
       strongSelf.currencyRates = rates
@@ -38,7 +38,7 @@ final class RatesViewModel {
       guard let strongSelf = self else { return }
       strongSelf.currencyRates = updatedCurrencies
       strongSelf.favouriteCurrencies = updatedCurrencies.filter { $0.isFavourite }
-      strongSelf.currenciesCache.pushFavourites(strongSelf.favouriteCurrencies)
+      strongSelf.currenciesCache?.pushFavourites(strongSelf.favouriteCurrencies)
     }
     .store(in: &subscriptions)
   }

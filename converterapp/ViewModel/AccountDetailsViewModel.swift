@@ -6,11 +6,11 @@
 //
 import Combine
 
-final class AccountDetailsViewModel {
+final class AccountDetailsViewModel: AppDependencyProvider {
   var coordinator: AccountDetailsCoordinator!
   @Published var account: Account!
   var subscriptions = Set<AnyCancellable>()
-  var accountsRepository: AccountsRepositoryProtocol?
+  var accountsRepository: AccountsRepositoryProtocol? = container.resolve(AccountsRepositoryProtocol.self)
 
   func addTransaciton() {
     let addTransactionViewModel = coordinator.goToAddTransactionViewController()

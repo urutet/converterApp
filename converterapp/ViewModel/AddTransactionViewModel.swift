@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-final class AddTransactionViewModel {
+final class AddTransactionViewModel: AppDependencyProvider {
   var coordinator: AddTransactionCoordinator!
   var controllerType: ControllerInputType!
   

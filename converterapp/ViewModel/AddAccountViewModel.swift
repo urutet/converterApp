@@ -13,7 +13,7 @@ enum ControllerInputType {
   case edit
 }
 
-final class AddAccountViewModel {
+final class AddAccountViewModel: AppDependencyProvider {
   var coordinator: AddAccountCoordinator!
   var accountID: UUID!
   var controllerType: ControllerInputType!

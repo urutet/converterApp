@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class ConverterCellViewModel {
+final class ConverterCellViewModel: AppDependencyProvider {
   @Published var currency: Currency!
   var calculatedValue = PassthroughSubject<Decimal, Never>()
   var selectedCurrency: Currency!

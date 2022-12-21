@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class FavouriteCurrenciesViewModel {
+class FavouriteCurrenciesViewModel: AppDependencyProvider {
   var coordinator: FavouriteCurrenciesCoordinator!
   var currencies = [Currency]()
   var filteredCurrencies = [Currency]()

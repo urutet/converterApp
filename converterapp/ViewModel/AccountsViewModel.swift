@@ -8,10 +8,10 @@
 import Foundation
 import Combine
 
-final class AccountsViewModel: ObservableObject {
+final class AccountsViewModel: AppDependencyProvider, ObservableObject {
   var coordinator: AccountsCoordinator!
   var subscriptions = Set<AnyCancellable>()
-  var accountsRepository: AccountsRepositoryProtocol?
+  var accountsRepository: AccountsRepositoryProtocol? = container.resolve(AccountsRepositoryProtocol.self)
   let remoteConfig: RemoteConfigProtocol = FirebaseRemoteConfig.shared
   @Published var accounts = [Account]()
   

@@ -73,6 +73,7 @@
 		CE752635295205CA001BF213 /* RepositoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE752634295205CA001BF213 /* RepositoryAssembly.swift */; };
 		CE752637295206AA001BF213 /* ViewModelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE752636295206AA001BF213 /* ViewModelAssembly.swift */; };
 		CE75263A2952073D001BF213 /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7526392952073D001BF213 /* DependencyProvider.swift */; };
+		CE75263C29533F06001BF213 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75263B29533F06001BF213 /* BaseViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,6 +148,7 @@
 		CE752634295205CA001BF213 /* RepositoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryAssembly.swift; sourceTree = "<group>"; };
 		CE752636295206AA001BF213 /* ViewModelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelAssembly.swift; sourceTree = "<group>"; };
 		CE7526392952073D001BF213 /* DependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
+		CE75263B29533F06001BF213 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		F6A2651B897CCB017A76C79B /* Pods-converterapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.debug.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -294,6 +296,7 @@
 				3A50B7BE2857D6D800C40EC1 /* CurrencyDetailsViewModel.swift */,
 				3A50B7C72863CCC400C40EC1 /* FavouriteCurrenciesViewModel.swift */,
 				3A50B7D328660A0500C40EC1 /* ConverterCellViewModel.swift */,
+				CE75263B29533F06001BF213 /* BaseViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				3A23581928191E9300CDC496 /* Currency.swift in Sources */,
 				3A2357E5281741B900CDC496 /* AccountsViewController.swift in Sources */,
 				3A6281B0282C5FEC00D22BC4 /* RateTableViewCell.swift in Sources */,
+				CE75263C29533F06001BF213 /* BaseViewModel.swift in Sources */,
 				3A2357E92817460200CDC496 /* AccountsCoordinator.swift in Sources */,
 				3A2357B52816FB0900CDC496 /* SceneDelegate.swift in Sources */,
 			);

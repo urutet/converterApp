@@ -8,9 +8,8 @@
 import Foundation
 
 final class CurrenciesCache: CurrenciesCacheProtocol {
-  static let shared = CurrenciesCache()
+  
   private let encoder = PropertyListEncoder()
-  private init() { }
   
   private static let favouritesKey = "favourites"
   private static let allCurrenciesKey = "allCurrencies"

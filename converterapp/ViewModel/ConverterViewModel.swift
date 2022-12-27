@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-final class ConverterViewModel {
+final class ConverterViewModel: AppDependencyProvider {
   var currencies = [Currency]() {
     didSet {
       converterCellViewModels = [ConverterCellViewModel]()
@@ -21,10 +21,10 @@ final class ConverterViewModel {
   }
   
   @Published var converterCellViewModels = [ConverterCellViewModel]()
-  private let ratesRepository: RatesRepositoryProtocol = RatesNetworkRepository.shared
+  var ratesRepository: RatesRepositoryProtocol? = container.resolve(RatesRepositoryProtocol.self)
   
   func getRates() {
-    ratesRepository.getRates(periodicity: 0) { [weak self] currencies in
+    ratesRepository?.getRates(periodicity: 0) { [weak self] currencies in
       self?.currencies = currencies
     }
   }

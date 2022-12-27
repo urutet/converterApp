@@ -7,14 +7,12 @@
 
 import Alamofire
 
-final class RatesNetworkRepository: RatesRepositoryProtocol {
+final class RatesNetworkRepository: RatesRepositoryProtocol, AppDependencyProvider {
   private enum Constants {
     static let dateFormat = "yyyy-MM-dd"
   }
   
-  static let shared = RatesNetworkRepository()
-  
-  private let currenciesCache: CurrenciesCacheProtocol = CurrenciesCache.shared
+  weak var currenciesCache: CurrenciesCacheProtocol? = container.resolve(CurrenciesCacheProtocol.self)
   
   private let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
@@ -24,7 +22,9 @@ final class RatesNetworkRepository: RatesRepositoryProtocol {
     return dateFormatter
   }()
   
-  private init() { }
+  init(currenciesCache: CurrenciesCacheProtocol?) {
+    self.currenciesCache = currenciesCache
+  }
   
   private let baseURL = "https://www.nbrb.by/api/exrates"
   private enum Endpoints {
@@ -46,7 +46,7 @@ final class RatesNetworkRepository: RatesRepositoryProtocol {
         switch response.result {
         case .success(let rates):
           // Mapping favourites to one array
-          if let favouriteCurrencies = strongSelf.currenciesCache.pullFavourites() {
+          if let favouriteCurrencies = strongSelf.currenciesCache?.pullFavourites() {
             let alteredRates = rates.map { currency -> Currency in
               var currencyVar = currency
               if !favouriteCurrencies.filter({ $0.abbreviation == currencyVar.abbreviation }).isEmpty {
@@ -54,14 +54,14 @@ final class RatesNetworkRepository: RatesRepositoryProtocol {
               }
               return currencyVar
             }
-            strongSelf.currenciesCache.pushAllCurrencies(rates)
+            strongSelf.currenciesCache?.pushAllCurrencies(rates)
             completion(alteredRates)
           }
           
         case .failure(_):
           // Mapping favourites to one array
-          if let cachedCurrencies = strongSelf.currenciesCache.pullAllCurrencies() {
-            if let favouriteCurrencies = strongSelf.currenciesCache.pullFavourites() {
+          if let cachedCurrencies = strongSelf.currenciesCache?.pullAllCurrencies() {
+            if let favouriteCurrencies = strongSelf.currenciesCache?.pullFavourites() {
               let alteredRates = cachedCurrencies.map { currency -> Currency in
                 var currencyVar = currency
                 if !favouriteCurrencies

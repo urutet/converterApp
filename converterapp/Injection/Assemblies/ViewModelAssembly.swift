@@ -18,6 +18,24 @@ final class ViewModelAssembly: Assembly {
       
       return viewModel
     }
+    
+    container.register(RatesViewModel.self) { resolver in
+      let viewModel = RatesViewModel()
+      
+      viewModel.currenciesCache = resolver.resolve(CurrenciesCacheProtocol.self)
+      viewModel.ratesRepository = resolver.resolve(RatesRepositoryProtocol.self)
+      
+      return viewModel
+    }
+    
+    container.register(ConverterViewModel.self) { resolver in
+      let viewModel = ConverterViewModel()
+      
+      viewModel.ratesRepository = resolver.resolve(RatesRepositoryProtocol.self)
+      
+      return viewModel
+    }
+    
   }
   
 }

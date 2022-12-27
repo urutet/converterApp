@@ -9,7 +9,7 @@ import Foundation
 import Charts
 import Combine
 
-final class CurrencyDetailsViewModel {
+final class CurrencyDetailsViewModel: AppDependencyProvider {
   private enum Constants {
     static let dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
   }
@@ -24,7 +24,7 @@ final class CurrencyDetailsViewModel {
   var currency: Currency!
   var defaultEntries = [ChartDataEntry]()
   var currencyDynamicsData = PassthroughSubject<ChartData, Never>()
-  var ratesRepository: RatesRepositoryProtocol?
+  var ratesRepository: RatesRepositoryProtocol? = container.resolve(RatesRepositoryProtocol.self)
   
   func getCurrencyDynamics() {
     guard

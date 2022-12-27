@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Swinject
 
 final class MainCoordinator: Coordinator {
   
@@ -18,6 +19,7 @@ final class MainCoordinator: Coordinator {
     static let accountsSelectedImage = UIImage(systemName: "person.crop.circle.fill")
   }
   
+  let container = Container()
   let rootViewController: UITabBarController = {
     let tabBarController = UITabBarController()
     

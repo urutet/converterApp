@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CurrenciesCacheProtocol {
+protocol CurrenciesCacheProtocol: AnyObject {
   func pushFavourites(_ currencies: [Currency])
   func pushAllCurrencies(_ currencies: [Currency])
   func pullFavourites() -> [Currency]?

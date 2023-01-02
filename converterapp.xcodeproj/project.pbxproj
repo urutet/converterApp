@@ -74,6 +74,7 @@
 		CE752637295206AA001BF213 /* ViewModelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE752636295206AA001BF213 /* ViewModelAssembly.swift */; };
 		CE75263A2952073D001BF213 /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7526392952073D001BF213 /* DependencyProvider.swift */; };
 		CE75263C29533F06001BF213 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75263B29533F06001BF213 /* BaseViewModel.swift */; };
+		CEFEF2682962DCD300DD03DB /* RatesURLSessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFEF2672962DCD300DD03DB /* RatesURLSessionRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -149,6 +150,7 @@
 		CE752636295206AA001BF213 /* ViewModelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelAssembly.swift; sourceTree = "<group>"; };
 		CE7526392952073D001BF213 /* DependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
 		CE75263B29533F06001BF213 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		CEFEF2672962DCD300DD03DB /* RatesURLSessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesURLSessionRepository.swift; sourceTree = "<group>"; };
 		F6A2651B897CCB017A76C79B /* Pods-converterapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.debug.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -351,6 +353,7 @@
 			children = (
 				3A6281B2282C680300D22BC4 /* RatesRepositoryProtocol.swift */,
 				3A6281B4282C683200D22BC4 /* RatesNetworkRepository.swift */,
+				CEFEF2672962DCD300DD03DB /* RatesURLSessionRepository.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				3A2357DE28173A3300CDC496 /* AppCoordinator.swift in Sources */,
 				3A50B7CC2863CD1500C40EC1 /* FavouriteCurrenciesCoordinator.swift in Sources */,
 				3A6281C1282CE65D00D22BC4 /* Account.xcdatamodeld in Sources */,
+				CEFEF2682962DCD300DD03DB /* RatesURLSessionRepository.swift in Sources */,
 				3A2357B32816FB0900CDC496 /* AppDelegate.swift in Sources */,
 				3A50B7CA2863CCFD00C40EC1 /* FavouriteCurrenciesTableViewController.swift in Sources */,
 				3A50B7DC2872658400C40EC1 /* RemoteConfigProtocol.swift in Sources */,

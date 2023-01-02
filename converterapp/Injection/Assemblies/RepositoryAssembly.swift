@@ -18,7 +18,7 @@ final class RepositoryAssembly: Assembly {
       .inObjectScope(.container)
     
     container.register(RatesRepositoryProtocol.self) { resolver in
-      RatesNetworkRepository(currenciesCache: resolver.resolve(CurrenciesCacheProtocol.self))
+      RatesURLSessionRepository(currenciesCache: resolver.resolve(CurrenciesCacheProtocol.self))
     }
     .inObjectScope(.container)
     

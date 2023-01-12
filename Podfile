@@ -12,5 +12,6 @@ pod 'Charts', '~> 4.1.0'
 pod 'FirebaseAnalytics'
 pod 'Firebase/Crashlytics'
 pod 'Firebase/RemoteConfig'
+pod 'FirebaseAuth'
 pod 'Swinject'
 end

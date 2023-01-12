@@ -21,6 +21,17 @@ final class TitledTextField: UITextField {
     return label
   }()
   
+  private let bottomLabel: UILabel = {
+    let label = UILabel()
+    
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = FontsManager.semiBold(ofSize: 15)
+    label.textColor = .red
+    label.isHidden = true
+    
+    return label
+  }()
+  
   // MARK: - Lifecycle
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -39,8 +50,11 @@ final class TitledTextField: UITextField {
   // MARK: - Setups
   private func setupTextField() {
     addSubview(label)
+    addSubview(bottomLabel)
+    
     NSLayoutConstraint.activate([
-      label.bottomAnchor.constraint(equalTo: topAnchor, constant: -5)
+      label.bottomAnchor.constraint(equalTo: topAnchor, constant: -5),
+      bottomLabel.topAnchor.constraint(equalTo: bottomAnchor, constant: 5)
     ])
   }
   

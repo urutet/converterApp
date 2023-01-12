@@ -61,6 +61,11 @@ final class MainCoordinator: Coordinator {
       selectedImage: Constants.accountsSelectedImage
     )
     
+    let authCoordinator = AuthCoordinator()
+    let authViewModel = AuthViewModel()
+    authCoordinator.viewModel = authViewModel
+    authCoordinator.start()
+    
     childCoordinators = [ratesCoordinator, converterCoordinator, accountsCoordinator]
     
     rootViewController.viewControllers = [

@@ -74,6 +74,9 @@
 		CE752637295206AA001BF213 /* ViewModelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE752636295206AA001BF213 /* ViewModelAssembly.swift */; };
 		CE75263A2952073D001BF213 /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7526392952073D001BF213 /* DependencyProvider.swift */; };
 		CE75263C29533F06001BF213 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75263B29533F06001BF213 /* BaseViewModel.swift */; };
+		CEA8B587296EFCB10008E2E7 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8B586296EFCB10008E2E7 /* AuthViewModel.swift */; };
+		CEA8B589296EFD6B0008E2E7 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8B588296EFD6B0008E2E7 /* AuthViewController.swift */; };
+		CEA8B58B296FEFC40008E2E7 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8B58A296FEFC40008E2E7 /* AuthCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -149,6 +152,9 @@
 		CE752636295206AA001BF213 /* ViewModelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelAssembly.swift; sourceTree = "<group>"; };
 		CE7526392952073D001BF213 /* DependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
 		CE75263B29533F06001BF213 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		CEA8B586296EFCB10008E2E7 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		CEA8B588296EFD6B0008E2E7 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		CEA8B58A296FEFC40008E2E7 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		F6A2651B897CCB017A76C79B /* Pods-converterapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.debug.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -225,6 +231,7 @@
 				3A6DE20F2837988E00C4F259 /* AddTransactionCoordinator.swift */,
 				3A50B7BA2857D64D00C40EC1 /* CurrencyDetailsCoordinator.swift */,
 				3A50B7CB2863CD1500C40EC1 /* FavouriteCurrenciesCoordinator.swift */,
+				CEA8B58A296FEFC40008E2E7 /* AuthCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -248,6 +255,7 @@
 				3A6DE20B2837949300C4F259 /* AddTransactionViewController.swift */,
 				3A50B7BC2857D6A800C40EC1 /* CurrencyDetailsViewController.swift */,
 				3A50B7C92863CCFD00C40EC1 /* FavouriteCurrenciesTableViewController.swift */,
+				CEA8B588296EFD6B0008E2E7 /* AuthViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -297,6 +305,7 @@
 				3A50B7C72863CCC400C40EC1 /* FavouriteCurrenciesViewModel.swift */,
 				3A50B7D328660A0500C40EC1 /* ConverterCellViewModel.swift */,
 				CE75263B29533F06001BF213 /* BaseViewModel.swift */,
+				CEA8B586296EFCB10008E2E7 /* AuthViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -572,6 +581,7 @@
 				3A6DE20828378ECE00C4F259 /* AccountDetailsCoordinator.swift in Sources */,
 				3A50B7BB2857D64D00C40EC1 /* CurrencyDetailsCoordinator.swift in Sources */,
 				3A2357ED28174BA300CDC496 /* MainCoordinator.swift in Sources */,
+				CEA8B58B296FEFC40008E2E7 /* AuthCoordinator.swift in Sources */,
 				3A6DE20A2837925D00C4F259 /* AddAccountCoordinator.swift in Sources */,
 				3A6281E1282CEB8D00D22BC4 /* AccountMO+CoreDataProperties.swift in Sources */,
 				3A6281BE282CE5EA00D22BC4 /* AccountsCoreDataRepository.swift in Sources */,
@@ -592,6 +602,7 @@
 				3A6281B7282C72DD00D22BC4 /* ConverterViewModel.swift in Sources */,
 				3A6281DF282CEB8D00D22BC4 /* TransactionMO+CoreDataProperties.swift in Sources */,
 				3A6281BC282CE5AB00D22BC4 /* AccountsRepositoryProtocol.swift in Sources */,
+				CEA8B587296EFCB10008E2E7 /* AuthViewModel.swift in Sources */,
 				3A6281DE282CEB8D00D22BC4 /* TransactionMO+CoreDataClass.swift in Sources */,
 				3A50B7BD2857D6A800C40EC1 /* CurrencyDetailsViewController.swift in Sources */,
 				3A6281AE282C5F0A00D22BC4 /* RatesViewModel.swift in Sources */,
@@ -617,6 +628,7 @@
 				3A6281A8282C2A9300D22BC4 /* AccountDetailsViewModel.swift in Sources */,
 				3A2357E3281741AB00CDC496 /* ConverterViewController.swift in Sources */,
 				3A50B7BF2857D6D800C40EC1 /* CurrencyDetailsViewModel.swift in Sources */,
+				CEA8B589296EFD6B0008E2E7 /* AuthViewController.swift in Sources */,
 				3A6DE20C2837949300C4F259 /* AddTransactionViewController.swift in Sources */,
 				3A6281972829784D00D22BC4 /* String+Extensions.swift in Sources */,
 				3A6281A0282AFDE000D22BC4 /* AddAccountViewController.swift in Sources */,

@@ -51,27 +51,23 @@ final class MainCoordinator: Coordinator {
       selectedImage: Constants.converterSelectedImage
     )
     
-    let accountsCoordinator = AccountsCoordinator()
-    let accountsViewModel = AccountsViewModel()
-    accountsCoordinator.viewModel = accountsViewModel
-    accountsCoordinator.start()
-    accountsCoordinator.rootViewController.tabBarItem = UITabBarItem(
+    let authCoordinator = AuthCoordinator()
+    let authViewModel = AuthViewModel()
+    authCoordinator.parentCoordinator = self
+    authCoordinator.viewModel = authViewModel
+    authCoordinator.start()
+    authCoordinator.rootViewController.tabBarItem = UITabBarItem(
       title: Strings.Main.accounts,
       image: Constants.accountsImage,
       selectedImage: Constants.accountsSelectedImage
     )
     
-    let authCoordinator = AuthCoordinator()
-    let authViewModel = AuthViewModel()
-    authCoordinator.viewModel = authViewModel
-    authCoordinator.start()
-    
-    childCoordinators = [ratesCoordinator, converterCoordinator, accountsCoordinator]
+    childCoordinators = [ratesCoordinator, converterCoordinator, authCoordinator]
     
     rootViewController.viewControllers = [
       ratesCoordinator.rootViewController,
       converterCoordinator.rootViewController,
-      accountsCoordinator.rootViewController
+      authCoordinator.rootViewController
     ]
   }
 }

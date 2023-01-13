@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import Combine
 
 class AuthViewController: UIViewController {
-  
+  private enum Constants {
+    static let animationDuration = 0.5
+  }
   var viewModel: AuthViewModel!
+  private var subscriptions = Set<AnyCancellable>()
   
   private let scrollView: UIScrollView = {
     let scrollView = UIScrollView()
@@ -45,6 +49,7 @@ class AuthViewController: UIViewController {
     textField.layer.borderColor = UIColor.systemGray4.cgColor
     textField.layer.cornerRadius = 5
     textField.font = FontsManager.medium(ofSize: 16)
+    textField.tag = 0
     
     return textField
   }()
@@ -59,7 +64,8 @@ class AuthViewController: UIViewController {
     textField.layer.borderColor = UIColor.systemGray4.cgColor
     textField.layer.cornerRadius = 5
     textField.font = FontsManager.medium(ofSize: 16)
-    
+    textField.tag = 1
+
     return textField
   }()
   
@@ -73,12 +79,13 @@ class AuthViewController: UIViewController {
     textField.layer.borderColor = UIColor.systemGray4.cgColor
     textField.layer.cornerRadius = 5
     textField.font = FontsManager.medium(ofSize: 16)
+    textField.tag = 2
     
     return textField
   }()
   
-  private let loginButton: UIButton = {
-    let button = UIButton()
+  private let topButton: TitledButton = {
+    let button = TitledButton()
     
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setTitle("Login", for: .normal)
@@ -89,16 +96,30 @@ class AuthViewController: UIViewController {
     return button
   }()
   
-  private let signUpButton: UIButton = {
-    let button = UIButton()
+  private let bottomButton: TitledButton = {
+    let button = TitledButton()
     
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setTitle("SignUp", for: .normal)
     button.titleLabel?.font = FontsManager.bold(ofSize: 20)
     button.backgroundColor = .systemBlue
     button.layer.cornerRadius = 5
+    button.addTarget(self, action: #selector(changeLayout), for: .touchUpInside)
     
     return button
+  }()
+  
+  private let errorLabel: UILabel = {
+    let label = UILabel()
+    
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = FontsManager.bold(ofSize: 15)
+    label.textColor = .red
+    label.textAlignment = .center
+    label.numberOfLines = 0
+    label.lineBreakMode = .byWordWrapping
+    
+    return label
   }()
   
   override func viewDidLoad() {
@@ -108,17 +129,18 @@ class AuthViewController: UIViewController {
     
     addSubviews()
     addConstraints()
+    setupSubscriptions()
   }
   
   private func addSubviews() {
-//    view.addSubview(loginLabel)
     view.addSubview(scrollView)
     scrollView.addSubview(stackView)
     stackView.addArrangedSubview(emailTextField)
     stackView.addArrangedSubview(passwordTextField)
     stackView.addArrangedSubview(confirmPasswordTextField)
-    stackView.addArrangedSubview(loginButton)
-    stackView.addArrangedSubview(signUpButton)
+    stackView.addArrangedSubview(topButton)
+    stackView.addArrangedSubview(bottomButton)
+    stackView.addArrangedSubview(errorLabel)
   }
   
   private func addConstraints() {
@@ -134,8 +156,71 @@ class AuthViewController: UIViewController {
       emailTextField.heightAnchor.constraint(equalToConstant: 40),
       passwordTextField.heightAnchor.constraint(equalToConstant: 40),
       confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 40),
-      loginButton.heightAnchor.constraint(equalToConstant: 40),
-      signUpButton.heightAnchor.constraint(equalToConstant: 40)
+      topButton.heightAnchor.constraint(equalToConstant: 40),
+      bottomButton.heightAnchor.constraint(equalToConstant: 40)
     ])
+  }
+  
+  private func setupSubscriptions() {
+    viewModel.isLoginScreen.sink { [weak self] isLoginScreen in
+      guard let self else { return }
+      isLoginScreen ? self.setLoginLayout() : self.setSignupLayout()
+    }
+    .store(in: &subscriptions)
+    
+    viewModel.errorPublisher.sink { [weak self] errorDescription in
+      self?.errorLabel.text = errorDescription
+    }
+    .store(in: &subscriptions)
+  }
+  
+  private func setLoginLayout() {
+    navigationItem.title = "Login"
+    UIView.animate(withDuration: Constants.animationDuration, delay: 0) {
+      self.confirmPasswordTextField.layer.opacity = 0
+      self.confirmPasswordTextField.isHidden = true
+    }
+    topButton.setText("")
+    topButton.setTitle("Login", for: .normal)
+    topButton.removeTarget(self, action: #selector(signup), for: .touchUpInside)
+    topButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+
+    bottomButton.setText("Or you can")
+    bottomButton.setTitle("Sign Up", for: .normal)
+  }
+  
+  private func setSignupLayout() {
+    navigationItem.title = "Sign Up"
+    UIView.animate(withDuration: Constants.animationDuration, delay: 0) {
+      self.confirmPasswordTextField.layer.opacity = 1
+      self.confirmPasswordTextField.isHidden = false
+    }
+    
+    topButton.setText("")
+    topButton.setTitle("Sign Up", for: .normal)
+    topButton.removeTarget(self, action: #selector(login), for: .touchUpInside)
+    topButton.addTarget(self, action: #selector(signup), for: .touchUpInside)
+
+    bottomButton.setText("Have an account?")
+    bottomButton.setTitle("Login", for: .normal)
+  }
+  
+  @objc
+  private func login() {
+    viewModel.email.send(emailTextField.text)
+    viewModel.password.send(passwordTextField.text)
+    viewModel.login()
+  }
+  
+  @objc
+  private func signup() {
+    viewModel.email.send(emailTextField.text)
+    viewModel.password.send(passwordTextField.text)
+    viewModel.confirmPassword.send(confirmPasswordTextField.text)
+    viewModel.signup()
+  }
+  
+  @objc func changeLayout() {
+    viewModel.isLoginScreen.send(!viewModel.isLoginScreen.value)
   }
 }

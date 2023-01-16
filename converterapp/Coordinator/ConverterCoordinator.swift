@@ -26,4 +26,8 @@ final class ConverterCoordinator: Coordinator {
 
   }
   
+  func getRootViewController() -> UIViewController {
+    rootViewController
+  }
+  
 }

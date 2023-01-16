@@ -23,4 +23,8 @@ final class AppCoordinator: Coordinator {
     childCoordinators = [mainCoordinator]
     window.rootViewController = mainCoordinator.rootViewController
   }
+  
+  func getRootViewController() -> UIViewController {
+    window.rootViewController!
+  }
 }

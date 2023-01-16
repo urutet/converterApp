@@ -68,6 +68,13 @@ final class AccountsViewController: UIViewController {
       action: #selector(addAccount)
     )
     
+    navigationItem.leftBarButtonItem = UIBarButtonItem(
+      title: "Logout",
+      style: .plain,
+      target: self,
+      action: #selector(logout)
+    )
+    
     addSubviews()
     addConstraints()
     
@@ -127,6 +134,10 @@ final class AccountsViewController: UIViewController {
   @objc
   private func addAccount() {
     viewModel.addAccount()
+  }
+  
+  @objc func logout() {
+    viewModel.logout()
   }
   
   private func showAccountDetails(index: Int) {

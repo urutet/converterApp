@@ -24,6 +24,11 @@ final class RepositoryAssembly: Assembly {
     
     container.register(EmailAuthServiceProtocol.self) { _ in FirebaseAuthService() }
       .inObjectScope(.container)
+    
+    container.register(AuthStateListener.self) { _ in
+      FirebaseAuthService()
+    }
+    .inObjectScope(.container)
   }
   
 }

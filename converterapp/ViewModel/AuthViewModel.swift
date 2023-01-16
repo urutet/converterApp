@@ -53,7 +53,7 @@ final class AuthViewModel: AppDependencyProvider {
     authService?.login(email: email, password: password) { [weak self] result in
       switch result {
       case .success():
-        self?.coordinator.goToAccountsViewController()
+        print("Logged in")
       case .failure(let error):
         self?.errorPublisher.send(error.localizedDescription)
       }
@@ -68,7 +68,7 @@ final class AuthViewModel: AppDependencyProvider {
     authService?.signup(email: email, password: password) { [weak self] result in
       switch result {
       case .success():
-        self?.coordinator.goToAccountsViewController()
+        print("Signed up")
       case .failure(let error):
         self?.errorPublisher.send(error.localizedDescription)
       }

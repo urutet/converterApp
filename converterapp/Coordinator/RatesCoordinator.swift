@@ -61,4 +61,8 @@ final class RatesCoordinator: Coordinator {
     
     return favouriteCurrenciesViewModel
   }
+  
+  func getRootViewController() -> UIViewController {
+    rootViewController
+  }
 }

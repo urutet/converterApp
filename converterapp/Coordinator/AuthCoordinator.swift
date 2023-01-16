@@ -35,15 +35,7 @@ final class AuthCoordinator: Coordinator {
     
   }
   
-  func goToAccountsViewController() {
-    let accountsCoordinator = AccountsCoordinator()
-    let accountsViewModel = AccountsViewModel()
-    accountsCoordinator.viewModel = accountsViewModel
-    accountsCoordinator.start()
-    accountsCoordinator.rootViewController.tabBarItem = UITabBarItem(
-      title: Strings.Main.accounts,
-      image: Constants.accountsImage,
-      selectedImage: Constants.accountsSelectedImage
-    )
+  func getRootViewController() -> UIViewController {
+    rootViewController
   }
 }

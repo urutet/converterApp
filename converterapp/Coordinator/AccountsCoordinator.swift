@@ -76,4 +76,7 @@ final class AccountsCoordinator: Coordinator {
     rootViewController.popViewController(animated: true)
   }
   
+  func getRootViewController() -> UIViewController {
+    rootViewController
+  }
 }

@@ -69,7 +69,7 @@ final class AccountsViewController: UIViewController {
     )
     
     navigationItem.leftBarButtonItem = UIBarButtonItem(
-      title: "Logout",
+      title: Strings.Accounts.logout,
       style: .plain,
       target: self,
       action: #selector(logout)

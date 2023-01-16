@@ -31,6 +31,8 @@ internal enum Strings {
     internal static let deleteText = Strings.tr("Localizable", "Accounts.deleteText")
     /// Edit
     internal static let editAccount = Strings.tr("Localizable", "Accounts.editAccount")
+    /// Logout
+    internal static let logout = Strings.tr("Localizable", "Accounts.Logout")
     /// Remove
     internal static let removeAccount = Strings.tr("Localizable", "Accounts.removeAccount")
     /// Show
@@ -61,6 +63,27 @@ internal enum Strings {
     internal static let invalidName = Strings.tr("Localizable", "AddTransaction.InvalidName")
     /// Name
     internal static let name = Strings.tr("Localizable", "AddTransaction.Name")
+  }
+
+  internal enum Auth {
+    /// Confirm Password
+    internal static let confirmPassword = Strings.tr("Localizable", "Auth.ConfirmPassword")
+    /// Email
+    internal static let email = Strings.tr("Localizable", "Auth.Email")
+    /// Have an account?
+    internal static let haveAnAccount = Strings.tr("Localizable", "Auth.HaveAnAccount")
+    /// Logged In
+    internal static let loggedIn = Strings.tr("Localizable", "Auth.LoggedIn")
+    /// Login
+    internal static let login = Strings.tr("Localizable", "Auth.Login")
+    /// Or you can
+    internal static let orYouCan = Strings.tr("Localizable", "Auth.OrYouCan")
+    /// Password
+    internal static let password = Strings.tr("Localizable", "Auth.Password")
+    /// Signed Up
+    internal static let signedUp = Strings.tr("Localizable", "Auth.SignedUp")
+    /// Sign Up
+    internal static let signUp = Strings.tr("Localizable", "Auth.SignUp")
   }
 
   internal enum Converter {

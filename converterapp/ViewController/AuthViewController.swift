@@ -44,7 +44,7 @@ class AuthViewController: UIViewController {
     
     textField.translatesAutoresizingMaskIntoConstraints = false
     textField.keyboardType = .emailAddress
-    textField.setTitle("Email")
+    textField.setTitle(Strings.Auth.email)
     textField.layer.borderWidth = 1
     textField.layer.borderColor = UIColor.systemGray4.cgColor
     textField.layer.cornerRadius = 5
@@ -59,7 +59,7 @@ class AuthViewController: UIViewController {
     
     textField.translatesAutoresizingMaskIntoConstraints = false
     textField.isSecureTextEntry = true
-    textField.setTitle("Password")
+    textField.setTitle(Strings.Auth.password)
     textField.layer.borderWidth = 1
     textField.layer.borderColor = UIColor.systemGray4.cgColor
     textField.layer.cornerRadius = 5
@@ -74,7 +74,7 @@ class AuthViewController: UIViewController {
     
     textField.translatesAutoresizingMaskIntoConstraints = false
     textField.isSecureTextEntry = true
-    textField.setTitle("Confirm Password")
+    textField.setTitle(Strings.Auth.confirmPassword)
     textField.layer.borderWidth = 1
     textField.layer.borderColor = UIColor.systemGray4.cgColor
     textField.layer.cornerRadius = 5
@@ -88,7 +88,7 @@ class AuthViewController: UIViewController {
     let button = TitledButton()
     
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle("Login", for: .normal)
+    button.setTitle(Strings.Auth.confirmPassword, for: .normal)
     button.titleLabel?.font = FontsManager.bold(ofSize: 20)
     button.backgroundColor = .systemBlue
     button.layer.cornerRadius = 5
@@ -100,7 +100,7 @@ class AuthViewController: UIViewController {
     let button = TitledButton()
     
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle("SignUp", for: .normal)
+    button.setTitle(Strings.Auth.signUp, for: .normal)
     button.titleLabel?.font = FontsManager.bold(ofSize: 20)
     button.backgroundColor = .systemBlue
     button.layer.cornerRadius = 5
@@ -125,7 +125,7 @@ class AuthViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
-    navigationItem.title = "Login"
+    navigationItem.title = Strings.Auth.login
     
     addSubviews()
     addConstraints()
@@ -175,34 +175,34 @@ class AuthViewController: UIViewController {
   }
   
   private func setLoginLayout() {
-    navigationItem.title = "Login"
+    navigationItem.title = Strings.Auth.login
     UIView.animate(withDuration: Constants.animationDuration, delay: 0) {
       self.confirmPasswordTextField.layer.opacity = 0
       self.confirmPasswordTextField.isHidden = true
     }
     topButton.setText("")
-    topButton.setTitle("Login", for: .normal)
+    topButton.setTitle(Strings.Auth.login, for: .normal)
     topButton.removeTarget(self, action: #selector(signup), for: .touchUpInside)
     topButton.addTarget(self, action: #selector(login), for: .touchUpInside)
 
-    bottomButton.setText("Or you can")
-    bottomButton.setTitle("Sign Up", for: .normal)
+    bottomButton.setText(Strings.Auth.orYouCan)
+    bottomButton.setTitle(Strings.Auth.signUp, for: .normal)
   }
   
   private func setSignupLayout() {
-    navigationItem.title = "Sign Up"
+    navigationItem.title = Strings.Auth.signUp
     UIView.animate(withDuration: Constants.animationDuration, delay: 0) {
       self.confirmPasswordTextField.layer.opacity = 1
       self.confirmPasswordTextField.isHidden = false
     }
     
     topButton.setText("")
-    topButton.setTitle("Sign Up", for: .normal)
+    topButton.setTitle(Strings.Auth.signUp, for: .normal)
     topButton.removeTarget(self, action: #selector(login), for: .touchUpInside)
     topButton.addTarget(self, action: #selector(signup), for: .touchUpInside)
 
-    bottomButton.setText("Have an account?")
-    bottomButton.setTitle("Login", for: .normal)
+    bottomButton.setText(Strings.Auth.haveAnAccount)
+    bottomButton.setTitle(Strings.Auth.login, for: .normal)
   }
   
   @objc

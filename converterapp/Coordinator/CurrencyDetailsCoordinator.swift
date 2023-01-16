@@ -23,4 +23,7 @@ final class CurrencyDetailsCoordinator: Coordinator {
     rootCoordinator.rootViewController.popViewController(animated: true)
   }
   
+  func getRootViewController() -> UIViewController {
+    currencyDetailsViewController
+  }
 }

@@ -36,6 +36,14 @@ final class ViewModelAssembly: Assembly {
       return viewModel
     }
     
+    container.register(AuthViewModel.self) { resolver in
+      let viewModel = AuthViewModel()
+      
+      viewModel.authService = resolver.resolve(EmailAuthServiceProtocol.self)
+      
+      return viewModel
+    }
+    
   }
   
 }

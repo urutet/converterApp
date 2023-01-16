@@ -8,8 +8,7 @@
 import UIKit
 import Swinject
 
-final class MainCoordinator: Coordinator {
-  
+final class MainCoordinator: Coordinator, AppDependencyProvider {
   private enum Constants {
     static let ratesImage = UIImage(systemName: "dollarsign.circle")
     static let ratesSelectedImage = UIImage(systemName: "dollarsign.circle.fill")
@@ -19,8 +18,7 @@ final class MainCoordinator: Coordinator {
     static let accountsSelectedImage = UIImage(systemName: "person.crop.circle.fill")
   }
   
-  let container = Container()
-  let rootViewController: UITabBarController = {
+  var rootViewController: UITabBarController = {
     let tabBarController = UITabBarController()
     
     tabBarController.view.backgroundColor = .systemBackground
@@ -29,6 +27,7 @@ final class MainCoordinator: Coordinator {
   }()
   
   var childCoordinators = [Coordinator]()
+  let authStateService = MainCoordinator.container.resolve(AuthStateListener.self)
   
   func start() {
     let ratesCoordinator = RatesCoordinator()
@@ -60,13 +59,45 @@ final class MainCoordinator: Coordinator {
       image: Constants.accountsImage,
       selectedImage: Constants.accountsSelectedImage
     )
+    accountsCoordinator.rootViewController.tabBarItem = UITabBarItem(
+      title: Strings.Main.accounts,
+      image: Constants.accountsImage,
+      selectedImage: Constants.accountsSelectedImage
+    )
     
-    childCoordinators = [ratesCoordinator, converterCoordinator, accountsCoordinator]
+    let authCoordinator = AuthCoordinator()
+    let authViewModel = AuthViewModel()
+    authCoordinator.parentCoordinator = self
+    authCoordinator.viewModel = authViewModel
+    authCoordinator.start()
+    authCoordinator.rootViewController.tabBarItem = UITabBarItem(
+      title: Strings.Main.accounts,
+      image: Constants.accountsImage,
+      selectedImage: Constants.accountsSelectedImage
+    )
     
-    rootViewController.viewControllers = [
-      ratesCoordinator.rootViewController,
-      converterCoordinator.rootViewController,
-      accountsCoordinator.rootViewController
-    ]
+    childCoordinators = [ratesCoordinator, converterCoordinator, accountsCoordinator, authCoordinator]
+    
+    authStateService?.addAuthStateListener { [weak self] authState in
+      self?.setViewControllers(authState: authState)
+    }
+  }
+  
+  func setViewControllers(authState: AuthState) {
+    let viewControllersToPush: [UIViewController?] = childCoordinators.compactMap { coordinator -> UIViewController? in
+      switch authState {
+      case .loggedIn:
+        if coordinator is AuthCoordinator { return nil }
+        return coordinator.getRootViewController()
+      case .notLoggedIn:
+        if coordinator is AccountsCoordinator { return nil }
+        return coordinator.getRootViewController()
+      }
+    }
+    rootViewController.viewControllers = viewControllersToPush.compactMap { $0 }
+  }
+  
+  func getRootViewController() -> UIViewController {
+    rootViewController
   }
 }

@@ -24,4 +24,7 @@ final class AddAccountCoordinator: Coordinator {
     rootCoordinator.rootViewController.popViewController(animated: true)
   }
   
+  func getRootViewController() -> UIViewController {
+    addAccountViewController
+  }
 }

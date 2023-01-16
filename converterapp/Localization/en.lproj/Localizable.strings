@@ -8,6 +8,7 @@
 "Main.rates" = "Rates";
 "Main.converter" = "Converter";
 "Main.accounts" = "Accounts";
+"Accounts.Logout" = "Logout";
 "Accounts.addAccount" = "Add first account";
 "Accounts.contextMenuTitle" = "Account";
 "Accounts.showAccount" = "Show";
@@ -39,4 +40,12 @@
 "FavouriteCurrencies.FavouriteCurrencies" = "Favourite Currencies";
 "FavouriteCurrencies.Currencies" = "Currencies";
 "FavouriteCurrencies.Done" = "Done";
-
+"Auth.LoggedIn" = "Logged In";
+"Auth.SignedUp" = "Signed Up";
+"Auth.Email" = "Email";
+"Auth.Password" = "Password";
+"Auth.ConfirmPassword" = "Confirm Password";
+"Auth.Login" = "Login";
+"Auth.SignUp" = "Sign Up";
+"Auth.OrYouCan" = "Or you can";
+"Auth.HaveAnAccount" = "Have an account?";

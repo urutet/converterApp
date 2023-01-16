@@ -12,6 +12,7 @@ final class AccountsViewModel: AppDependencyProvider, ObservableObject {
   var coordinator: AccountsCoordinator!
   var subscriptions = Set<AnyCancellable>()
   var accountsRepository: AccountsRepositoryProtocol? = container.resolve(AccountsRepositoryProtocol.self)
+  var authService: EmailAuthServiceProtocol? = container.resolve(EmailAuthServiceProtocol.self)
   let remoteConfig: RemoteConfigProtocol = FirebaseRemoteConfig.shared
   @Published var accounts = [Account]()
   
@@ -56,5 +57,9 @@ final class AccountsViewModel: AppDependencyProvider, ObservableObject {
       strongSelf.coordinator.pop()
     }
     .store(in: &subscriptions)
+  }
+  
+  func logout() {
+    authService?.logout()
   }
 }

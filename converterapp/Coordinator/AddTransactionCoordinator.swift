@@ -24,4 +24,7 @@ final class AddTransactionCoordinator: Coordinator {
     rootCoordinator.rootCoordinator.rootViewController.popViewController(animated: true)
   }
   
+  func getRootViewController() -> UIViewController {
+    addTransactionViewController
+  }
 }

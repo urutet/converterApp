@@ -39,8 +39,9 @@ final class TitledTextField: UITextField {
   // MARK: - Setups
   private func setupTextField() {
     addSubview(label)
+    
     NSLayoutConstraint.activate([
-      label.bottomAnchor.constraint(equalTo: topAnchor, constant: -5)
+      label.bottomAnchor.constraint(equalTo: topAnchor, constant: -5),
     ])
   }
   

@@ -5,7 +5,7 @@
 //  Created by Yushkevich Ilya on 23.06.22.
 //
 
-import Foundation
+import UIKit
 
 final class FavouriteCurrenciesCoordinator: Coordinator {
   
@@ -23,4 +23,7 @@ final class FavouriteCurrenciesCoordinator: Coordinator {
     rootCoordinator.rootViewController.popViewController(animated: true)
   }
   
+  func getRootViewController() -> UIViewController {
+    favouriteCurrenciesViewController
+  }
 }

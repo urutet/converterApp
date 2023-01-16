@@ -50,4 +50,8 @@ final class AccountDetailsCoordinator: Coordinator {
     
     return addTransationViewModel
   }
+  
+  func getRootViewController() -> UIViewController {
+    accountDetailsViewController
+  }
 }

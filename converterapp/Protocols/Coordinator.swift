@@ -9,4 +9,5 @@ import UIKit
 
 protocol Coordinator {
   func start()
+  func getRootViewController() -> UIViewController
 }

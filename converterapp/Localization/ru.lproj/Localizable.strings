@@ -8,6 +8,7 @@
 "Main.rates" = "Курсы";
 "Main.converter" = "Конвертер";
 "Main.accounts" = "Счета";
+"Accounts.Logout" = "Выйти";
 "Accounts.addAccount" = "Добавьте первый аккаунт";
 "Accounts.contextMenuTitle" = "Аккаунт";
 "Accounts.showAccount" = "Открыть";
@@ -39,3 +40,12 @@
 "FavouriteCurrencies.FavouriteCurrencies" = "Избранные валюты";
 "FavouriteCurrencies.Currencies" = "Валюты";
 "FavouriteCurrencies.Done" = "Готово";
+"Auth.LoggedIn" = "Успешный вход";
+"Auth.SignedUp" = "Регистрация успешна";
+"Auth.Email" = "Электронная почта";
+"Auth.Password" = "Пароль";
+"Auth.ConfirmPassword" = "Подтверждение пароля";
+"Auth.Login" = "Войти";
+"Auth.SignUp" = "Зарегистрироваться";
+"Auth.OrYouCan" = "или вы можете";
+"Auth.HaveAnAccount" = "Есть акканут?";

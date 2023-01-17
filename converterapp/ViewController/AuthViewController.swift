@@ -109,6 +109,19 @@ class AuthViewController: UIViewController {
     return button
   }()
   
+  private let authorizeWithFaceIDButton: UIButton = {
+    let button = UIButton()
+    
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.setImage(UIImage(systemName: "faceid"), for: .normal)
+    button.setTitle("Login with FaceID", for: .normal)
+    button.titleLabel?.font = FontsManager.bold(ofSize: 20)
+    button.setTitleColor(.systemBlue, for: .normal)
+    button.addTarget(self, action: #selector(loginWithFaceID), for: .touchUpInside)
+    
+    return button
+  }()
+  
   private let errorLabel: UILabel = {
     let label = UILabel()
     
@@ -141,6 +154,7 @@ class AuthViewController: UIViewController {
     stackView.addArrangedSubview(topButton)
     stackView.addArrangedSubview(bottomButton)
     stackView.addArrangedSubview(errorLabel)
+    stackView.addArrangedSubview(authorizeWithFaceIDButton)
   }
   
   private func addConstraints() {
@@ -157,7 +171,8 @@ class AuthViewController: UIViewController {
       passwordTextField.heightAnchor.constraint(equalToConstant: 40),
       confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 40),
       topButton.heightAnchor.constraint(equalToConstant: 40),
-      bottomButton.heightAnchor.constraint(equalToConstant: 40)
+      bottomButton.heightAnchor.constraint(equalToConstant: 40),
+      authorizeWithFaceIDButton.heightAnchor.constraint(equalToConstant: 40)
     ])
   }
   
@@ -179,6 +194,8 @@ class AuthViewController: UIViewController {
     UIView.animate(withDuration: Constants.animationDuration, delay: 0) {
       self.confirmPasswordTextField.layer.opacity = 0
       self.confirmPasswordTextField.isHidden = true
+      self.authorizeWithFaceIDButton.layer.opacity = 1
+      self.authorizeWithFaceIDButton.isHidden = false
     }
     topButton.setText("")
     topButton.setTitle(Strings.Auth.login, for: .normal)
@@ -194,6 +211,8 @@ class AuthViewController: UIViewController {
     UIView.animate(withDuration: Constants.animationDuration, delay: 0) {
       self.confirmPasswordTextField.layer.opacity = 1
       self.confirmPasswordTextField.isHidden = false
+      self.authorizeWithFaceIDButton.layer.opacity = 0
+      self.authorizeWithFaceIDButton.isHidden = true
     }
     
     topButton.setText("")
@@ -220,7 +239,13 @@ class AuthViewController: UIViewController {
     viewModel.signup()
   }
   
-  @objc func changeLayout() {
+  @objc
+  func changeLayout() {
     viewModel.isLoginScreen.send(!viewModel.isLoginScreen.value)
+  }
+  
+  @objc
+  func loginWithFaceID() {
+    viewModel.loginWithFaceID()
   }
 }

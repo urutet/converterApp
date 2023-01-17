@@ -70,6 +70,10 @@ internal enum Strings {
     internal static let confirmPassword = Strings.tr("Localizable", "Auth.ConfirmPassword")
     /// Email
     internal static let email = Strings.tr("Localizable", "Auth.Email")
+    /// No FaceID credentials found
+    internal static let faceIDCredentials = Strings.tr("Localizable", "Auth.FaceIDCredentials")
+    /// FaceID not enrolled
+    internal static let faceIDNotEnrolled = Strings.tr("Localizable", "Auth.FaceIDNotEnrolled")
     /// Have an account?
     internal static let haveAnAccount = Strings.tr("Localizable", "Auth.HaveAnAccount")
     /// Logged In

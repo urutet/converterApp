@@ -89,7 +89,7 @@ final class AuthViewModel: AppDependencyProvider {
           guard let email = UserDefaults.standard.string(forKey: Constants.emailKey),
                 let password = self?.keychainService.read(service: Constants.service, account: email, ofType: String.self)
           else {
-            self?.errorPublisher.send("No FaceID credentials found")
+            self?.errorPublisher.send(Strings.Auth.faceIDNotEnrolled)
             return
           }
           self?.authService?.login(email: email, password: password) { [weak self] result in
@@ -102,7 +102,7 @@ final class AuthViewModel: AppDependencyProvider {
             }
           }
         } else {
-          self?.errorPublisher.send("FaceID not enrolled")
+          self?.errorPublisher.send(Strings.Auth.faceIDNotEnrolled)
         }
       case .failure(let error):
         self?.errorPublisher.send(error.localizedDescription)

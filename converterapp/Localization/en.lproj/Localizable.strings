@@ -49,3 +49,5 @@
 "Auth.SignUp" = "Sign Up";
 "Auth.OrYouCan" = "Or you can";
 "Auth.HaveAnAccount" = "Have an account?";
+"Auth.FaceIDCredentials" = "No FaceID credentials found";
+"Auth.FaceIDNotEnrolled" = "FaceID not enrolled";

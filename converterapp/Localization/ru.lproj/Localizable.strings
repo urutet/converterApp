@@ -49,3 +49,5 @@
 "Auth.SignUp" = "Зарегистрироваться";
 "Auth.OrYouCan" = "или вы можете";
 "Auth.HaveAnAccount" = "Есть акканут?";
+"Auth.FaceIDCredentials" = "Нет данных для авторизации";
+"Auth.FaceIDNotEnrolled" = "FaceID отсутствует";

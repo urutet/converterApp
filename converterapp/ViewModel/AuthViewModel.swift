@@ -14,6 +14,7 @@ final class AuthViewModel: AppDependencyProvider {
     static let emailRegex = #"^\S+@\S+\.\S+$"#
   }
   
+  let faceIDAuth = FaceIDAuth()
   var coordinator: AuthCoordinator!
   var authService: EmailAuthServiceProtocol? = container.resolve(EmailAuthServiceProtocol.self)
   
@@ -69,6 +70,21 @@ final class AuthViewModel: AppDependencyProvider {
       switch result {
       case .success():
         print(Strings.Auth.signedUp)
+      case .failure(let error):
+        self?.errorPublisher.send(error.localizedDescription)
+      }
+    }
+  }
+  
+  func loginWithFaceID() {
+    faceIDAuth.authorizeWithBiometrics { [weak self] result in
+      switch result {
+      case .success(let success):
+        if success {
+          print(Strings.Auth.loggedIn)
+        } else {
+          self?.errorPublisher.send("FaceID not enrolled")
+        }
       case .failure(let error):
         self?.errorPublisher.send(error.localizedDescription)
       }

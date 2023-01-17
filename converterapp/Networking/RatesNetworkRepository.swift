@@ -12,7 +12,7 @@ final class RatesNetworkRepository: RatesRepositoryProtocol, AppDependencyProvid
     static let dateFormat = "yyyy-MM-dd"
   }
   
-  weak var currenciesCache: CurrenciesCacheProtocol? = container.resolve(CurrenciesCacheProtocol.self)
+  var currenciesCache: CurrenciesCacheProtocol? = container.resolve(CurrenciesCacheProtocol.self)
   
   private let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()

@@ -81,6 +81,7 @@
 		CEA8B58E296FFF470008E2E7 /* EmailAuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8B58D296FFF470008E2E7 /* EmailAuthServiceProtocol.swift */; };
 		CEA8B590296FFF540008E2E7 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8B58F296FFF540008E2E7 /* FirebaseAuthService.swift */; };
 		CEE161422975EBD7006FF5D2 /* FaceIDAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE161412975EBD7006FF5D2 /* FaceIDAuth.swift */; };
+		CEE16145297681AA006FF5D2 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE16144297681AA006FF5D2 /* KeychainService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,6 +164,7 @@
 		CEA8B58D296FFF470008E2E7 /* EmailAuthServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthServiceProtocol.swift; sourceTree = "<group>"; };
 		CEA8B58F296FFF540008E2E7 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		CEE161412975EBD7006FF5D2 /* FaceIDAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDAuth.swift; sourceTree = "<group>"; };
+		CEE16144297681AA006FF5D2 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		F6A2651B897CCB017A76C79B /* Pods-converterapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.debug.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,6 +201,7 @@
 		3A2357B12816FB0900CDC496 /* converterapp */ = {
 			isa = PBXGroup;
 			children = (
+				CEE1614329768195006FF5D2 /* Security */,
 				CEA8B58C296FFF360008E2E7 /* Auth */,
 				CE75263329520594001BF213 /* Injection */,
 				3A66A3F6288088D000CBD283 /* Cache */,
@@ -438,6 +441,14 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		CEE1614329768195006FF5D2 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				CEE16144297681AA006FF5D2 /* KeychainService.swift */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -648,6 +659,7 @@
 				CE75263A2952073D001BF213 /* DependencyProvider.swift in Sources */,
 				3A2357FF2817D54600CDC496 /* Strings.swift in Sources */,
 				3A50B7B9285669BB00C40EC1 /* PersistentContainerRepository.swift in Sources */,
+				CEE16145297681AA006FF5D2 /* KeychainService.swift in Sources */,
 				CEE161422975EBD7006FF5D2 /* FaceIDAuth.swift in Sources */,
 				3A6281A8282C2A9300D22BC4 /* AccountDetailsViewModel.swift in Sources */,
 				3A2357E3281741AB00CDC496 /* ConverterViewController.swift in Sources */,

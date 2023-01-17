@@ -12,9 +12,12 @@ import FirebaseAuth
 final class AuthViewModel: AppDependencyProvider {
   private enum Constants {
     static let emailRegex = #"^\S+@\S+\.\S+$"#
+    static let service = "Firebase"
+    static let emailKey = "latestEmail"
   }
   
   let faceIDAuth = FaceIDAuth()
+  let keychainService = KeychainService()
   var coordinator: AuthCoordinator!
   var authService: EmailAuthServiceProtocol? = container.resolve(EmailAuthServiceProtocol.self)
   
@@ -54,7 +57,8 @@ final class AuthViewModel: AppDependencyProvider {
     authService?.login(email: email, password: password) { [weak self] result in
       switch result {
       case .success():
-        print(Strings.Auth.loggedIn)
+        self?.keychainService.save(password, service: Constants.service, account: email)
+        UserDefaults.standard.set(email, forKey: Constants.emailKey)
       case .failure(let error):
         self?.errorPublisher.send(error.localizedDescription)
       }
@@ -69,7 +73,8 @@ final class AuthViewModel: AppDependencyProvider {
     authService?.signup(email: email, password: password) { [weak self] result in
       switch result {
       case .success():
-        print(Strings.Auth.signedUp)
+        self?.keychainService.save(password, service: Constants.service, account: email)
+        UserDefaults.standard.set(email, forKey: Constants.emailKey)
       case .failure(let error):
         self?.errorPublisher.send(error.localizedDescription)
       }
@@ -81,7 +86,21 @@ final class AuthViewModel: AppDependencyProvider {
       switch result {
       case .success(let success):
         if success {
-          print(Strings.Auth.loggedIn)
+          guard let email = UserDefaults.standard.string(forKey: Constants.emailKey),
+                let password = self?.keychainService.read(service: Constants.service, account: email, ofType: String.self)
+          else {
+            self?.errorPublisher.send("No FaceID credentials found")
+            return
+          }
+          self?.authService?.login(email: email, password: password) { [weak self] result in
+            switch result {
+            case .success():
+              self?.keychainService.save(password, service: Constants.service, account: email)
+              UserDefaults.standard.set(email, forKey: Constants.emailKey)
+            case .failure(let error):
+              self?.errorPublisher.send(error.localizedDescription)
+            }
+          }
         } else {
           self?.errorPublisher.send("FaceID not enrolled")
         }

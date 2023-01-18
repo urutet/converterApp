@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Currency: Codable {
+struct Currency: Codable, Identifiable {
   let id: Int?
   let date: String
   let abbreviation: String?

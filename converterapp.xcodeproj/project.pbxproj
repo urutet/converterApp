@@ -82,7 +82,43 @@
 		CEA8B590296FFF540008E2E7 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8B58F296FFF540008E2E7 /* FirebaseAuthService.swift */; };
 		CEE161422975EBD7006FF5D2 /* FaceIDAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE161412975EBD7006FF5D2 /* FaceIDAuth.swift */; };
 		CEE16145297681AA006FF5D2 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE16144297681AA006FF5D2 /* KeychainService.swift */; };
+		CEE1616B2976BD31006FF5D2 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE1616A2976BD31006FF5D2 /* WidgetKit.framework */; };
+		CEE1616D2976BD31006FF5D2 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE1616C2976BD31006FF5D2 /* SwiftUI.framework */; };
+		CEE161702976BD31006FF5D2 /* converterAppWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE1616F2976BD31006FF5D2 /* converterAppWidgetBundle.swift */; };
+		CEE161722976BD31006FF5D2 /* converterAppWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE161712976BD31006FF5D2 /* converterAppWidget.swift */; };
+		CEE161742976BD33006FF5D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEE161732976BD33006FF5D2 /* Assets.xcassets */; };
+		CEE161782976BD33006FF5D2 /* converterAppWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CEE161692976BD31006FF5D2 /* converterAppWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CEE1617D2976C3CD006FF5D2 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23581828191E9300CDC496 /* Currency.swift */; };
+		CEE161802976CAFD006FF5D2 /* Decimal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE1617F2976CAFD006FF5D2 /* Decimal+Extensions.swift */; };
+		CEE161812976CC0A006FF5D2 /* Decimal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE1617F2976CAFD006FF5D2 /* Decimal+Extensions.swift */; };
+		CEE161822976CD35006FF5D2 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281962829784D00D22BC4 /* String+Extensions.swift */; };
+		CEE1618B2977E0D8006FF5D2 /* ConverterAppWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE1618A2977E0D8006FF5D2 /* ConverterAppWidgetViewModel.swift */; };
+		CEE161932977E95E006FF5D2 /* CurrencyTimelineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE161922977E95E006FF5D2 /* CurrencyTimelineModel.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CEE161762976BD33006FF5D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A2357A72816FB0900CDC496 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CEE161682976BD31006FF5D2;
+			remoteInfo = converterAppWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CEE161792976BD33006FF5D2 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CEE161782976BD33006FF5D2 /* converterAppWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3A2357AF2816FB0900CDC496 /* converterapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = converterapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +201,17 @@
 		CEA8B58F296FFF540008E2E7 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		CEE161412975EBD7006FF5D2 /* FaceIDAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDAuth.swift; sourceTree = "<group>"; };
 		CEE16144297681AA006FF5D2 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		CEE161692976BD31006FF5D2 /* converterAppWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = converterAppWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEE1616A2976BD31006FF5D2 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		CEE1616C2976BD31006FF5D2 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		CEE1616F2976BD31006FF5D2 /* converterAppWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = converterAppWidgetBundle.swift; sourceTree = "<group>"; };
+		CEE161712976BD31006FF5D2 /* converterAppWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = converterAppWidget.swift; sourceTree = "<group>"; };
+		CEE161732976BD33006FF5D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEE161752976BD33006FF5D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEE1617F2976CAFD006FF5D2 /* Decimal+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extensions.swift"; sourceTree = "<group>"; };
+		CEE161832976D1AE006FF5D2 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEE1618A2977E0D8006FF5D2 /* ConverterAppWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterAppWidgetViewModel.swift; sourceTree = "<group>"; };
+		CEE161922977E95E006FF5D2 /* CurrencyTimelineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTimelineModel.swift; sourceTree = "<group>"; };
 		F6A2651B897CCB017A76C79B /* Pods-converterapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.debug.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +224,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CEE161662976BD31006FF5D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEE1616D2976BD31006FF5D2 /* SwiftUI.framework in Frameworks */,
+				CEE1616B2976BD31006FF5D2 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -184,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				3A2357B12816FB0900CDC496 /* converterapp */,
+				CEE1616E2976BD31006FF5D2 /* converterAppWidget */,
 				3A2357B02816FB0900CDC496 /* Products */,
 				8304C6C14A7A56E1172755E2 /* Pods */,
 				45AAFF322CDB33DFE6923F37 /* Frameworks */,
@@ -194,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				3A2357AF2816FB0900CDC496 /* converterapp.app */,
+				CEE161692976BD31006FF5D2 /* converterAppWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -356,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				3A6281962829784D00D22BC4 /* String+Extensions.swift */,
+				CEE1617F2976CAFD006FF5D2 /* Decimal+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -399,7 +458,10 @@
 		45AAFF322CDB33DFE6923F37 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEE161832976D1AE006FF5D2 /* Alamofire.framework */,
 				4EDF46F04C667626469BF1E0 /* Pods_converterapp.framework */,
+				CEE1616A2976BD31006FF5D2 /* WidgetKit.framework */,
+				CEE1616C2976BD31006FF5D2 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -449,6 +511,19 @@
 			path = Security;
 			sourceTree = "<group>";
 		};
+		CEE1616E2976BD31006FF5D2 /* converterAppWidget */ = {
+			isa = PBXGroup;
+			children = (
+				CEE1616F2976BD31006FF5D2 /* converterAppWidgetBundle.swift */,
+				CEE161712976BD31006FF5D2 /* converterAppWidget.swift */,
+				CEE161732976BD33006FF5D2 /* Assets.xcassets */,
+				CEE161752976BD33006FF5D2 /* Info.plist */,
+				CEE1618A2977E0D8006FF5D2 /* ConverterAppWidgetViewModel.swift */,
+				CEE161922977E95E006FF5D2 /* CurrencyTimelineModel.swift */,
+			);
+			path = converterAppWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -463,15 +538,34 @@
 				3A2357AD2816FB0900CDC496 /* Resources */,
 				27CDFF0DD05CCA838DB32D8D /* [CP] Embed Pods Frameworks */,
 				3A50B7D72872548F00C40EC1 /* Firebase Crashlytics */,
+				CEE161792976BD33006FF5D2 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CEE161772976BD33006FF5D2 /* PBXTargetDependency */,
 			);
 			name = converterapp;
 			productName = converterapp;
 			productReference = 3A2357AF2816FB0900CDC496 /* converterapp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CEE161682976BD31006FF5D2 /* converterAppWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEE1617C2976BD33006FF5D2 /* Build configuration list for PBXNativeTarget "converterAppWidgetExtension" */;
+			buildPhases = (
+				CEE161652976BD31006FF5D2 /* Sources */,
+				CEE161662976BD31006FF5D2 /* Frameworks */,
+				CEE161672976BD31006FF5D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = converterAppWidgetExtension;
+			productName = converterAppWidgetExtension;
+			productReference = CEE161692976BD31006FF5D2 /* converterAppWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -480,11 +574,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					3A2357AE2816FB0900CDC496 = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					CEE161682976BD31006FF5D2 = {
+						CreatedOnToolsVersion = 14.2;
 					};
 				};
 			};
@@ -502,6 +599,7 @@
 			projectRoot = "";
 			targets = (
 				3A2357AE2816FB0900CDC496 /* converterapp */,
+				CEE161682976BD31006FF5D2 /* converterAppWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -516,6 +614,14 @@
 				3A50B7D62872529000C40EC1 /* GoogleService-Info.plist in Resources */,
 				3A2357BC2816FB0B00CDC496 /* Assets.xcassets in Resources */,
 				3A2357F02817D0A300CDC496 /* swiftgen.yml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEE161672976BD31006FF5D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEE161742976BD33006FF5D2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +744,7 @@
 				CEA8B587296EFCB10008E2E7 /* AuthViewModel.swift in Sources */,
 				3A6281DE282CEB8D00D22BC4 /* TransactionMO+CoreDataClass.swift in Sources */,
 				3A50B7BD2857D6A800C40EC1 /* CurrencyDetailsViewController.swift in Sources */,
+				CEE161802976CAFD006FF5D2 /* Decimal+Extensions.swift in Sources */,
 				3A6281AE282C5F0A00D22BC4 /* RatesViewModel.swift in Sources */,
 				3A2357DE28173A3300CDC496 /* AppCoordinator.swift in Sources */,
 				3A50B7CC2863CD1500C40EC1 /* FavouriteCurrenciesCoordinator.swift in Sources */,
@@ -678,7 +785,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CEE161652976BD31006FF5D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEE161822976CD35006FF5D2 /* String+Extensions.swift in Sources */,
+				CEE1618B2977E0D8006FF5D2 /* ConverterAppWidgetViewModel.swift in Sources */,
+				CEE1617D2976C3CD006FF5D2 /* Currency.swift in Sources */,
+				CEE161932977E95E006FF5D2 /* CurrencyTimelineModel.swift in Sources */,
+				CEE161812976CC0A006FF5D2 /* Decimal+Extensions.swift in Sources */,
+				CEE161722976BD31006FF5D2 /* converterAppWidget.swift in Sources */,
+				CEE161702976BD31006FF5D2 /* converterAppWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CEE161772976BD33006FF5D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CEE161682976BD31006FF5D2 /* converterAppWidgetExtension */;
+			targetProxy = CEE161762976BD33006FF5D2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3A2357BD2816FB0B00CDC496 /* LaunchScreen.storyboard */ = {
@@ -824,6 +953,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F6A2651B897CCB017A76C79B /* Pods-converterapp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -856,6 +986,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A3105A7A286630367D110B5 /* Pods-converterapp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -883,6 +1014,64 @@
 			};
 			name = Release;
 		};
+		CEE1617A2976BD33006FF5D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M46WL2C5J3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = converterAppWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = converterAppWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Elijah.converterapp.converterAppWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CEE1617B2976BD33006FF5D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M46WL2C5J3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = converterAppWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = converterAppWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Elijah.converterapp.converterAppWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -900,6 +1089,15 @@
 			buildConfigurations = (
 				3A2357C42816FB0B00CDC496 /* Debug */,
 				3A2357C52816FB0B00CDC496 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEE1617C2976BD33006FF5D2 /* Build configuration list for PBXNativeTarget "converterAppWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEE1617A2976BD33006FF5D2 /* Debug */,
+				CEE1617B2976BD33006FF5D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

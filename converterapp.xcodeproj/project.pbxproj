@@ -94,6 +94,7 @@
 		CEE161822976CD35006FF5D2 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6281962829784D00D22BC4 /* String+Extensions.swift */; };
 		CEE1618B2977E0D8006FF5D2 /* ConverterAppWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE1618A2977E0D8006FF5D2 /* ConverterAppWidgetViewModel.swift */; };
 		CEE161932977E95E006FF5D2 /* CurrencyTimelineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE161922977E95E006FF5D2 /* CurrencyTimelineModel.swift */; };
+		CEE1619529781B1B006FF5D2 /* CurrenciesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE1619429781B1B006FF5D2 /* CurrenciesListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +213,7 @@
 		CEE161832976D1AE006FF5D2 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE1618A2977E0D8006FF5D2 /* ConverterAppWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterAppWidgetViewModel.swift; sourceTree = "<group>"; };
 		CEE161922977E95E006FF5D2 /* CurrencyTimelineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTimelineModel.swift; sourceTree = "<group>"; };
+		CEE1619429781B1B006FF5D2 /* CurrenciesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesListView.swift; sourceTree = "<group>"; };
 		F6A2651B897CCB017A76C79B /* Pods-converterapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-converterapp.debug.xcconfig"; path = "Target Support Files/Pods-converterapp/Pods-converterapp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -520,6 +522,7 @@
 				CEE161752976BD33006FF5D2 /* Info.plist */,
 				CEE1618A2977E0D8006FF5D2 /* ConverterAppWidgetViewModel.swift */,
 				CEE161922977E95E006FF5D2 /* CurrencyTimelineModel.swift */,
+				CEE1619429781B1B006FF5D2 /* CurrenciesListView.swift */,
 			);
 			path = converterAppWidget;
 			sourceTree = "<group>";
@@ -794,6 +797,7 @@
 				CEE1617D2976C3CD006FF5D2 /* Currency.swift in Sources */,
 				CEE161932977E95E006FF5D2 /* CurrencyTimelineModel.swift in Sources */,
 				CEE161812976CC0A006FF5D2 /* Decimal+Extensions.swift in Sources */,
+				CEE1619529781B1B006FF5D2 /* CurrenciesListView.swift in Sources */,
 				CEE161722976BD31006FF5D2 /* converterAppWidget.swift in Sources */,
 				CEE161702976BD31006FF5D2 /* converterAppWidgetBundle.swift in Sources */,
 			);
@@ -968,7 +972,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1000,7 +1004,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1027,7 +1031,7 @@
 				INFOPLIST_FILE = converterAppWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = converterAppWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1056,7 +1060,7 @@
 				INFOPLIST_FILE = converterAppWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = converterAppWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

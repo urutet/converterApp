@@ -9,6 +9,8 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: TimelineProvider {
+  @StateObject var viewModel = ConverterAppWidgetViewModel()
+
   func placeholder(in context: Context) -> CurrencyTimelineEntry {
     CurrencyTimelineEntry(
       date: Date(),
@@ -42,32 +44,38 @@ struct Provider: TimelineProvider {
   }
   
   @MainActor func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-    @StateObject var viewModel = ConverterAppWidgetViewModel()
-    
     viewModel.getData()
     
-    let timeline = Timeline(entries: [viewModel.entry], policy: .atEnd)
+    let nextUpdate = Calendar.current.date(byAdding: .second, value: 10, to: viewModel.entry.date)
+    
+    let timeline = Timeline(entries: [viewModel.entry], policy: .after(nextUpdate!))
+    
     completion(timeline)
   }
 }
 
 struct converterAppWidgetEntryView : View {
+  @Environment(\.widgetFamily) var family: WidgetFamily
   var entry: Provider.Entry
   
   var body: some View {
-    VStack {
-      Divider()
-      ForEach(entry.currencies.prefix(10)) { currency in
-        HStack {
-          Text(currency.abbreviation?.flagFromCurrency() ?? "")
-          Text(currency.abbreviation ?? "")
-            .bold()
-          Spacer()
-          Text(currency.rate?.toCurrencyString(currencyCode: currency.abbreviation!) ?? "")
-        }
-        .padding(.horizontal)
-        Divider()
-      }
+    switch family {
+    case .systemSmall:
+      CurrenciesListView(entry: entry, currenciesToShow: 2)
+    case .systemMedium:
+      CurrenciesListView(entry: entry, currenciesToShow: 3)
+    case .systemLarge:
+      CurrenciesListView(entry: entry, currenciesToShow: 8)
+    case .systemExtraLarge:
+      CurrenciesListView(entry: entry, currenciesToShow: 8)
+    case .accessoryCorner:
+      CurrenciesListView(entry: entry, currenciesToShow: 2)
+    case .accessoryCircular:
+      CurrenciesListView(entry: entry, currenciesToShow: 2)
+    case .accessoryRectangular:
+      CurrenciesListView(entry: entry, currenciesToShow: 2)
+    case .accessoryInline:
+      CurrenciesListView(entry: entry, currenciesToShow: 2)
     }
   }
 }

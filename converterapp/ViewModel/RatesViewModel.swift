@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import converterappCore
 
 final class RatesViewModel: AppDependencyProvider {
   var coordinator: RatesCoordinator!

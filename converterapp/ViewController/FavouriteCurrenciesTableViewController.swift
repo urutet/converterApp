@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import converterappCore
 
 class FavouriteCurrenciesTableViewController: UITableViewController {
   // MARK: - Properties

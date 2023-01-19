@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import FirebaseAuth
+import converterappCore
 
 final class AuthViewModel: AppDependencyProvider {
   private enum Constants {

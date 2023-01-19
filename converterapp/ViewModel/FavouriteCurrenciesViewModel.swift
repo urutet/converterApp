@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import converterappCore
 
 class FavouriteCurrenciesViewModel: AppDependencyProvider {
   var coordinator: FavouriteCurrenciesCoordinator!

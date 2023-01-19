@@ -7,6 +7,7 @@
 
 import WidgetKit
 import SwiftUI
+import converterappCore
 
 struct Provider: TimelineProvider {
   @StateObject var viewModel = ConverterAppWidgetViewModel()

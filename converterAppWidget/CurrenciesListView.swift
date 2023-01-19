@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WidgetKit
+import converterappCore
 
 struct CurrenciesListView: View {
   var entry: CurrencyTimelineEntry

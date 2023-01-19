@@ -1,17 +1,26 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '15.0'
+workspace 'converterapp.xcworkspace'
+
+use_frameworks!
+
+def shared_pods
+  pod 'SwiftGen', '~> 6.0'
+  pod 'Alamofire'
+  pod 'Charts', '~> 4.1.0'
+  pod 'FirebaseAnalytics'
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/RemoteConfig'
+  pod 'FirebaseAuth'
+  pod 'Swinject'
+end
 
 target 'converterapp' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+  xcodeproj 'converterapp'
+  shared_pods
+end
 
-  # Pods for converterapp
-pod 'SwiftGen', '~> 6.0'
-pod 'Alamofire'
-pod 'Charts', '~> 4.1.0'
-pod 'FirebaseAnalytics'
-pod 'Firebase/Crashlytics'
-pod 'Firebase/RemoteConfig'
-pod 'FirebaseAuth'
-pod 'Swinject'
+target 'converterappCore' do
+  xcodeproj 'Modules/converterappCore/converterappCore.xcodeproj'
+  shared_pods
 end

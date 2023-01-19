@@ -7,6 +7,7 @@
 
 import Foundation
 import WidgetKit
+import converterappCore
 
 final class CurrencyTimelineEntry: TimelineEntry {
   var date: Date

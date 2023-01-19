@@ -7,6 +7,7 @@
 
 import UIKit
 import Swinject
+import converterappCore
 
 final class MainCoordinator: Coordinator, AppDependencyProvider {
   private enum Constants {

@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import converterappCore
 
 final class ConverterViewModel: AppDependencyProvider {
   var currencies = [Currency]() {

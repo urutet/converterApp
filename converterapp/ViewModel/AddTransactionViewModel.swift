@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import converterappCore
 
 final class AddTransactionViewModel: AppDependencyProvider {
   var coordinator: AddTransactionCoordinator!

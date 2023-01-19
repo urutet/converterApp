@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import converterappCore
 
 final class AccountsViewModel: AppDependencyProvider, ObservableObject {
   var coordinator: AccountsCoordinator!

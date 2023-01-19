@@ -9,6 +9,7 @@ import UIKit
 import FirebaseCore
 import FirebaseInstallations
 import Swinject
+import converterappCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

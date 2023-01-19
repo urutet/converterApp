@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import converterappCore
 
 final class RateTableViewCell: UITableViewCell {
 

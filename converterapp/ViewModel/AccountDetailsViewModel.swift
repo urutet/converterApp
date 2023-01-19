@@ -5,6 +5,7 @@
 //  Created by Yushkevich Ilya on 11.05.22.
 //
 import Combine
+import converterappCore
 
 final class AccountDetailsViewModel: AppDependencyProvider {
   var coordinator: AccountDetailsCoordinator!

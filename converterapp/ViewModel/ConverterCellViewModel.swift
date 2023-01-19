@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import converterappCore
 
 final class ConverterCellViewModel: AppDependencyProvider {
   @Published var currency: Currency!

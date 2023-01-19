@@ -8,6 +8,7 @@
 import Foundation
 import Charts
 import Combine
+import converterappCore
 
 final class CurrencyDetailsViewModel: AppDependencyProvider {
   private enum Constants {

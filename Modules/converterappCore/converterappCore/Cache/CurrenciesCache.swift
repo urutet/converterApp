@@ -14,6 +14,8 @@ public final class CurrenciesCache: CurrenciesCacheProtocol {
   private static let favouritesKey = "favourites"
   private static let allCurrenciesKey = "allCurrencies"
   
+  public init() { }
+  
   public func pushFavourites(_ currencies: [Currency]) {
     UserDefaults.standard.set(try? encoder.encode(currencies), forKey: CurrenciesCache.favouritesKey)
   }

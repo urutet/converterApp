@@ -22,7 +22,7 @@ public final class RatesNetworkRepository: RatesRepositoryProtocol {
     return dateFormatter
   }()
   
-  init(currenciesCache: CurrenciesCacheProtocol?) {
+  public init(currenciesCache: CurrenciesCacheProtocol?) {
     self.currenciesCache = currenciesCache
   }
   

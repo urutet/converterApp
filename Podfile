@@ -5,9 +5,7 @@ workspace 'converterapp.xcworkspace'
 use_frameworks!
 
 def shared_pods
-  pod 'SwiftGen', '~> 6.0'
   pod 'Alamofire'
-  pod 'Charts', '~> 4.1.0'
   pod 'FirebaseAnalytics'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/RemoteConfig'
@@ -17,6 +15,8 @@ end
 
 target 'converterapp' do
   xcodeproj 'converterapp'
+  pod 'SwiftGen', '~> 6.0'
+  pod 'Charts', '~> 4.1.0'
   shared_pods
 end
 

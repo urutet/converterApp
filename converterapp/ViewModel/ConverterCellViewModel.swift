@@ -11,7 +11,7 @@ import converterappCore
 
 final class ConverterCellViewModel: AppDependencyProvider {
   @Published var currency: Currency!
-  var calculatedValue = PassthroughSubject<Decimal, Never>()
+  var calculatedValue = CurrentValueSubject<Decimal?, Never>(nil)
   var selectedCurrency: Currency?
   var isSelected = false
   

@@ -87,7 +87,7 @@ final class RateTableViewCell: UITableViewCell {
   // MARK: - API
   func setRate(currency: Currency) {
     currencyFlagLabel.text = currency.abbreviation?.flagFromCurrency()
-    currencyNameLabel.text = currency.abbreviation
+    currencyNameLabel.text = "\(currency.scale!) \(currency.abbreviation!)"
     numberFormatter.currencyCode = Constants.currencyCode
     currencyRateLabel.text = numberFormatter.string(from: NSDecimalNumber(decimal: currency.rate ?? 0.0))
   }

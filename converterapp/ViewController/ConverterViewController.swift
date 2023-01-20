@@ -98,11 +98,22 @@ extension ConverterViewController: UITableViewDelegate, UITableViewDataSource, U
   }
   
   func textFieldDidChangeSelection(_ textField: UITextField) {
-    guard let amount = Decimal(string: textField.text ?? "") else { return }
+    guard
+      let amount = Decimal(string: textField.text ?? "")
+    else {
+      let _ = viewModel.converterCellViewModels.map { $0.calculatedValue.send(nil) }
+      return
+    }
+    
     let selectedCurrency = viewModel.converterCellViewModels
       .filter { $0.isSelected == true }
       .first?
       .currency
+    
+    viewModel.converterCellViewModels
+      .filter { $0.isSelected == true }
+      .first?
+      .convertCurrency(amount: amount)
     
     let _ = viewModel.converterCellViewModels
       .filter { $0.isSelected == false }

@@ -12,15 +12,16 @@ import converterappCore
 final class ConverterCellViewModel: AppDependencyProvider {
   @Published var currency: Currency!
   var calculatedValue = PassthroughSubject<Decimal, Never>()
-  var selectedCurrency: Currency!
+  var selectedCurrency: Currency?
   var isSelected = false
   
   func convertCurrency(amount: Decimal) {
     guard
       let rate = currency.rate,
-      let selectedCurrencyRate = selectedCurrency.rate
+      let selectedCurrencyRate = selectedCurrency?.rate,
+      let scale = currency.scale
     else { return }
     
-    calculatedValue.send(amount * (selectedCurrencyRate / rate))
+    calculatedValue.send(amount * (selectedCurrencyRate / rate) * Decimal(scale))
   }
 }

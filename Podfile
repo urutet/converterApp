@@ -11,6 +11,7 @@ def shared_pods
   pod 'Firebase/RemoteConfig'
   pod 'FirebaseAuth'
   pod 'Swinject'
+  pod 'EyeTracking', :path => '../EyeTracking'
 end
 
 target 'converterapp' do

@@ -26,7 +26,7 @@ public final class RatesNetworkRepository: RatesRepositoryProtocol {
     self.currenciesCache = currenciesCache
   }
   
-  private let baseURL = "https://www.nbrb.by/api/exrates"
+  private let baseURL = "https://api.nbrb.by/exrates"
   private enum Endpoints {
     static let currencies = "/currencies"
     static let rates = "/rates"

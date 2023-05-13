@@ -1,0 +1,22 @@
+{
+  "name": "EyeTracking",
+  "version": "0.1.0",
+  "summary": "A short description of EyeTracking.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/urutet/EyeTracking",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "urutet": "ilyshka88@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/urutet/EyeTracking.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "14.0"
+  },
+  "source_files": "EyeTracking/Sources/**/*"
+}

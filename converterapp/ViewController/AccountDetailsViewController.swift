@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import EyeTracking
 
 final class AccountDetailsViewController: UIViewController {
   
@@ -20,6 +21,8 @@ final class AccountDetailsViewController: UIViewController {
     static let TransactionCellReuseIdentifier = "TransactionCell"
     static let accountDeleteAlertEnabled = "accountDeleteAlertEnabled"
   }
+  
+  private let manager = TrackingManager.shared
   
   private let tableView: UITableView = {
     let tableView = UITableView()
@@ -59,7 +62,32 @@ final class AccountDetailsViewController: UIViewController {
     tableView.dataSource = self
   }
   
-  // MARK: - Setups
+    override func viewDidAppear(_ animated: Bool) {
+      setupEyeTracking()
+      super.viewDidAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+      super.viewWillDisappear(animated)
+      removeEyeTracking()
+    }
+    
+    // MARK: - API
+    // MARK: - Setups
+    private func setupEyeTracking() {
+      manager.eyeTracker.setDelegate(self)
+      manager.faceTracker.setDelegate(self)
+      manager.faceTracker.initiateFaceExpression(FaceExpression(blendShape: .eyeBlinkLeft, minValue: 0.7, maxValue: 1))
+        manager.faceTracker.initiateFaceExpression(FaceExpression(blendShape: .mouthSmileLeft, minValue: 0.3, maxValue: 1))
+
+    }
+    
+    private func removeEyeTracking() {
+      manager.eyeTracker.removeDelegate(self)
+      manager.faceTracker.removeDelegate(self)
+        manager.faceTracker.removeFaceExpression(FaceExpression(blendShape: .eyeBlinkLeft, minValue: 0.1, maxValue: 1))
+          manager.faceTracker.removeFaceExpression(FaceExpression(blendShape: .mouthSmileLeft, minValue: 0.3, maxValue: 1))
+    }
   private func setupUI() {
     self.navigationItem.titleView = navigationTitleLabel
     navigationTitleLabel.text = viewModel.account.name
@@ -134,5 +162,55 @@ extension AccountDetailsViewController: UITableViewDelegate, UITableViewDataSour
       tableView.endUpdates()
     }
     return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+  }
+}
+
+extension AccountDetailsViewController: EyeTrackerDelegate, FaceTrackerDelegate {
+  func eyeTracking(_ eyeTracker: EyeTracking.EyeTracker, didUpdateState state: EyeTracking.EyeTracker.TrackingState, with expression: EyeTracking.FaceExpression?) {
+    switch state {
+    case .screenIn(let point):
+      guard let expression else { return }
+      switch expression.blendShape {
+      case .eyeBlinkLeft:
+        hitAdd(at: point)
+      case .mouthSmileLeft:
+          navigationController?.popViewController(animated: true)
+      default:
+        return
+      }
+    case .screenOut(let edge, _):
+      switch edge {
+      case .left, .right:
+        return
+      case .top:
+        scrollTableView(-6)
+      case .bottom:
+        scrollTableView(6)
+
+      }
+    }
+  }
+  
+  private func hitAdd(at point: CGPoint) {
+      if navigationController?.visibleViewController != self {
+          if CGRect(x: 0, y: 30, width: 100, height: 70).contains(point) {
+              navigationController?.popViewController(animated: true)
+              return
+          }
+      } else {
+          addTransaction()
+      }
+  }
+  
+  private func scrollTableView(_ y: CGFloat) {
+    var nextContentOffset = CGPoint(x: tableView.contentOffset.x, y: tableView.contentOffset.y + y)
+    nextContentOffset.y = min(max(nextContentOffset.y, 0), tableView.contentSize.height - tableView.bounds.height)
+    tableView.setContentOffset(nextContentOffset, animated: false)
+  }
+  
+  public func faceTracker(_ faceTracker: FaceTracker, didUpdateExpression expression: FaceExpression) {
+    manager.eyeTracker.delegates.forEach { delegate in
+      delegate?.eyeTracking(manager.eyeTracker, didUpdateState: manager.eyeTracker.state, with: expression)
+    }
   }
 }

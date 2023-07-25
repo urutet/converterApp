@@ -19,7 +19,7 @@ final class AddAccountViewModel: AppDependencyProvider {
   var accountID: UUID!
   var controllerType: ControllerInputType!
   @Published var accountName: String? = nil
-  @Published var accountCurrency: String? = nil
+  @Published var accountCurrency: String? = "USD"
   let currencies = ["EUR", "USD", "BYN", "RUB"]
   let saveAction = PassthroughSubject<Account, Never>()
   

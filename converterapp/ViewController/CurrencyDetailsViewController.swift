@@ -8,11 +8,13 @@
 import UIKit
 import Charts
 import Combine
+import EyeTracking
 
 class CurrencyDetailsViewController: UIViewController {
   // MARK: - Properties
   // MARK: Public
   var viewModel: CurrencyDetailsViewModel!
+  let manager = TrackingManager.shared
   
   // MARK: Private
   private var subscriptions = Set<AnyCancellable>()
@@ -36,8 +38,8 @@ class CurrencyDetailsViewController: UIViewController {
     return chartView
   }()
   
-  private let dynamicsRangeSegmentedControl: UISegmentedControl = {
-    let segmentedControl = UISegmentedControl(items: [
+  private let dynamicsRangeSegmentedControl: SegmentedControl = {
+    let segmentedControl = SegmentedControl(items: [
       Strings.CurrencyDetails._7Days,
       Strings.CurrencyDetails._1Month,
       Strings.CurrencyDetails._6Months,
@@ -59,6 +61,29 @@ class CurrencyDetailsViewController: UIViewController {
     addSubscriptions()
     
     viewModel.getCurrencyDynamics()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    setupEyeTracking()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    removeEyeTracking()
+    super.viewWillDisappear(true)
+  }
+  
+  private func setupEyeTracking() {
+      manager.eyeTracker.setDelegate(self)
+      manager.faceTracker.setDelegate(self)
+      manager.faceTracker.initiateFaceExpression(FaceExpression(blendShape: .mouthSmileLeft, minValue: 0.5, maxValue: 1))
+  }
+  
+  private func removeEyeTracking() {
+    manager.eyeTracker.removeDelegate(self)
+    manager.faceTracker.removeDelegate(self)
+      manager.faceTracker.removeFaceExpression(FaceExpression(blendShape: .mouthSmileLeft, minValue: 0.5, maxValue: 1))
+
   }
   
   // MARK: - Setups
@@ -99,5 +124,28 @@ class CurrencyDetailsViewController: UIViewController {
   @objc
   private func selectedSegmentIndexChanged() {
     viewModel.currencyDynamicsChanged(selectedIndex: dynamicsRangeSegmentedControl.selectedSegmentIndex)
+  }
+}
+
+extension CurrencyDetailsViewController: EyeTrackerDelegate, FaceTrackerDelegate {
+  func eyeTracking(_ eyeTracker: EyeTracking.EyeTracker, didUpdateState state: EyeTracking.EyeTracker.TrackingState, with expression: EyeTracking.FaceExpression?) {
+    switch state {
+    case .screenIn:
+      guard let expression else { return }
+      switch expression.blendShape {
+      case .mouthSmileLeft:
+          navigationController?.popViewController(animated: true)
+      default:
+        return
+      }
+    case .screenOut:
+      return
+      }
+    }
+  
+  public func faceTracker(_ faceTracker: FaceTracker, didUpdateExpression expression: FaceExpression) {
+    manager.eyeTracker.delegates.forEach { delegate in
+      delegate?.eyeTracking(manager.eyeTracker, didUpdateState: manager.eyeTracker.state, with: expression)
+    }
   }
 }

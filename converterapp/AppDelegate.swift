@@ -11,16 +11,29 @@ import FirebaseInstallations
 import Swinject
 import converterappCore
 
+import EyeTracking
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
   let dependencyProvider = DependencyProvider()
+  let session = Session()
+    let keychainService = KeychainService()
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+      keychainService.save("111111", service: "Firebase", account: "default@mail.ru")
+      UserDefaults.standard.set("default@mail.ru", forKey: "latestEmail")
     FirebaseApp.configure()
     
     FirebaseRemoteConfig.shared.fetchParameters()
     
+    do {
+      try session.start()
+    } catch let error {
+      print(error)
+    }
+    
+    TrackingManager.shared.start(with: session)
     return true
   }
 
@@ -33,9 +46,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-    // Called when the user discards a scene session.
-    // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-    // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    do {
+      try session.end()
+    } catch let error {
+      print(error)
+    }
   }
 
 

@@ -23,7 +23,8 @@ final class RatesViewModel: AppDependencyProvider {
       
       strongSelf.currencyRates = rates
       
-      strongSelf.favouriteCurrencies = strongSelf.currencyRates.filter { $0.isFavourite }
+//      strongSelf.favouriteCurrencies = strongSelf.currencyRates.filter { $0.isFavourite }
+        strongSelf.favouriteCurrencies = rates
     }
   }
   

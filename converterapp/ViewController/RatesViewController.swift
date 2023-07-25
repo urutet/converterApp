@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import EyeTracking
 
 final class RatesViewController: UIViewController {
 
@@ -17,6 +18,8 @@ final class RatesViewController: UIViewController {
   private enum Constants {
     static let rateCellIdentifier = "RateTableViewCell"
   }
+  
+  private let manager = TrackingManager.shared
   
   private var subscriptions = Set<AnyCancellable>()
   
@@ -45,21 +48,45 @@ final class RatesViewController: UIViewController {
     setupSubscriptions()
     addTargets()
     viewModel.getRates()
-
+    
     tableView.delegate = self
     tableView.dataSource = self
   }
+  
+  override func viewDidAppear(_ animated: Bool) {
+      super.viewDidAppear(animated)
+      setupEyeTracking()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    removeEyeTracking()
+  }
+  
   // MARK: - API
   // MARK: - Setups
+  private func setupEyeTracking() {
+    manager.eyeTracker.setDelegate(self)
+    manager.faceTracker.setDelegate(self)
+    manager.faceTracker.initiateFaceExpression(FaceExpression(blendShape: .jawOpen, minValue: 0.3, maxValue: 1))
+
+  }
+  
+  private func removeEyeTracking() {
+    manager.eyeTracker.removeDelegate(self)
+    manager.faceTracker.removeDelegate(self)
+    manager.faceTracker.removeFaceExpression(FaceExpression(blendShape: .jawOpen, minValue: 0.3, maxValue: 1))
+  }
+  
   private func setupUI() {
     title = Strings.Rates.title
     view.backgroundColor = .systemBackground
     
-    navigationItem.rightBarButtonItem = UIBarButtonItem(
-      barButtonSystemItem: .add,
-      target: self,
-      action: #selector(selectFavourites)
-    )
+//    navigationItem.rightBarButtonItem = UIBarButtonItem(
+//      barButtonSystemItem: .add,
+//      target: self,
+//      action: #selector(selectFavourites)
+//    )
   }
   
   private func setupSubscriptions() {
@@ -123,4 +150,55 @@ extension RatesViewController: UITableViewDelegate, UITableViewDataSource {
     viewModel.showCurrencyDetails(index: indexPath.row)
   }
   
+}
+
+extension RatesViewController: EyeTrackerDelegate, FaceTrackerDelegate {
+  func eyeTracking(_ eyeTracker: EyeTracking.EyeTracker, didUpdateState state: EyeTracking.EyeTracker.TrackingState, with expression: EyeTracking.FaceExpression?) {
+    switch state {
+    case .screenIn(let point):
+      guard let expression else { return }
+      switch expression.blendShape {
+      case .jawOpen:
+        hitCell(at: point)
+      default:
+        return
+      }
+    case .screenOut(let edge, _):
+      switch edge {
+      case .left, .right:
+        return
+      case .top:
+        scrollTableView(-6)
+      case .bottom:
+        scrollTableView(6)
+
+      }
+    }
+  }
+  
+  private func hitCell(at point: CGPoint) {
+    if navigationController?.visibleViewController != self {
+      if CGRect(x: 0, y: 30, width: 100, height: 70).contains(point) {
+        navigationController?.popViewController(animated: true)
+        return
+      }
+    } else {
+      if let index = tableView.indexPathForRow(at: view.convert(point, to: tableView)) {
+        viewModel.showCurrencyDetails(index: index.row)
+        return
+      }
+    }
+  }
+  
+  private func scrollTableView(_ y: CGFloat) {
+    var nextContentOffset = CGPoint(x: tableView.contentOffset.x, y: tableView.contentOffset.y + y)
+    nextContentOffset.y = min(max(nextContentOffset.y, 0), tableView.contentSize.height - tableView.bounds.height)
+    tableView.setContentOffset(nextContentOffset, animated: false)
+  }
+  
+  public func faceTracker(_ faceTracker: FaceTracker, didUpdateExpression expression: FaceExpression) {
+    manager.eyeTracker.delegates.forEach { delegate in
+      delegate?.eyeTracking(manager.eyeTracker, didUpdateState: manager.eyeTracker.state, with: expression)
+    }
+  }
 }

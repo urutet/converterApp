@@ -56,6 +56,9 @@ public final class RatesNetworkRepository: RatesRepositoryProtocol {
             }
             strongSelf.currenciesCache?.pushAllCurrencies(rates)
             completion(alteredRates)
+          } else {
+              strongSelf.currenciesCache?.pushAllCurrencies(rates)
+              completion(rates)
           }
           
         case .failure(_):
@@ -71,6 +74,8 @@ public final class RatesNetworkRepository: RatesRepositoryProtocol {
                 return currencyVar
               }
               completion(alteredRates)
+            } else {
+                completion(cachedCurrencies)
             }
           }
         }

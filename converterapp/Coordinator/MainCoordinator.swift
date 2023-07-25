@@ -19,8 +19,8 @@ final class MainCoordinator: Coordinator, AppDependencyProvider {
     static let accountsSelectedImage = UIImage(systemName: "person.crop.circle.fill")
   }
   
-  var rootViewController: UITabBarController = {
-    let tabBarController = UITabBarController()
+  var rootViewController: TabBarController = {
+    let tabBarController = TabBarController()
     
     tabBarController.view.backgroundColor = .systemBackground
     

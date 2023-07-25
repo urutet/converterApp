@@ -118,4 +118,8 @@ final class RateTableViewCell: UITableViewCell {
     ])
   }
   // MARK: - Helpers
+  
+  override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+    stackView.hitTest(point, with: event)
+  }
 }

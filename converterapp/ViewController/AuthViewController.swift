@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import EyeTracking
 
 class AuthViewController: UIViewController {
   private enum Constants {
@@ -14,6 +15,8 @@ class AuthViewController: UIViewController {
   }
   var viewModel: AuthViewModel!
   private var subscriptions = Set<AnyCancellable>()
+  
+  private let manager = TrackingManager.shared
   
   private let scrollView: UIScrollView = {
     let scrollView = UIScrollView()
@@ -145,34 +148,60 @@ class AuthViewController: UIViewController {
     setupSubscriptions()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    setupEyeTracking()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    removeEyeTracking()
+  }
+  
+  // MARK: - Setups
+  private func setupEyeTracking() {
+    manager.eyeTracker.setDelegate(self)
+    manager.faceTracker.setDelegate(self)
+    manager.faceTracker.initiateFaceExpression(FaceExpression(blendShape: .jawOpen, minValue: 0.3, maxValue: 1))
+  }
+  
+  private func removeEyeTracking() {
+    manager.eyeTracker.removeDelegate(self)
+    manager.faceTracker.removeDelegate(self)
+    manager.faceTracker.removeFaceExpression(FaceExpression(blendShape: .jawOpen, minValue: 0.3, maxValue: 1))
+  }
+  
   private func addSubviews() {
-    view.addSubview(scrollView)
-    scrollView.addSubview(stackView)
-    stackView.addArrangedSubview(emailTextField)
-    stackView.addArrangedSubview(passwordTextField)
-    stackView.addArrangedSubview(confirmPasswordTextField)
-    stackView.addArrangedSubview(topButton)
-    stackView.addArrangedSubview(bottomButton)
-    stackView.addArrangedSubview(errorLabel)
-    stackView.addArrangedSubview(authorizeWithFaceIDButton)
+//    view.addSubview(scrollView)
+//    scrollView.addSubview(stackView)
+//    stackView.addArrangedSubview(emailTextField)
+//    stackView.addArrangedSubview(passwordTextField)
+//    stackView.addArrangedSubview(confirmPasswordTextField)
+//    stackView.addArrangedSubview(topButton)
+//    stackView.addArrangedSubview(bottomButton)
+//    stackView.addArrangedSubview(errorLabel)
+    view.addSubview(authorizeWithFaceIDButton)
   }
   
   private func addConstraints() {
     NSLayoutConstraint.activate([
-      scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-      scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-      scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
-      stackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20),
-      stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-      stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-      emailTextField.heightAnchor.constraint(equalToConstant: 40),
-      passwordTextField.heightAnchor.constraint(equalToConstant: 40),
-      confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 40),
-      topButton.heightAnchor.constraint(equalToConstant: 40),
-      bottomButton.heightAnchor.constraint(equalToConstant: 40),
-      authorizeWithFaceIDButton.heightAnchor.constraint(equalToConstant: 40)
+//      scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+//      scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//      scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//      scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+//      scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
+//      stackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20),
+//      stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+//      stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+//      emailTextField.heightAnchor.constraint(equalToConstant: 40),
+//      passwordTextField.heightAnchor.constraint(equalToConstant: 40),
+//      confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 40),
+//      topButton.heightAnchor.constraint(equalToConstant: 40),
+//      bottomButton.heightAnchor.constraint(equalToConstant: 40),
+//      authorizeWithFaceIDButton.heightAnchor.constraint(equalToConstant: 40)
+        
+        authorizeWithFaceIDButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        authorizeWithFaceIDButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
     ])
   }
   
@@ -247,5 +276,28 @@ class AuthViewController: UIViewController {
   @objc
   func loginWithFaceID() {
     viewModel.loginWithFaceID()
+  }
+}
+
+extension AuthViewController: EyeTrackerDelegate, FaceTrackerDelegate {
+  func eyeTracking(_ eyeTracker: EyeTracking.EyeTracker, didUpdateState state: EyeTracking.EyeTracker.TrackingState, with expression: EyeTracking.FaceExpression?) {
+    switch state {
+    case .screenIn(let point):
+      guard let expression else { return }
+      switch expression.blendShape {
+      case .jawOpen:
+          authorizeWithFaceIDButton.sendActions(for: .touchUpInside)
+      default:
+        return
+      }
+    case .screenOut:
+      return
+    }
+  }
+  
+  public func faceTracker(_ faceTracker: FaceTracker, didUpdateExpression expression: FaceExpression) {
+    manager.eyeTracker.delegates.forEach { delegate in
+      delegate?.eyeTracking(manager.eyeTracker, didUpdateState: manager.eyeTracker.state, with: expression)
+    }
   }
 }

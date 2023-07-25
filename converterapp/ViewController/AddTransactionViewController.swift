@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import EyeTracking
 
 class AddTransactionViewController: UIViewController {
   
@@ -14,6 +15,8 @@ class AddTransactionViewController: UIViewController {
   // MARK: Public
   var viewModel: AddTransactionViewModel!
   // MARK: Private
+    private let manager = TrackingManager.shared
+    private var lastActionDate = Date()
   private var subscriptions = [AnyCancellable]()
   
   private enum Constants {
@@ -142,8 +145,34 @@ class AddTransactionViewController: UIViewController {
     amountTextField.delegate = self
     datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
   }
+    
+    override func viewDidAppear(_ animated: Bool) {
+      setupEyeTracking()
+      super.viewDidAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+      super.viewWillDisappear(animated)
+      removeEyeTracking()
+    }
   
+  // MARK: - API
   // MARK: - Setups
+    private func setupEyeTracking() {
+      manager.eyeTracker.setDelegate(self)
+      manager.faceTracker.setDelegate(self)
+      manager.faceTracker.initiateFaceExpression(FaceExpression(blendShape: .mouthSmileLeft, minValue: 0.3, maxValue: 1))
+        manager.faceTracker.initiateFaceExpression(FaceExpression(blendShape: .eyeBlinkLeft, minValue: 0.3, maxValue: 1))
+
+    }
+    
+    private func removeEyeTracking() {
+      manager.eyeTracker.removeDelegate(self)
+      manager.faceTracker.removeDelegate(self)
+      manager.faceTracker.removeFaceExpression(FaceExpression(blendShape: .mouthSmileLeft, minValue: 0.3, maxValue: 1))
+          manager.faceTracker.removeFaceExpression(FaceExpression(blendShape: .eyeBlinkLeft, minValue: 0.3, maxValue: 1))
+    }
+  
   private func setupUI() {
     view.backgroundColor = .systemBackground
     dateTextField.inputView = datePicker
@@ -164,7 +193,7 @@ class AddTransactionViewController: UIViewController {
     view.addSubview(scrollView)
     scrollView.addSubview(stackView)
     stackView.addArrangedSubview(nameTextField)
-    stackView.addArrangedSubview(dateTextField)
+//    stackView.addArrangedSubview(dateTextField)
     stackView.addArrangedSubview(amountTextField)
     stackView.addArrangedSubview(saveButton)
   }
@@ -181,7 +210,7 @@ class AddTransactionViewController: UIViewController {
       stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
       stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
       nameTextField.heightAnchor.constraint(equalToConstant: 40),
-      dateTextField.heightAnchor.constraint(equalToConstant: 40),
+//      dateTextField.heightAnchor.constraint(equalToConstant: 40),
       amountTextField.heightAnchor.constraint(equalToConstant: 40),
       saveButton.heightAnchor.constraint(equalToConstant: 40)
     ])
@@ -266,5 +295,33 @@ extension AddTransactionViewController: UITextFieldDelegate, UIPickerViewDelegat
     let allowedCharacters = CharacterSet(charactersIn: Constants.allowedCharacters)
     let characterSet = CharacterSet(charactersIn: string)
     return allowedCharacters.isSuperset(of: characterSet)
+  }
+}
+
+extension AddTransactionViewController: EyeTrackerDelegate, FaceTrackerDelegate {
+  func eyeTracking(_ eyeTracker: EyeTracking.EyeTracker, didUpdateState state: EyeTracking.EyeTracker.TrackingState, with expression: EyeTracking.FaceExpression?) {
+      guard Date().timeIntervalSinceNow - lastActionDate.timeIntervalSinceNow >= 2.0 else { return }
+    switch state {
+    case .screenIn:
+      guard let expression else { return }
+      switch expression.blendShape {
+      case .mouthSmileLeft:
+          navigationController?.popViewController(animated: true)
+      case .eyeBlinkLeft:
+          saveTransaction()
+      default:
+        return
+      }
+    case .screenOut:
+      return
+      }
+      lastActionDate = Date()
+
+    }
+  
+  public func faceTracker(_ faceTracker: FaceTracker, didUpdateExpression expression: FaceExpression) {
+    manager.eyeTracker.delegates.forEach { delegate in
+      delegate?.eyeTracking(manager.eyeTracker, didUpdateState: manager.eyeTracker.state, with: expression)
+    }
   }
 }

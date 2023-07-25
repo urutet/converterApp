@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import EyeTracking
 
 class AddAccountViewController: UIViewController {
   
@@ -14,6 +15,9 @@ class AddAccountViewController: UIViewController {
   // MARK: Public
   var viewModel: AddAccountViewModel!
   // MARK: Private
+    private let manager = TrackingManager.shared
+    private var lastActionDate = Date()
+    private let recognizer = SpeechRecognizer()
   private var subscriptions = Set<AnyCancellable>()
   private let scrollView: UIScrollView = {
     let scrollView = UIScrollView()
@@ -98,9 +102,38 @@ class AddAccountViewController: UIViewController {
     nameTextField.delegate = self
     currencyPickerView.delegate = self
   }
+    
+    override func viewDidAppear(_ animated: Bool) {
+      setupEyeTracking()
+      super.viewDidAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+      super.viewWillDisappear(animated)
+      removeEyeTracking()
+    }
   
   // MARK: - API
   // MARK: - Setups
+    private func setupEyeTracking() {
+      manager.eyeTracker.setDelegate(self)
+      manager.faceTracker.setDelegate(self)
+      manager.faceTracker.initiateFaceExpression(FaceExpression(blendShape: .mouthSmileLeft, minValue: 0.3, maxValue: 1))
+        manager.faceTracker.initiateFaceExpression(FaceExpression(blendShape: .jawOpen, minValue: 0.3, maxValue: 1))
+        manager.faceTracker.initiateFaceExpression(FaceExpression(blendShape: .eyeBlinkLeft, minValue: 0.7, maxValue: 1))
+        manager.faceTracker.initiateFaceExpression(FaceExpression(blendShape: .eyeBlinkRight, minValue: 0.7, maxValue: 1))
+
+    }
+    
+    private func removeEyeTracking() {
+      manager.eyeTracker.removeDelegate(self)
+      manager.faceTracker.removeDelegate(self)
+      manager.faceTracker.removeFaceExpression(FaceExpression(blendShape: .mouthSmileLeft, minValue: 0.3, maxValue: 1))
+        manager.faceTracker.removeFaceExpression(FaceExpression(blendShape: .jawOpen, minValue: 0.3, maxValue: 1))
+        manager.faceTracker.removeFaceExpression(FaceExpression(blendShape: .eyeBlinkLeft, minValue: 0.3, maxValue: 1))
+        manager.faceTracker.removeFaceExpression(FaceExpression(blendShape: .eyeBlinkRight, minValue: 0.7, maxValue: 1))
+    }
+    
   private func setupUI() {
     view.backgroundColor = .systemBackground
     currencyTextField.inputView = currencyPickerView
@@ -189,5 +222,38 @@ extension AddAccountViewController: UITextFieldDelegate, UIPickerViewDataSource,
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     currencyTextField.text = viewModel.currencies[row]
+  }
+}
+
+extension AddAccountViewController: EyeTrackerDelegate, FaceTrackerDelegate {
+  func eyeTracking(_ eyeTracker: EyeTracking.EyeTracker, didUpdateState state: EyeTracking.EyeTracker.TrackingState, with expression: EyeTracking.FaceExpression?) {
+    switch state {
+    case .screenIn(let point):
+      guard let expression else { return }
+        guard Date().timeIntervalSinceNow - lastActionDate.timeIntervalSinceNow >= 2.0 else { return }
+        lastActionDate = Date()
+      switch expression.blendShape {
+      case .mouthSmileLeft:
+          navigationController?.popViewController(animated: true)
+      case .eyeBlinkLeft:
+          saveAccount()
+      case .jawOpen:
+          recognizer.startTranscribing()
+      case .eyeBlinkRight:
+          nameTextField.text = recognizer.transcript
+          recognizer.stopTranscribing()
+          recognizer.transcript = ""
+      default:
+        return
+      }
+    case .screenOut:
+      return
+      }
+    }
+  
+  public func faceTracker(_ faceTracker: FaceTracker, didUpdateExpression expression: FaceExpression) {
+    manager.eyeTracker.delegates.forEach { delegate in
+      delegate?.eyeTracking(manager.eyeTracker, didUpdateState: manager.eyeTracker.state, with: expression)
+    }
   }
 }

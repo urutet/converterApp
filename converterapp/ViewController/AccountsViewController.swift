@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 import converterappCore
+import EyeTracking
 
 final class AccountsViewController: UIViewController {
   
@@ -15,6 +16,8 @@ final class AccountsViewController: UIViewController {
   // MARK: Public
   var viewModel: AccountsViewModel!
   // MARK: Private
+    private let manager = TrackingManager.shared
+    
   private enum Constants {
     static let accountCellIdentifier = "AccountCell"
     static let addAccountButtonColor: UIColor = .systemBlue
@@ -81,9 +84,36 @@ final class AccountsViewController: UIViewController {
     
     viewModel.getAccounts()
   }
+    
+    override func viewDidAppear(_ animated: Bool) {
+      super.viewDidAppear(animated)
+        setupEyeTracking()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+      super.viewWillDisappear(animated)
+      removeEyeTracking()
+    }
   
   // MARK: - API
   // MARK: - Setups
+    private func setupEyeTracking() {
+      manager.eyeTracker.setDelegate(self)
+      manager.faceTracker.setDelegate(self)
+      manager.faceTracker.initiateFaceExpression(FaceExpression(blendShape: .jawOpen, minValue: 0.3, maxValue: 1))
+        manager.faceTracker.initiateFaceExpression(FaceExpression(blendShape: .eyeBlinkRight, minValue: 0.7, maxValue: 1))
+        manager.faceTracker.initiateFaceExpression(FaceExpression(blendShape: .eyeBlinkLeft, minValue: 0.7, maxValue: 1))
+
+    }
+    
+    private func removeEyeTracking() {
+      manager.eyeTracker.removeDelegate(self)
+      manager.faceTracker.removeDelegate(self)
+      manager.faceTracker.removeFaceExpression(FaceExpression(blendShape: .jawOpen, minValue: 0.3, maxValue: 1))
+        manager.faceTracker.removeFaceExpression(FaceExpression(blendShape: .eyeBlinkRight, minValue: 0.4, maxValue: 1))
+        manager.faceTracker.removeFaceExpression(FaceExpression(blendShape: .eyeBlinkLeft, minValue: 0.4, maxValue: 1))
+    }
+    
   private func setupUI() {
     view.backgroundColor = .systemBackground
   }
@@ -237,5 +267,77 @@ extension AccountsViewController: UICollectionViewDelegate, UICollectionViewData
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     showAccountDetails(index: indexPath.row)
+  }
+}
+
+extension AccountsViewController: EyeTrackerDelegate, FaceTrackerDelegate {
+  func eyeTracking(_ eyeTracker: EyeTracking.EyeTracker, didUpdateState state: EyeTracking.EyeTracker.TrackingState, with expression: EyeTracking.FaceExpression?) {
+    switch state {
+    case .screenIn(let point):
+      guard let expression else { return }
+      switch expression.blendShape {
+      case .jawOpen:
+          if viewModel.accounts.isEmpty {
+              hitAdd(at: point)
+          } else {
+              hitCell(at: point)
+          }
+      case .eyeBlinkRight:
+          logout()
+          return
+      case .eyeBlinkLeft:
+          hitAdd(at: point)
+          return
+      default:
+        return
+      }
+    case .screenOut(let edge, _):
+      switch edge {
+      case .left, .right:
+        return
+      case .top:
+        scrollCollectionView(-6)
+      case .bottom:
+        scrollCollectionView(6)
+
+      }
+    }
+  }
+  
+    private func hitAdd(at point: CGPoint) {
+        if navigationController?.visibleViewController != self {
+            if CGRect(x: 0, y: 30, width: 100, height: 70).contains(point) {
+                navigationController?.popViewController(animated: true)
+                return
+            }
+        } else {
+            addAccount()
+        }
+    }
+    
+  private func hitCell(at point: CGPoint) {
+    if navigationController?.visibleViewController != self {
+      if CGRect(x: 0, y: 30, width: 100, height: 70).contains(point) {
+        navigationController?.popViewController(animated: true)
+        return
+      }
+    } else {
+      if let index = accountsCollectionView.indexPathForItem(at: view.convert(point, to: accountsCollectionView)) {
+          showAccountDetails(index: index.row)
+        return
+      }
+    }
+  }
+  
+  private func scrollCollectionView(_ y: CGFloat) {
+    var nextContentOffset = CGPoint(x: accountsCollectionView.contentOffset.x, y: accountsCollectionView.contentOffset.y + y)
+    nextContentOffset.y = min(max(nextContentOffset.y, 0), accountsCollectionView.contentSize.height - accountsCollectionView.bounds.height)
+      accountsCollectionView.setContentOffset(nextContentOffset, animated: false)
+  }
+  
+  public func faceTracker(_ faceTracker: FaceTracker, didUpdateExpression expression: FaceExpression) {
+    manager.eyeTracker.delegates.forEach { delegate in
+      delegate?.eyeTracking(manager.eyeTracker, didUpdateState: manager.eyeTracker.state, with: expression)
+    }
   }
 }
